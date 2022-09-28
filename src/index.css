@@ -5,7 +5,6 @@
 
 #header {
     background-color:#97F9CA;
-    position:absolute;
     width:100%;
     font-family:inter;
 }
@@ -35,4 +34,16 @@ p {
     height: 50px;
     padding-right:10px;
     padding-left:10px;
+}
+
+#ArrayAppButtons
+{
+    padding-top: 10px;
+    padding-left: 10px;
+    display:flex;
+    flex-direction:row;
+}
+
+button {
+    margin-right:10px;
 }
