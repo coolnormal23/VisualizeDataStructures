@@ -44,6 +44,14 @@ p {
     flex-direction:row;
 }
 
+#VectorAppButtons
+{
+    padding-top: 10px;
+    padding-left: 10px;
+    display:flex;
+    flex-direction:row;
+}
+
 button {
     margin-right:10px;
 }

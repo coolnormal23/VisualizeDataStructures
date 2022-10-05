@@ -14,8 +14,8 @@
             <h1>Visualize Data Structures</h1>
         </div>
         <div id="buttons">
-            <p>Array</p>
-            <p>Vector</p>
+            <p id="arraymenu" onclick="arraycontroller.drawArray()">Array</p>
+            <p id="vectormenu" onclick="vectorcontroller.drawArray()">Vector</p>
             <p>Linked List</p>
             <p>Binary Tree</p>
             <p>Queue</p>
@@ -25,12 +25,19 @@
     </div>
 
     <div id="ArrayAppButtons">
-        <button type="button" onclick="controller.setSize()">Set Size</button>
-        <button type="button" onclick="controller.setElement()">Set Element</button>
-        <button type="button" onclick="controller.findElement()">Find Element</button>
+        <button type="button" onclick="arraycontroller.setSize()">Set Size</button>
+        <button type="button" onclick="arraycontroller.setElement()">Set Element</button>
+        <button type="button" onclick="arraycontroller.findElement()">Find Element</button>
+    </div>
+
+    <div id="VectorAppButtons">
+        <button type="button" onclick="vectorcontroller.push_back()">push_back()</button>
+        <button type="button" onclick="vectorcontroller.pop_back()">pop_back()</button>
+        <button type="button" onclick="vectorcontroller.findElement()">Find Element</button>
     </div>
 
     <canvas id="maincanvas" width="800" height="800"></canvas>
-    <script src="index.js"></script>
+    <script src="./script/menu.js"></script>
+    <script src="./script/objects.js"></script>
 </body>
 </html>
