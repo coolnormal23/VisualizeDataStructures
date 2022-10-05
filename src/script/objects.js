@@ -65,7 +65,7 @@ class ArrayApp extends VisualizerApp
     {
         console.log("Findelement");
         let element = prompt("Enter element to find", 0);
-        for(let i = 0; i < this.size; i++)
+        for(let i = 0; i < this.elements.length; i++)
         {
             if(this.elements[i] == element)
             {
@@ -75,5 +75,69 @@ class ArrayApp extends VisualizerApp
     }
 }
 
-const controller = new ArrayApp();
-controller.setSize();
+class VectorApp extends VisualizerApp
+{
+    elements = [];
+    index = 0;
+
+    drawArray()
+    {
+        console.log("Drawing in Vector App");
+        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+        this.context.font = '20px inter';
+
+        let x = 50;
+        let y = 200;
+        for(let i = 0; i < this.elements.length; i++)
+        {
+            console.log("rendering element");
+            this.context.fillStyle="#D9D9D9";
+            this.context.fillRect(x, y, 100, 100);
+            this.context.fillStyle="black";
+            this.context.fillText(this.elements[i], (x+40), (y+50));
+            if(i == 0)
+            {
+                this.context.fillText("i = 0", (x+35), (y-20));
+            }
+            else if(i == (this.elements.length-1))
+            {
+                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
+            }
+            x += 125;
+        }
+    }
+    push_back()
+    {
+        console.log("pushing back element");
+        let element = prompt("Enter element", 0)
+
+        this.elements[this.index] = element;
+        (this.index)++;
+
+        this.drawArray();
+    }
+    pop_back()
+    {
+        console.log("popping back element");
+
+        this.elements.pop();
+        (this.index)--;
+
+        this.drawArray();
+    }
+    findElement()
+    {
+        console.log("Findelement");
+        let element = prompt("Enter element to find", 0);
+        for(let i = 0; i < this.elements.length; i++)
+        {
+            if(this.elements[i] == element)
+            {
+                alert("Element " + element + " found at index " + i);
+            }
+        }
+    }
+}
+
+const arraycontroller = new ArrayApp();
+const vectorcontroller = new VectorApp();
