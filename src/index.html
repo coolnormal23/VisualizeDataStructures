@@ -16,7 +16,7 @@
         <div id="buttons">
             <p id="arraymenu" onclick="arraycontroller.drawArray()">Array</p>
             <p id="vectormenu" onclick="vectorcontroller.drawArray()">Vector</p>
-            <p>Linked List</p>
+            <p id="listmenu" onclick="vectorcontroller.drawArray()">Linked List</p>
             <p>Binary Tree</p>
             <p>Queue</p>
             <p>Stack</p>
@@ -34,6 +34,12 @@
         <button type="button" onclick="vectorcontroller.push_back()">push_back()</button>
         <button type="button" onclick="vectorcontroller.pop_back()">pop_back()</button>
         <button type="button" onclick="vectorcontroller.findElement()">Find Element</button>
+    </div>
+
+    <div id="ListAppButtons">
+        <button type="button" onclick="listcontroller.add()">add</button>
+        <button type="button" onclick="listcontroller.delete()">delete</button>
+        <button type="button" onclick="listcontroller.findElement()">Find Element</button>
     </div>
 
     <canvas id="maincanvas" width="800" height="800"></canvas>
