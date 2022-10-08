@@ -52,6 +52,13 @@ p {
     flex-direction:row;
 }
 
+#ListAppButtons
+{
+    padding-top: 10px;
+    padding-left: 10px;
+    display:flex;
+    flex-direction:row;
+}
 button {
     margin-right:10px;
 }

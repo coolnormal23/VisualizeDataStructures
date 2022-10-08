@@ -10,6 +10,11 @@ function showMenu(id, bold)
         document.getElementById("VectorAppButtons").style.display = "none"; 
         document.getElementById("vectormenu").innerHTML = "Vector";
     }
+    if(id != "ListAppButtons")
+    {
+        document.getElementById("ListAppButtons").style.display = "none"; 
+        document.getElementById("listmenu").innerHTML = "Linked List";
+    }
 
     document.getElementById(id).style.display = "block"; 
     
@@ -21,12 +26,19 @@ function showMenu(id, bold)
     {
         document.getElementById("vectormenu").innerHTML = "<b>Vector</b>";
     }
+    else if(bold == "listmenu")
+    {
+        document.getElementById("listmenu").innerHTML = "<b>Linked List</b>";
+    }
 }
 
 arraymenubutton = document.getElementById("arraymenu");
 vectormenubutton = document.getElementById("vectormenu");
+listmenubutton = document.getElementById("listmenu");
 
 arraymenubutton.onclick = function() {showMenu("ArrayAppButtons", "arraymenu")};
 vectormenubutton.onclick = function() {showMenu("VectorAppButtons", "vectormenu")};
+listmenubutton.onclick = function() {showMenu("ListAppButtons", "listmenu")};
+
 
 showMenu("ArrayAppButtons", "arraymenu");
