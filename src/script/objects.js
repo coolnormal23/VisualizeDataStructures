@@ -169,6 +169,11 @@ class ListApp extends VisualizerApp
             }
             x += 125;
         }
+        console.log("rendering element");
+        this.context.fillStyle="#D9D9D9";
+        this.context.fillRect(x, y, 100, 100);
+        this.context.fillStyle="black";
+        this.context.fillText("NULL", (x+25), (y+55));
     }
     add()
     {
