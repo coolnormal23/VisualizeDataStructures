@@ -17,6 +17,11 @@
     font-size:16pt;
 }
 
+#buttons p:hover{
+  font-weight:bold;
+    
+}
+
 p {
     margin-top:0;
     margin-right: 20px;
@@ -36,7 +41,7 @@ p {
     padding-left:10px;
 }
 
-#ArrayAppButtons
+#ArrayAppButtons, #VectorAppButtons, #ListAppButtons
 {
     padding-top: 10px;
     padding-left: 10px;
@@ -44,21 +49,7 @@ p {
     flex-direction:row;
 }
 
-#VectorAppButtons
-{
-    padding-top: 10px;
-    padding-left: 10px;
-    display:flex;
-    flex-direction:row;
-}
 
-#ListAppButtons
-{
-    padding-top: 10px;
-    padding-left: 10px;
-    display:flex;
-    flex-direction:row;
-}
 button {
     margin-right:10px;
 }
