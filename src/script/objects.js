@@ -199,7 +199,7 @@ class ListApp extends VisualizerApp
     add()
     {
         console.log("pushing back element");
-        let element = prompt("Enter element", 0)
+        let element = document.getElementById("add").value;
 
         this.elements[this.index] = element;
         (this.index)++;
@@ -218,7 +218,7 @@ class ListApp extends VisualizerApp
     findElement()
     {
         console.log("Findelement");
-        let element = prompt("Enter element to find", 0);
+        let element = document.getElementById("add").value;
         for(let i = 0; i < this.elements.length; i++)
         {
             if(this.elements[i] == element)

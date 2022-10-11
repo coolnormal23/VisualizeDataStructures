@@ -21,14 +21,17 @@ function showMenu(id, bold)
     if(bold == "arraymenu")
     {
         document.getElementById("arraymenu").innerHTML = "<b>Array</b>";
+        arraycontroller.drawArray();
     }
     else if(bold == "vectormenu")
     {
         document.getElementById("vectormenu").innerHTML = "<b>Vector</b>";
+        vectorcontroller.drawArray();
     }
     else if(bold == "listmenu")
     {
         document.getElementById("listmenu").innerHTML = "<b>Linked List</b>";
+        listcontroller.drawArray();
     }
 }
 
