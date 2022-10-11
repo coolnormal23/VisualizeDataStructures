@@ -143,7 +143,6 @@ class ListApp extends VisualizerApp
 {
     elements = [];
     index = 0;
-    //ctx = canvas.getContext('2d');
 
     drawArray()
     {
@@ -218,7 +217,7 @@ class ListApp extends VisualizerApp
     findElement()
     {
         console.log("Findelement");
-        let element = document.getElementById("add").value;
+        let element = document.getElementById("find").value;
         for(let i = 0; i < this.elements.length; i++)
         {
             if(this.elements[i] == element)
