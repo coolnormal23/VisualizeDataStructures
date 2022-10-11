@@ -143,6 +143,7 @@ class ListApp extends VisualizerApp
 {
     elements = [];
     index = 0;
+    //ctx = canvas.getContext('2d');
 
     drawArray()
     {
@@ -167,7 +168,27 @@ class ListApp extends VisualizerApp
             {
                 this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
             }
-            x += 125;
+          
+            x += 100; 
+
+            this.context.strokeStyle = 'black';
+            this.context.lineWidth = 5;
+            this.context.beginPath();
+            this.context.moveTo(x,y + 50);
+
+            x += 75;
+
+            this.context.lineTo(x,y+ 50);
+            this.context.stroke();
+            this.context.beginPath();
+
+            this.context.moveTo(x - 20,y +20);
+            this.context.lineTo(x,y + 50);
+            this.context.stroke();
+
+            this.context.moveTo(x - 20,y +80);
+            this.context.lineTo(x,y + 50);
+            this.context.stroke();
         }
         console.log("rendering element");
         this.context.fillStyle="#D9D9D9";
