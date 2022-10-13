@@ -40,7 +40,7 @@ class ArrayApp extends VisualizerApp
     }
     setSize()
     {
-        let newsize = prompt("Please enter size of array", 5);
+        let newsize = document.getElementById("arraysize").value;
         this.size = newsize;
         this.elements = [];
         for(let i = 0; i < this.size; i++)
@@ -54,7 +54,7 @@ class ArrayApp extends VisualizerApp
     {
         console.log("Setting array element");
 
-        let index = prompt("Enter index to change", 0);
+        let index = document.getElementById("arrayindexset").value;
         let element = prompt("Enter element", 0)
 
         this.elements[index] = element;
@@ -64,13 +64,19 @@ class ArrayApp extends VisualizerApp
     findElement()
     {
         console.log("Findelement");
-        let element = prompt("Enter element to find", 0);
+        let element = document.getElementById("arrayindexfind").value;
+        let flag = false;
         for(let i = 0; i < this.elements.length; i++)
         {
             if(this.elements[i] == element)
             {
                 alert("Element " + element + " found at index " + i);
+                flag = true;
             }
+        }
+        if(!flag)
+        {
+            alert("Element " + element + " not found.");
         }
     }
 }
@@ -109,7 +115,7 @@ class VectorApp extends VisualizerApp
     push_back()
     {
         console.log("pushing back element");
-        let element = prompt("Enter element", 0)
+        let element = document.getElementById("vectorpushback").value;
 
         this.elements[this.index] = element;
         (this.index)++;
@@ -128,13 +134,19 @@ class VectorApp extends VisualizerApp
     findElement()
     {
         console.log("Findelement");
-        let element = prompt("Enter element to find", 0);
+        let element = document.getElementById("vectorfind").value;
+        let flag = false;
         for(let i = 0; i < this.elements.length; i++)
         {
             if(this.elements[i] == element)
             {
                 alert("Element " + element + " found at index " + i);
+                flag = true;
             }
+        }
+        if(!flag)
+        {
+            alert("Element " + element + " not found.");
         }
     }
 }

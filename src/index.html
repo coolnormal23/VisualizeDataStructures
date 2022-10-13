@@ -25,23 +25,28 @@
     </div>
 
     <div id="ArrayAppButtons">
+        <input type="text" id="arraysize" value="0" size="2">
         <button type="button" onclick="arraycontroller.setSize()">Set Size</button>
+        <input type="text" id="arrayindexset" value="0" size="2">
         <button type="button" onclick="arraycontroller.setElement()">Set Element</button>
+        <input type="text" id="arrayindexfind" value="0" size="2">
         <button type="button" onclick="arraycontroller.findElement()">Find Element</button>
     </div>
 
     <div id="VectorAppButtons">
+        <input type="text" id="vectorpushback" value="0" size="2">
         <button type="button" onclick="vectorcontroller.push_back()">push_back()</button>
         <button type="button" onclick="vectorcontroller.pop_back()">pop_back()</button>
+        <input type="text" id="vectorfind" value="0" size="2">
         <button type="button" onclick="vectorcontroller.findElement()">Find Element</button>
     </div>
 
     <div id="ListAppButtons">
-        <button type="button" onclick="listcontroller.add()">add</button>
         <input type="text" id="add" value="0"size="2">
+        <button type="button" onclick="listcontroller.add()">add</button>
         <button type="button" onclick="listcontroller.delete()">delete</button>
-        <button type="button" onclick="listcontroller.findElement()">Find Element</button>
         <input type="text" id="find" value="0"size="2">
+        <button type="button" onclick="listcontroller.findElement()">Find Element</button>
     </div>
 
     <canvas id="maincanvas" width="1920" height="800"></canvas>
