@@ -20,22 +20,33 @@ class ArrayApp extends VisualizerApp
 
         let x = 50;
         let y = 200;
-        for(let i = 0; i < this.elements.length; i++)
+
+        if(this.elements.length == 0)
         {
-            console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
+            console.log("array empty");
+            this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x+40), (y+50));
-            if(i == 0)
+            this.context.fillText("Array is not initialized", (x), (y));
+        }
+        else
+        {
+            for(let i = 0; i < this.elements.length; i++)
             {
-                this.context.fillText("i = 0", (x+35), (y-20));
+                console.log("rendering element");
+                this.context.fillStyle="#D9D9D9";
+                this.context.fillRect(x, y, 100, 100);
+                this.context.fillStyle="black";
+                this.context.fillText(this.elements[i], (x+40), (y+50));
+                if(i == 0)
+                {
+                    this.context.fillText("i = 0", (x+35), (y-20));
+                }
+                else if(i == (this.elements.length-1))
+                {
+                    this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
+                }
+                x += 125;
             }
-            else if(i == (this.elements.length-1))
-            {
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
-            }
-            x += 125;
         }
     }
     setSize()
@@ -94,6 +105,13 @@ class VectorApp extends VisualizerApp
 
         let x = 50;
         let y = 200;
+        if(this.elements.length == 0)
+        {
+            console.log("vector empty");
+            this.context.font = '40px inter';
+            this.context.fillStyle="black";
+            this.context.fillText("Vector contains no elements", (x), (y));
+        }
         for(let i = 0; i < this.elements.length; i++)
         {
             console.log("rendering element");
@@ -201,11 +219,21 @@ class ListApp extends VisualizerApp
             this.context.lineTo(x,y + 50);
             this.context.stroke();
         }
-        console.log("rendering element");
-        this.context.fillStyle="#D9D9D9";
-        this.context.fillRect(x, y, 100, 100);
-        this.context.fillStyle="black";
-        this.context.fillText("NULL", (x+25), (y+55));
+        if(this.elements.length == 0)
+        {
+            console.log("linkedlist empty");
+            this.context.font = '40px inter';
+            this.context.fillStyle="black";
+            this.context.fillText("Linked list contains no elements", (x), (y));
+        }
+        else
+        {
+            console.log("rendering element");
+            this.context.fillStyle="#D9D9D9";
+            this.context.fillRect(x, y, 100, 100);
+            this.context.fillStyle="black";
+            this.context.fillText("NULL", (x+25), (y+55));
+        }   
     }
     add()
     {
@@ -243,3 +271,4 @@ class ListApp extends VisualizerApp
 const arraycontroller = new ArrayApp();
 const vectorcontroller = new VectorApp();
 const listcontroller = new ListApp();
+arraycontroller.drawArray();
