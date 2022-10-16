@@ -41,12 +41,20 @@ p {
     padding-left:10px;
 }
 
-#ArrayAppButtons, #VectorAppButtons, #ListAppButtons
+#ArrayAppButtons, #VectorAppButtons, #ListAppButtons/*, #StackAppButtons*/
 {
     padding-top: 10px;
     padding-left: 10px;
     display:flex;
     flex-direction:row;
+}
+
+#StackAppButtons
+{
+    padding-top: 10px;
+    padding-left: 10px;
+    display:flex;
+    flex-direction:column-reverse;
 }
 
 

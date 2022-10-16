@@ -268,7 +268,85 @@ class ListApp extends VisualizerApp
     }
 }
 
+class StackApp extends VisualizerApp
+{
+    elements = [];
+    index = 0;
+
+    drawArray()
+    {
+        console.log("Drawing in Stack App");
+        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+        this.context.font = '20px inter';
+
+        let x = 650;
+        let y = 500;
+        if(this.elements.length == 0)
+        {
+            console.log("stack empty");
+            this.context.font = '40px inter';
+            this.context.fillStyle="black";
+            this.context.fillText("Stack contains no elements", (50), (200));
+        }
+        for(let i = 0; i < this.elements.length; i++)
+        {
+            console.log("rendering element");
+            this.context.fillStyle="#D9D9D9";
+            this.context.fillRect(x, y, 100, 100);
+            this.context.fillStyle="black";
+            this.context.fillText(this.elements[i], (x+40), (y+50));
+            if(i == 0)
+            {
+                this.context.fillText("i = 0", (x+135), (y+50));
+            }
+            else if(i == (this.elements.length-1))
+            {
+                this.context.fillText(("i = " + (this.elements.length-1)), (x+135), (y+50));
+            }
+            y-=125;
+        }  
+    }
+    push()
+    {
+        console.log("pushing back element");
+        let element = document.getElementById("stackpush").value;
+
+        this.elements[this.index] = element;
+        (this.index)++;
+
+        this.drawArray();
+    }
+    pop()
+    {
+        console.log("popping back element");
+
+        this.elements.pop();
+        (this.index)--;
+
+        this.drawArray();
+    }
+    findElement()
+    {
+        console.log("Findelement");
+        let element = document.getElementById("stackfind").value;
+        let flag = false;
+        for(let i = 0; i < this.elements.length; i++)
+        {
+            if(this.elements[i] == element)
+            {
+                alert("Element " + element + " found at index " + i);
+                flag = true;
+            }
+        }
+        if(!flag)
+        {
+            alert("Element " + element + " not found.");
+        }
+    }
+}
+
 const arraycontroller = new ArrayApp();
 const vectorcontroller = new VectorApp();
 const listcontroller = new ListApp();
+const stackcontroller = new StackApp();
 arraycontroller.drawArray();

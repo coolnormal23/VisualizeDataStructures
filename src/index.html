@@ -19,7 +19,7 @@
             <p id="listmenu" onclick="vectorcontroller.drawArray()">Linked List</p>
             <p>Binary Tree</p>
             <p>Queue</p>
-            <p>Stack</p>
+            <p id="stackmenu" onclick="stackcontroller.drawArray()">Stack</p>
             <p>Hash Table</p>
         </div>
     </div>
@@ -47,6 +47,14 @@
         <button type="button" onclick="listcontroller.delete()">delete</button>
         <input type="text" id="find" value="0"size="2">
         <button type="button" onclick="listcontroller.findElement()">Find Element</button>
+    </div>
+
+    <div id="StackAppButtons">
+        <input type="text" id="stackpush" value="0" size="2">
+        <button type="button" onclick="stackcontroller.push()">push()</button>
+        <button type="button" onclick="stackcontroller.pop()">pop()</button>
+        <input type="text" id="stackfind" value="0" size="2">
+        <button type="button" onclick="stackcontroller.findElement()">Find Element</button>
     </div>
 
     <canvas id="maincanvas" width="1920" height="800"></canvas>

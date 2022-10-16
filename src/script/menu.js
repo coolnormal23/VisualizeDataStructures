@@ -15,6 +15,11 @@ function showMenu(id, bold)
         document.getElementById("ListAppButtons").style.display = "none"; 
         document.getElementById("listmenu").innerHTML = "Linked List";
     }
+    if(id != "StackAppButtons")
+    {
+        document.getElementById("StackAppButtons").style.display = "none"; 
+        document.getElementById("stackmenu").innerHTML = "Stack";
+    }
 
     document.getElementById(id).style.display = "block"; 
     
@@ -33,15 +38,22 @@ function showMenu(id, bold)
         document.getElementById("listmenu").innerHTML = "<b>Linked List</b>";
         listcontroller.drawArray();
     }
+    else if(bold == "stackmenu")
+    {
+        document.getElementById("stackmenu").innerHTML = "<b>Stack</b>";
+        stackcontroller.drawArray();
+    }
 }
 
 arraymenubutton = document.getElementById("arraymenu");
 vectormenubutton = document.getElementById("vectormenu");
 listmenubutton = document.getElementById("listmenu");
+stackmenubutton = document.getElementById("stackmenu");
 
 arraymenubutton.onclick = function() {showMenu("ArrayAppButtons", "arraymenu")};
 vectormenubutton.onclick = function() {showMenu("VectorAppButtons", "vectormenu")};
 listmenubutton.onclick = function() {showMenu("ListAppButtons", "listmenu")};
+stackmenubutton.onclick = function() {showMenu("StackAppButtons", "stackmenu")};
 
 
 showMenu("ArrayAppButtons", "arraymenu");
