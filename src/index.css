@@ -78,3 +78,33 @@ input[type=number]{
     padding:6px;
     width:50px;
 }
+
+#main {
+    transition: margin-right .5s;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #D9D9D9;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidebarcontent {
+    margin-left:20px;
+    font-family:inter;
+}
