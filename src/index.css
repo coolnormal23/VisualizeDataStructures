@@ -107,4 +107,12 @@ input[type=number]{
 .sidebarcontent {
     margin-left:20px;
     font-family:inter;
+    margin-right:10px;
+}
+
+code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 10px;
 }

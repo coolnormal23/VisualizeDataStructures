@@ -29,32 +29,206 @@
 
         <div id="ArraySidebarContent" class="sidebarcontent">
             <h1>Array</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h3>Description</h3>
+            <p>An array is a group of elements stored sequentially, and the most common data structure. Typically an array will have a set size, and all elements share the same data type (integer, string, etc.)</p>
+            <p>Elements in an array are refered to by index. In most languages, this starts with the first element being at index 0, the next at index 1, and so on.</p>
+            <h3>Example Code</h3>
+            <code>
+                //creates an array of integers of size 5 <br>
+                int elements[5]; <br>
+                //creates and assigns 4 elements to the array <br>
+                string words[] = {"this", "is", "an", "array"};
+            </code>
         </div>
 
         <div id="VectorSidebarContent" class="sidebarcontent">
             <h1>Vector</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h3>Description</h3>
+            <p>A C++ data structure similar to an array, with dynamic sizing. Vectors offer more freedom, letting you add or remove elements anywhere, and access elements with the same syntax as a traditional array.</p>
+            <h3>Example Code</h3>
+            <code>
+                //needed to create vectors<br>
+                #include &ltvector&gt<br><br>
+                //declare a vector<br>
+                vector&ltint&gt example;<br><br>
+                //inserting elements at the end<br>
+                example.push_back(1);<br>
+                example.push_back(2);<br>
+                example.push_back(3);<br>
+                example.push_back(4);<br>
+                //1, 2, 3, 4<br><br>
+                //access element directly<br>
+                example[2] = 100<br>
+                //1, 2, 100, 4<br><br>
+                //remove last element<br>
+                example.pop_back();<br>
+                //1, 2, 100
+            </code>
+            <h3>Common Methods</h3>
+            <p>
+                <b>push_back:</b> adds element at the end of vector<br>
+                <b>pop_back:</b> removes element at the end of vector<br>
+                <b>insert:</b> insert elements before an index<br>
+                <b>erase:</b> delete an element entirely<br>
+                <b>swap:</b> swap 2 elements
+            </p>
         </div>
 
         <div id="ListSidebarContent" class="sidebarcontent">
             <h1>Linked List</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h3>Description</h3>
+            <p>A common linear data structure used to store elements in order regardless of their placement in memory. Linked lists consist of nodes that store data and a reference/pointer to the next node, culminating in the final node having a null pointer. This allows easy removal or insertion of elements in the middle, as the entire list need not be rearranged.</p>
+            <h3>Example Code</h3>
+            <p>Nodes are typically defined as a class or other abstract data type (e.g. struct) depending on language.</p>
+            <!--yes it is supposed to be unindented to display properly, yes html is dumb-->
+<pre><code>class Node
+{
+    public:
+        int data;
+        Node* next;
+}</code></pre>
+<pre><code>//add value to the end of linked list
+void addNode(Node head, int value)
+{
+    Node newnode;
+    newnode->data = value;
+    newnode->next = NULL;
+    //if no elements exist in linked list
+    if(head == NULL)
+    {
+        head = newnode;
+    }
+    else
+    {
+        Node temp = head;
+        while(temp->next != NULL)
+        {
+            //navigate through list to the end
+            temp = temp->next;
+        }
+        //insert at end
+        temp->next = newnode;
+    }
+}</code></pre>
+        <h3>Common Methods</h3>
+        <p>
+            <b>insert:</b> insert element at the end or within the linked list<br>
+            <b>remove:</b> removes element from list<br>
+            <b>search:</b> finds an element within the list<br>
+            <b>swap:</b> swap 2 elements within the list
+        </p>
         </div>
 
         <div id="TreeSidebarContent" class="sidebarcontent">
             <h1>Binary Search Tree</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h3>Description</h3>
+            <p>A tree data structure consisting of nodes with children. It follows 3 core principles:<br><br>
+            1. The left child of a node is an element smaller than the parent element<br>
+            2. The right child of a node is an element larger than the parent element<br>
+            3. The left subtree and right subtree are also binary search trees.</p>
+            <p>Binary search trees follow these rules to enable binary searches, which allows fast operations inside the tree. Even in the worst case scenario, a binary search tree is only as slow as a singly linked list.</p>
+            <h3>Example Code</h3>
+            <p>Like linked list nodes, binary tree nodes are typically defined as a class or other abstract data type (e.g. struct) depending on language.</p>
+<pre><code>class Node
+{
+    public:
+        int data;
+        Node* left, right;
+        Node(int value)
+        {
+            data = value;
+            left = right = NULL;
+        }
+}</code></pre>
+<pre><code>//insert node into binary search tree recursively
+Node insertNode(Node root, int value)
+{
+    if(root == NULL)
+     {
+        //add root
+        return new Node(value);
+    }
+    else if(value &lt root->value)
+    {
+        //go to left subnode
+        root->left = insertNode(root->left, value);
+    }
+    else if(value &rt root->value)
+    {
+        //go to right subnode
+        root->right = insertNode(root-right, value);
+    }
+    return root;
+}</code></pre>
+        <h3>Common Methods</h3>
+        <p>
+            <b>insert:</b> inserts node into tree<br>
+            <b>search:</b> searches for node in tree<br>
+            <b>remove:</b> removes node from tree and rearranges if needed
+        </p>
         </div>
 
         <div id="QueueSidebarContent" class="sidebarcontent">
-            <h1>Linked List</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h1>Queue</h1>
+            <h3>Description</h3>
+            <p>A data structure designed to mimic a real life queue, where the first element in will be the first element out of the queue (often called FIFO). Useful to store and retrieve elements in a definite order.</p>
+            <h3>Example Code</h3>
+            <code>
+                //using C++'s standard queue template<br>
+                #include &ltqueue&gt<br><br>
+                //declare a queue<br>
+                vector&ltint&gt example;<br><br>
+                //enqueue elements into queue<br>
+                example.push(1);<br>
+                example.push(2);<br>
+                example.push(3);<br>
+                example.push(4);<br>
+                //1, 2, 3, 4<br><br>
+                //dequeue elements<br>
+                example.pop();<br>
+                //2, 3, 4
+            </code>
+            <h3>Common Methods</h3>
+            <p>
+                <b>push:</b> sometimes called enqueue or push_back. inserts element into queue<br>
+                <b>pop:</b> sometimes dequeue or pop_back. removes oldest added element from queue<br>
+                <b>empty:</b> checks if queue is empty<br>
+                <b>size:</b> gets size of queue
+            </p>
         </div>
 
         <div id="StackSidebarContent" class="sidebarcontent">
             <h1>Stack</h1>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h3>Description</h3>
+            <p>A sister data structure to the Queue, the stack mimics a real life stack of items where the last element inserted will be the first one removed (LIFO).</p>
+            <h3>Example Code</h3>
+            <code>
+                //using C++'s standard stack template<br>
+                #include &ltstack&gt<br><br>
+                //declare a stack<br>
+                stack&ltint&gt example;<br><br>
+                //insert elements onto the stack<br>
+                example.push(1);<br>
+                example.push(2);<br>
+                example.push(3);<br>
+                example.push(4);<br>
+                //4<br>
+                //3<br>
+                //2<br>
+                //1<br><br>
+                //dequeue elements<br>
+                example.pop();<br>
+                //3<br>
+                //2<br>
+                //1
+            </code>
+            <h3>Common Methods</h3>
+            <p>
+                <b>push:</b> sometimes called push_back. inserts element on the top of the stack<br>
+                <b>pop:</b> sometimes pop_back. removes top element from stack<br>
+                <b>empty:</b> checks if stack is empty<br>
+                <b>size:</b> gets number of elements in the stack
+            </p>
         </div>
     </div>
 
