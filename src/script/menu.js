@@ -28,7 +28,7 @@ function showMenu(id, bold)
     if(id != "BinaryTreeAppButtons")
     {
         document.getElementById("BinaryTreeAppButtons").style.display = "none"; 
-        document.getElementById("binarytreemenu").innerHTML = "Binary Tree";
+        document.getElementById("binarytreemenu").innerHTML = "Binary Search Tree";
     }
 
     document.getElementById(id).style.display = "block"; 
@@ -60,7 +60,7 @@ function showMenu(id, bold)
     }
     else if(bold == "binarytreemenu")
     {
-        document.getElementById("binarytreemenu").innerHTML = "<b>Binary Tree</b>";
+        document.getElementById("binarytreemenu").innerHTML = "<b>Binary Search Tree</b>";
         binarytreecontroller.drawArray();
     }
 }

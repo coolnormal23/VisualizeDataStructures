@@ -623,7 +623,7 @@ class BinaryTreeApp extends VisualizerApp
             console.log("binary tree empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Binary tree is empty", (50), (200));
+            this.context.fillText("Binary search tree is empty", (50), (200));
         }
         else
         {
