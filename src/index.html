@@ -17,7 +17,7 @@
             <p id="arraymenu" onclick="arraycontroller.drawArray()">Array</p>
             <p id="vectormenu" onclick="vectorcontroller.drawArray()">Vector</p>
             <p id="listmenu" onclick="vectorcontroller.drawArray()">Linked List</p>
-            <p>Binary Tree</p>
+            <p id="binarytreemenu" onclick="binarytreecontroller.drawArray()">Binary Tree</p>
             <p id="queuemenu" onclick="queuecontroller.drawArray()">Queue</p>
             <p id="stackmenu" onclick="stackcontroller.drawArray()">Stack</p>
             <p>Hash Table</p>
@@ -63,6 +63,12 @@
         <button type="button" onclick="queuecontroller.dequeue()">Dequeue Element</button>
         <input type="text" id="queuefind" value="0" size="2">
         <button type="button" onclick="queuecontroller.findElement()">Find Element</button>
+    </div>
+
+    <div id="BinaryTreeAppButtons">
+        <input type="text" id="binarytreeinsert" value="0" size="2">
+        <button type="button" onclick="binarytreecontroller.insert()">Insert Element</button>
+        <button type="button" onclick="binarytreecontroller.clear()">Clear</button>
     </div>
 
     <canvas id="maincanvas" width="1920" height="800"></canvas>

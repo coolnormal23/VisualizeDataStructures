@@ -25,6 +25,11 @@ function showMenu(id, bold)
         document.getElementById("QueueAppButtons").style.display = "none"; 
         document.getElementById("queuemenu").innerHTML = "Queue";
     }
+    if(id != "BinaryTreeAppButtons")
+    {
+        document.getElementById("BinaryTreeAppButtons").style.display = "none"; 
+        document.getElementById("binarytreemenu").innerHTML = "Binary Tree";
+    }
 
     document.getElementById(id).style.display = "block"; 
     
@@ -53,6 +58,11 @@ function showMenu(id, bold)
         document.getElementById("queuemenu").innerHTML = "<b>Queue</b>";
         queuecontroller.drawArray();
     }
+    else if(bold == "binarytreemenu")
+    {
+        document.getElementById("binarytreemenu").innerHTML = "<b>Binary Tree</b>";
+        binarytreecontroller.drawArray();
+    }
 }
 
 arraymenubutton = document.getElementById("arraymenu");
@@ -60,12 +70,14 @@ vectormenubutton = document.getElementById("vectormenu");
 listmenubutton = document.getElementById("listmenu");
 stackmenubutton = document.getElementById("stackmenu");
 queuemenubutton = document.getElementById("queuemenu");
+binarytreemenubutton = document.getElementById("binarytreemenu");
 
 arraymenubutton.onclick = function() {showMenu("ArrayAppButtons", "arraymenu")};
 vectormenubutton.onclick = function() {showMenu("VectorAppButtons", "vectormenu")};
 listmenubutton.onclick = function() {showMenu("ListAppButtons", "listmenu")};
 stackmenubutton.onclick = function() {showMenu("StackAppButtons", "stackmenu")};
 queuemenubutton.onclick = function() {showMenu("QueueAppButtons", "queuemenu")};
+binarytreemenubutton.onclick = function() {showMenu("BinaryTreeAppButtons", "binarytreemenu")};
 
 
 showMenu("ArrayAppButtons", "arraymenu");

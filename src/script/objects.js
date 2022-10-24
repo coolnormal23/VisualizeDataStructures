@@ -422,9 +422,223 @@ class QueueApp extends VisualizerApp
     }
 }
 
+class Node
+{
+    constructor(data)
+    {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class BinaryTreeApp extends VisualizerApp
+{
+    constructor()
+    {
+        super();
+        this.root = null;
+        this.x = (window.innerWidth/2);
+        this.y = 200;
+        this.depth = 0;
+    }
+    
+    clear()
+    {
+        this.root = null;
+        this.drawArray();
+    }
+
+    insert()
+    {
+        var data = document.getElementById("binarytreeinsert").value;
+        // Creating a node and initialising
+        // with data
+        var newNode = new Node(data);
+        
+        // root is null then node will
+        // be added to the tree and made root.
+        if(this.root === null)
+        {
+            this.root = newNode;
+        }
+        else
+        {
+            // find the correct position in the
+            // tree and add the node
+            this.insertNode(this.root, newNode);
+        }
+        this.drawArray();
+    }
+    
+    // Method to insert a node in a tree
+    // it moves over the tree to find the location
+    // to insert a node with a given data
+    insertNode(node, newNode)
+    {
+        // if the data is less than the node
+        // data move left of the tree
+        if(newNode.data < node.data)
+        {
+            // if left is null insert node here
+            if(node.left === null)
+            node.left = newNode;
+            else
+            
+            // if left is not null recur until
+            // null is found
+            this.insertNode(node.left, newNode);
+        }
+        else
+        {
+            // if right is null insert node here
+            if(node.right === null)
+            node.right = newNode;
+            else
+            
+            // if right is not null recur until
+            // null is found
+            this.insertNode(node.right,newNode);
+        }
+    }
+    
+    remove(data)
+    {
+        // root is re-initialized with
+        // root of a modified tree.
+        this.root = this.removeNode(this.root, data);
+    }
+    
+    // Method to remove node with a
+    // given data
+    // it recur over the tree to find the
+    // data and removes it
+    removeNode(node, key)
+    {
+        
+        // if the root is null then tree is
+        // empty
+        if(node === null)
+        return null;
+        
+        // if data to be delete is less than
+        // roots data then move to left subtree
+        else if(key < node.data)
+        {
+            node.left = this.removeNode(node.left, key);
+            return node;
+        }
+        
+        // if data to be delete is greater than
+        // roots data then move to right subtree
+        else if(key > node.data)
+        {
+            node.right = this.removeNode(node.right, key);
+            return node;
+        }
+        
+        // if data is similar to the root's data
+        // then delete this node
+        else
+        {
+            // deleting node with no children
+            if(node.left === null && node.right === null)
+            {
+                node = null;
+                return node;
+            }
+            
+            // deleting node with one children
+            if(node.left === null)
+            {
+                node = node.right;
+                return node;
+            }
+            
+            else if(node.right === null)
+            {
+                node = node.left;
+                return node;
+            }
+            
+            // Deleting node with two children
+            // minimum node of the right subtree
+            // is stored in aux
+            var aux = this.findMinNode(node.right);
+            node.data = aux.data;
+            
+            node.right = this.removeNode(node.right, aux.data);
+            return node;
+        }
+    }
+    
+    travel(node, direction)
+    {
+        if(direction !== "none")
+        {
+            this.depth++;
+        }
+        if(node !== null)
+        {
+            console.log(node.data);
+            console.log("rendering element");
+            
+            if(direction == "left")
+            {
+                this.x = (this.x-150+(40*this.depth));
+                this.y = (200+(150*this.depth));
+            }
+            if(direction == "right")
+            {
+                this.x = (this.x+150-(40*this.depth));
+                this.y = (200+(150*this.depth));
+            }
+            
+            this.context.fillStyle="#D9D9D9";
+            this.context.fillRect(this.x, this.y, 50, 50);
+            this.context.fillStyle="black";
+            this.context.fillText(node.data, (this.x+20), (this.y+25));
+            
+            this.travel(node.left, "left");
+            if(node.left !== null)
+            this.x = this.x+150-(40*this.depth);
+
+            this.depth--;
+            this.travel(node.right, "right");
+
+            if(node.right !== null)
+            this.x = this.x-150+(40*this.depth);
+            this.depth--;
+        }
+    }
+
+    drawArray()
+    {
+        console.log("Drawing in Binary Tree App");
+        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+        this.context.font = '20px inter';
+
+        if(this.root == null)
+        {
+            console.log("binary tree empty");
+            this.context.font = '40px inter';
+            this.context.fillStyle="black";
+            this.context.fillText("Binary tree is empty", (50), (200));
+        }
+        else
+        {
+            this.x = (window.innerWidth/2)
+            this.y = 200;
+            this.depth = 0;
+            this.travel(this.root, "none");
+        }
+    }
+}
+
 const arraycontroller = new ArrayApp();
 const vectorcontroller = new VectorApp();
 const listcontroller = new ListApp();
 const stackcontroller = new StackApp();
 const queuecontroller = new QueueApp();
+const binarytreecontroller = new BinaryTreeApp();
 arraycontroller.drawArray();

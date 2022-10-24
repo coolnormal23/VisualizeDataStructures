@@ -41,7 +41,7 @@ p {
     padding-left:10px;
 }
 
-#ArrayAppButtons, #VectorAppButtons, #ListAppButtons, #QueueAppButtons/*, #StackAppButtons*/
+#ArrayAppButtons, #VectorAppButtons, #ListAppButtons, #QueueAppButtons, #BinaryTreeAppButtons/*, #StackAppButtons*/
 {
     padding-top: 10px;
     padding-left: 10px;
