@@ -191,11 +191,11 @@ class ListApp extends VisualizerApp
             this.context.fillText(this.elements[i], (x+40), (y+50));
             if(i == 0)
             {
-                this.context.fillText("i = 0", (x+35), (y-20));
+                this.context.fillText("head", (x+35), (y-20));
             }
             else if(i == (this.elements.length-1))
             {
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
+                this.context.fillText("tail", (x+35), (y-20));
             }
           
             x += 100; 
