@@ -4,6 +4,8 @@ class VisualizerApp
     {
         this.canvas = document.getElementById('maincanvas');
         this.context = this.canvas.getContext('2d');
+        this.canvas.height = (window.innerHeight);
+        this.canvas.width = (window.innerWidth);
     }
 }
 
@@ -635,6 +637,7 @@ class BinaryTreeApp extends VisualizerApp
     }
 }
 
+const visualizercontroller = new VisualizerApp();
 const arraycontroller = new ArrayApp();
 const vectorcontroller = new VectorApp();
 const listcontroller = new ListApp();
