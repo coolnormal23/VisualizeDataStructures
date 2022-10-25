@@ -21,7 +21,7 @@ class ArrayApp extends VisualizerApp
         this.context.font = '20px inter';
 
         let x = 50;
-        let y = 200;
+        let y = 100;
 
         if(this.elements.length == 0)
         {
@@ -34,6 +34,11 @@ class ArrayApp extends VisualizerApp
         {
             for(let i = 0; i < this.elements.length; i++)
             {
+                if(x >= (this.canvas.width-200))
+                {
+                    x = 50;
+                    y += 200;
+                }
                 console.log("rendering element");
                 this.context.fillStyle="#D9D9D9";
                 this.context.fillRect(x, y, 100, 100);
@@ -106,7 +111,7 @@ class VectorApp extends VisualizerApp
         this.context.font = '20px inter';
 
         let x = 50;
-        let y = 200;
+        let y = 100;
         if(this.elements.length == 0)
         {
             console.log("vector empty");
@@ -116,6 +121,11 @@ class VectorApp extends VisualizerApp
         }
         for(let i = 0; i < this.elements.length; i++)
         {
+            if(x >= (this.canvas.width-200))
+            {
+                x = 50;
+                y += 200;
+            }
             console.log("rendering element");
             this.context.fillStyle="#D9D9D9";
             this.context.fillRect(x, y, 100, 100);
@@ -183,9 +193,14 @@ class ListApp extends VisualizerApp
         this.context.font = '20px inter';
 
         let x = 50;
-        let y = 200;
+        let y = 100;
         for(let i = 0; i < this.elements.length; i++)
         {
+            if(x >= (this.canvas.width-200))
+            {
+                x = 50;
+                y += 200;
+            }
             console.log("rendering element");
             this.context.fillStyle="#D9D9D9";
             this.context.fillRect(x, y, 100, 100);
@@ -230,6 +245,11 @@ class ListApp extends VisualizerApp
         }
         else
         {
+            if(x >= (this.canvas.width-200))
+            {
+                x = 50;
+                y += 200;
+            }
             console.log("rendering element");
             this.context.fillStyle="#D9D9D9";
             this.context.fillRect(x, y, 100, 100);
@@ -281,14 +301,14 @@ class StackApp extends VisualizerApp
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
         this.context.font = '20px inter';
 
-        let x = 650;
-        let y = 500;
+        let x = (this.canvas.width/2);
+        let y = (this.canvas.height-300);
         if(this.elements.length == 0)
         {
             console.log("stack empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Stack contains no elements", (50), (200));
+            this.context.fillText("Stack contains no elements", (50), (100));
         }
         for(let i = 0; i < this.elements.length; i++)
         {
@@ -299,11 +319,11 @@ class StackApp extends VisualizerApp
             this.context.fillText(this.elements[i], (x+40), (y+50));
             if(i == 0)
             {
-                this.context.fillText("i = 0", (x+135), (y+50));
+                this.context.fillText("bottom", (x+135), (y+50));
             }
             else if(i == (this.elements.length-1))
             {
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+135), (y+50));
+                this.context.fillText("top", (x+135), (y+50));
             }
             y-=125;
         }  
@@ -359,16 +379,21 @@ class QueueApp extends VisualizerApp
         this.context.font = '20px inter';
 
         let x = 50;
-        let y = 200;
+        let y = 100;
         if(this.elements.length == 0)
         {
             console.log("queue empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Queue contains no elements", (50), (200));
+            this.context.fillText("Queue contains no elements", (50), (100));
         }
         for(let i = 0; i < this.elements.length; i++)
         {
+            if(x >= (this.canvas.width-200))
+            {
+                x = 50;
+                y += 200;
+            }
             console.log("rendering element");
             this.context.fillStyle="#D9D9D9";
             this.context.fillRect(x, y, 100, 100);
@@ -376,11 +401,11 @@ class QueueApp extends VisualizerApp
             this.context.fillText(this.elements[i], (x+40), (y+50));
             if(i == 0)
             {
-                this.context.fillText("i = 0", (x+35), (y-20));
+                this.context.fillText("start", (x+35), (y-20));
             }
             else if(i == (this.elements.length-1))
             {
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
+                this.context.fillText("end", (x+35), (y-20));
             }
             x += 125;
         }
@@ -625,7 +650,7 @@ class BinaryTreeApp extends VisualizerApp
             console.log("binary tree empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Binary search tree is empty", (50), (200));
+            this.context.fillText("Binary search tree is empty", (50), (100));
         }
         else
         {
