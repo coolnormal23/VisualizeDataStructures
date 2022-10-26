@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./src/index.css">
     <title>VisualizeDataStructures</title>
 </head>
 <body style="margin:0px">
     <div id="header">
         <div id="logocontainer">
-            <img id="logo" src="../misc/eye_icon.png"/>
+            <img id="logo" src="./misc/eye_icon.png"/>
             <h1>Visualize Data Structures</h1>
         </div>
         <div id="buttons">
@@ -304,8 +304,32 @@ Node insertNode(Node root, int value)
         
         <canvas id="maincanvas"></canvas>
     </div>
-    <script src="./script/objects.js"></script>
-    <script src="./script/menu.js"></script>
-    <script src="./script/sidebar.js"></script>
+    <!--firebase-->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js'
+    
+        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js'
+    
+        // Add Firebase products that you want to use
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
+        const firebaseConfig = {
+            apiKey: "AIzaSyAVubYGtFuLci5rpbMH4VC0ST8Hz7ayV88",
+            authDomain: "visualizedatastructures.firebaseapp.com",
+            projectId: "visualizedatastructures",
+            storageBucket: "visualizedatastructures.appspot.com",
+            messagingSenderId: "309159364427",
+            appId: "1:309159364427:web:25297eedee8fe2fdde8ace",
+            measurementId: "G-3TKWZPJZ9D"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+    <script src="./src/script/objects.js"></script>
+    <script src="./src/script/menu.js"></script>
+    <script src="./src/script/sidebar.js"></script>
 </body>
 </html>
