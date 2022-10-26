@@ -37,6 +37,12 @@ function showMenu(id, bold, sidebar)
         document.getElementById("TreeSidebarContent").style.display = "none";
         document.getElementById("binarytreemenu").innerHTML = "Binary Search Tree";
     }
+    if(id != "HashAppButtons")
+    {
+        document.getElementById("HashAppButtons").style.display = "none";
+        document.getElementById("HashSidebarContent").style.display = "none";
+        document.getElementById("hashmenu").innerHTML = "Hash";
+    }
 
     document.getElementById(id).style.display = "block";
     document.getElementById(sidebar).style.display = "block"; 
@@ -77,6 +83,12 @@ function showMenu(id, bold, sidebar)
         binarytreecontroller.drawArray();
         active = "TreeApp";
     }
+    else if(bold == "hashmenu")
+    {
+        document.getElementById("hashmenu").innerHTML = "<b>hash</b>";
+        binarytreecontroller.drawArray();
+        active = "HashApp";
+    }
 }
 
 arraymenubutton = document.getElementById("arraymenu");
@@ -85,6 +97,7 @@ listmenubutton = document.getElementById("listmenu");
 stackmenubutton = document.getElementById("stackmenu");
 queuemenubutton = document.getElementById("queuemenu");
 binarytreemenubutton = document.getElementById("binarytreemenu");
+hashmenubutton = document.getElementById("hashmenu");
 
 arraymenubutton.onclick = function() {showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent")};
 vectormenubutton.onclick = function() {showMenu("VectorAppButtons", "vectormenu", "VectorSidebarContent")};
@@ -92,6 +105,7 @@ listmenubutton.onclick = function() {showMenu("ListAppButtons", "listmenu", "Lis
 stackmenubutton.onclick = function() {showMenu("StackAppButtons", "stackmenu", "StackSidebarContent")};
 queuemenubutton.onclick = function() {showMenu("QueueAppButtons", "queuemenu", "QueueSidebarContent")};
 binarytreemenubutton.onclick = function() {showMenu("BinaryTreeAppButtons", "binarytreemenu", "TreeSidebarContent")};
+hashmenubutton.onclick = function() {showMenu("HashAppButtons", "hashmenu", "HashSidebarContent")};
 
 showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent");
 
@@ -120,5 +134,7 @@ window.onresize = function()
         case "TreeApp":
             binarytreecontroller.drawArray();
         break;
+        case "HashApp":
+            hashcontroller.drawArray();
     }
 }

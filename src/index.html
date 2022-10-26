@@ -20,7 +20,7 @@
             <p id="binarytreemenu" onclick="binarytreecontroller.drawArray()">Binary Search Tree</p>
             <p id="queuemenu" onclick="queuecontroller.drawArray()">Queue</p>
             <p id="stackmenu" onclick="stackcontroller.drawArray()">Stack</p>
-            <p>Hash Table</p>
+            <p id="hashmenu" onclick="hashcontroller.drawArray()">Hash</p>
         </div>
     </div>
     
@@ -230,6 +230,16 @@ Node insertNode(Node root, int value)
                 <b>size:</b> gets number of elements in the stack
             </p>
         </div>
+        <div id="HashSidebarContent" class="sidebarcontent">
+            <h1>Hash</h1>
+            <h3>Description</h3>
+            <p>information</p>
+            <p> more info</p>
+            <h3>Example Code</h3>
+            <code>
+                stuff goes here
+            </code>
+        </div>
     </div>
 
     <div id="main">
@@ -283,6 +293,12 @@ Node insertNode(Node root, int value)
             <input type="number" id="binarytreeinsert" value="0" size="2">
             <button type="button" onclick="binarytreecontroller.insert()">Insert Element</button>
             <button type="button" onclick="binarytreecontroller.clear()">Clear</button>
+            <button class="openbtn" onclick="openNav()">More Info ☰</button>
+        </div>
+        <div id="HashAppButtons">
+            <input type="number" id="hashadd" value="0" size="2">
+            <button type="button" onclick="hashcontroller.add()">add</button>
+            <!--<button type="button" onclick="binarytreecontroller.clear()">Clear</button>-->
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         

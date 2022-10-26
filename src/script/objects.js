@@ -662,6 +662,64 @@ class BinaryTreeApp extends VisualizerApp
     }
 }
 
+class hashApp extends VisualizerApp
+{
+    size = 0;
+    elements = [];
+    drawArray()
+    {
+        console.log("Drawing in Hash App");
+        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+        this.context.font = '20px inter';
+
+        let x = 50;
+        let y = 100;
+
+        if(this.elements.length == 0)
+        {
+            console.log("array empty");
+            this.context.font = '40px inter';
+            this.context.fillStyle="black";
+            this.context.fillText("Array is not initialized", (x), (y));
+        }
+        else
+        {
+            for(let i = 0; i < this.elements.length; i++)
+            {
+                if(x >= (this.canvas.width-200))
+                {
+                    x = 50;
+                    y += 200;
+                }
+                console.log("rendering element");
+                this.context.fillStyle="#D9D9D9";
+                this.context.fillRect(x, y, 100, 100);
+                this.context.fillStyle="black";
+                this.context.fillText(this.elements[i], (x+40), (y+50));
+                if(i == 0)
+                {
+                    this.context.fillText("i = 0", (x+35), (y-20));
+                }
+                else if(i == (this.elements.length-1))
+                {
+                    this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
+                }
+                x += 125;
+            }
+        }
+    }
+    add()
+    {
+        console.log("Setting array element");
+
+        let element = document.getElementById("hashadd").value;
+        
+        this.elements[element + 2] = element; //Element + 2 is just temporary, will come up with a little more complex algorithm later
+
+        this.drawArray();
+    }
+}
+
 const visualizercontroller = new VisualizerApp();
 const arraycontroller = new ArrayApp();
 const vectorcontroller = new VectorApp();
@@ -669,4 +727,5 @@ const listcontroller = new ListApp();
 const stackcontroller = new StackApp();
 const queuecontroller = new QueueApp();
 const binarytreecontroller = new BinaryTreeApp();
+const hashcontroller = new hashApp();
 arraycontroller.drawArray();
