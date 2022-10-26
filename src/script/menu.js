@@ -85,8 +85,8 @@ function showMenu(id, bold, sidebar)
     }
     else if(bold == "hashmenu")
     {
-        document.getElementById("hashmenu").innerHTML = "<b>hash</b>";
-        binarytreecontroller.drawArray();
+        document.getElementById("hashmenu").innerHTML = "<b>Hash</b>";
+        hashcontroller.drawArray();
         active = "HashApp";
     }
 }

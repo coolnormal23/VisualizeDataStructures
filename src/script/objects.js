@@ -662,7 +662,7 @@ class BinaryTreeApp extends VisualizerApp
     }
 }
 
-class hashApp extends VisualizerApp
+class HashApp extends VisualizerApp
 {
     size = 0;
     elements = [];
@@ -696,14 +696,9 @@ class hashApp extends VisualizerApp
                 this.context.fillRect(x, y, 100, 100);
                 this.context.fillStyle="black";
                 this.context.fillText(this.elements[i], (x+40), (y+50));
-                if(i == 0)
-                {
-                    this.context.fillText("i = 0", (x+35), (y-20));
-                }
-                else if(i == (this.elements.length-1))
-                {
-                    this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
-                }
+                
+                this.context.fillText(("i = " + i), (x+35), (y-20));
+                
                 x += 125;
             }
         }
@@ -712,7 +707,7 @@ class hashApp extends VisualizerApp
     {
         console.log("Setting array element");
 
-        let element = document.getElementById("hashadd").value;
+        let element = parseInt(document.getElementById("hashadd").value);
         
         this.elements[element + 2] = element; //Element + 2 is just temporary, will come up with a little more complex algorithm later
 
@@ -727,5 +722,5 @@ const listcontroller = new ListApp();
 const stackcontroller = new StackApp();
 const queuecontroller = new QueueApp();
 const binarytreecontroller = new BinaryTreeApp();
-const hashcontroller = new hashApp();
+const hashcontroller = new HashApp();
 arraycontroller.drawArray();
