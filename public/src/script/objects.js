@@ -73,11 +73,16 @@ class ArrayApp extends VisualizerApp
         console.log("Setting array element");
 
         let index = document.getElementById("arrayindexset").value;
-        let element = prompt("Enter element", 0)
+        if(index < this.elements.length)
+        {
+            let element = prompt("Enter element", 0);
 
-        this.elements[index] = element;
-
+            this.elements[index] = element;
+        }
+        else
+            alert("This index does not exist");
         this.drawArray();
+        
     }
     findElement()
     {
