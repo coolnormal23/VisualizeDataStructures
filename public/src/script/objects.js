@@ -1,5 +1,8 @@
 class VisualizerApp
 {
+    elements = [];
+    index = 0;
+    size = 0;
     constructor()
     {
         this.canvas = document.getElementById('maincanvas');
@@ -11,9 +14,6 @@ class VisualizerApp
 
 class ArrayApp extends VisualizerApp
 {
-    size = 0;
-    elements = [];
-
     drawArray()
     {
         console.log("Drawing in Array App");
@@ -106,9 +106,6 @@ class ArrayApp extends VisualizerApp
 
 class VectorApp extends VisualizerApp
 {
-    elements = [];
-    index = 0;
-
     drawArray()
     {
         console.log("Drawing in Vector App");
@@ -188,9 +185,6 @@ class VectorApp extends VisualizerApp
 
 class ListApp extends VisualizerApp
 {
-    elements = [];
-    index = 0;
-
     drawArray()
     {
         console.log("Drawing in List App");
@@ -297,9 +291,6 @@ class ListApp extends VisualizerApp
 
 class StackApp extends VisualizerApp
 {
-    elements = [];
-    index = 0;
-
     drawArray()
     {
         console.log("Drawing in Stack App");
@@ -374,9 +365,6 @@ class StackApp extends VisualizerApp
 
 class QueueApp extends VisualizerApp
 {
-    elements = [];
-    index = 0;
-
     drawArray()
     {
         console.log("Drawing in Queue App");
@@ -669,8 +657,6 @@ class BinaryTreeApp extends VisualizerApp
 
 class HashApp extends VisualizerApp
 {
-    size = 0;
-    elements = [];
     drawArray()
     {
         console.log("Drawing in Hash App");
