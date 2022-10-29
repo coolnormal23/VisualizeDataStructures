@@ -243,17 +243,14 @@ class ListApp extends VisualizerApp
         console.log("pushing back element");
         let element = document.getElementById("add").value;
 
-        this.elements[this.index] = element;
-        (this.index)++;
+        this.elements.push(element);
 
         this.drawArray();
     }
     delete()
     {
-        console.log("popping back element");
-
-        this.elements.pop();
-        (this.index)--;
+        console.log("deleting element");
+        this.elements.splice((document.getElementById("listdelete").value), 1);
 
         this.drawArray();
     }
