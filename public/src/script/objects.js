@@ -648,4 +648,8 @@ const stackcontroller = new StackApp();
 const queuecontroller = new QueueApp();
 const binarytreecontroller = new BinaryTreeApp();
 const hashcontroller = new HashApp();
-arraycontroller.drawArray();
+
+window.addEventListener('load', () =>
+{
+    arraycontroller.drawArray();
+})
