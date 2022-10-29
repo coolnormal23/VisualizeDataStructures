@@ -15,6 +15,7 @@
     align-items:flex-start;
     padding-left:20px;
     font-size:16pt;
+    overflow-x: auto;
 }
 
 #buttons p:hover{
