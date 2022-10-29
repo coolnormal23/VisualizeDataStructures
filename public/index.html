@@ -248,8 +248,8 @@ Node insertNode(Node root, int value)
             <button type="button" onclick="arraycontroller.setSize()">Set Size</button>
             <input type="number" id="arrayindexset" value="0" size="2">
             <button type="button" onclick="arraycontroller.setElement()">Set Element</button>
-            <input type="number" id="arrayindexfind" value="0" size="2">
-            <button type="button" onclick="arraycontroller.findElement()">Find Element</button>
+            <input type="number" id="arrayfind" value="0" size="2">
+            <button type="button" onclick="arraycontroller.findElement('array')">Find Element</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         
@@ -258,7 +258,7 @@ Node insertNode(Node root, int value)
             <button type="button" onclick="vectorcontroller.push_back()">push_back()</button>
             <button type="button" onclick="vectorcontroller.pop_back()">pop_back()</button>
             <input type="number" id="vectorfind" value="0" size="2">
-            <button type="button" onclick="vectorcontroller.findElement()">Find Element</button>
+            <button type="button" onclick="vectorcontroller.findElement('vector')">Find Element</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         
@@ -266,8 +266,8 @@ Node insertNode(Node root, int value)
             <input type="number" id="add" value="0"size="2">
             <button type="button" onclick="listcontroller.add()">add</button>
             <button type="button" onclick="listcontroller.delete()">delete</button>
-            <input type="number" id="find" value="0"size="2">
-            <button type="button" onclick="listcontroller.findElement()">Find Element</button>
+            <input type="number" id="listfind" value="0"size="2">
+            <button type="button" onclick="listcontroller.findElement('list')">Find Element</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         
@@ -276,7 +276,7 @@ Node insertNode(Node root, int value)
             <button type="button" onclick="stackcontroller.push()">push()</button>
             <button type="button" onclick="stackcontroller.pop()">pop()</button>
             <input type="number" id="stackfind" value="0" size="2">
-            <button type="button" onclick="stackcontroller.findElement()">Find Element</button>
+            <button type="button" onclick="stackcontroller.findElement('stack')">Find Element</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         
@@ -285,7 +285,7 @@ Node insertNode(Node root, int value)
             <button type="button" onclick="queuecontroller.enqueue()">Enqueue Element</button>
             <button type="button" onclick="queuecontroller.dequeue()">Dequeue Element</button>
             <input type="number" id="queuefind" value="0" size="2">
-            <button type="button" onclick="queuecontroller.findElement()">Find Element</button>
+            <button type="button" onclick="queuecontroller.findElement('queue')">Find Element</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         

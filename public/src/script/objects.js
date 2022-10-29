@@ -10,6 +10,24 @@ class VisualizerApp
         this.canvas.height = (window.innerHeight);
         this.canvas.width = (window.innerWidth);
     }
+    findElement(structure)
+    {
+        console.log("Findelement");
+        let element = document.getElementById(structure + "find").value;
+        let flag = false;
+        for(let i = 0; i < this.elements.length; i++)
+        {
+            if(this.elements[i] == element)
+            {
+                alert("Element " + element + " found at index " + i);
+                flag = true;
+            }
+        }
+        if(!flag)
+        {
+            alert("Element " + element + " not found.");
+        }
+    }
 }
 
 class ArrayApp extends VisualizerApp
@@ -84,24 +102,6 @@ class ArrayApp extends VisualizerApp
         this.drawArray();
         
     }
-    findElement()
-    {
-        console.log("Findelement");
-        let element = document.getElementById("arrayindexfind").value;
-        let flag = false;
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(this.elements[i] == element)
-            {
-                alert("Element " + element + " found at index " + i);
-                flag = true;
-            }
-        }
-        if(!flag)
-        {
-            alert("Element " + element + " not found.");
-        }
-    }
 }
 
 class VectorApp extends VisualizerApp
@@ -162,24 +162,6 @@ class VectorApp extends VisualizerApp
         (this.index)--;
 
         this.drawArray();
-    }
-    findElement()
-    {
-        console.log("Findelement");
-        let element = document.getElementById("vectorfind").value;
-        let flag = false;
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(this.elements[i] == element)
-            {
-                alert("Element " + element + " found at index " + i);
-                flag = true;
-            }
-        }
-        if(!flag)
-        {
-            alert("Element " + element + " not found.");
-        }
     }
 }
 
@@ -275,18 +257,6 @@ class ListApp extends VisualizerApp
 
         this.drawArray();
     }
-    findElement()
-    {
-        console.log("Findelement");
-        let element = document.getElementById("find").value;
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(this.elements[i] == element)
-            {
-                alert("Element " + element + " found at index " + i);
-            }
-        }
-    }
 }
 
 class StackApp extends VisualizerApp
@@ -342,24 +312,6 @@ class StackApp extends VisualizerApp
         (this.index)--;
 
         this.drawArray();
-    }
-    findElement()
-    {
-        console.log("Findelement");
-        let element = document.getElementById("stackfind").value;
-        let flag = false;
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(this.elements[i] == element)
-            {
-                alert("Element " + element + " found at index " + i);
-                flag = true;
-            }
-        }
-        if(!flag)
-        {
-            alert("Element " + element + " not found.");
-        }
     }
 }
 
@@ -421,24 +373,6 @@ class QueueApp extends VisualizerApp
         (this.index)--;
 
         this.drawArray();
-    }
-    findElement()
-    {
-        console.log("Findelement");
-        let element = document.getElementById("stackfind").value;
-        let flag = false;
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(this.elements[i] == element)
-            {
-                alert("Element " + element + " found at index " + i);
-                flag = true;
-            }
-        }
-        if(!flag)
-        {
-            alert("Element " + element + " not found.");
-        }
     }
 }
 
