@@ -14,19 +14,24 @@ class VisualizerApp
     {
         console.log("Findelement");
         let element = document.getElementById(structure + "find").value;
-        let flag = false;
+        let found = false;
         for(let i = 0; i < this.elements.length; i++)
         {
             if(this.elements[i] == element)
             {
                 alert("Element " + element + " found at index " + i);
-                flag = true;
+                found = true;
             }
         }
-        if(!flag)
+        if(!found)
         {
             alert("Element " + element + " not found.");
         }
+    }
+    clearCanvas()
+    {
+        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+        this.context.font = '20px inter';
     }
 }
 
@@ -35,8 +40,7 @@ class ArrayApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in Array App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         let x = 50;
         let y = 100;
@@ -109,8 +113,7 @@ class VectorApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in Vector App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         let x = 50;
         let y = 100;
@@ -170,8 +173,7 @@ class ListApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in List App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         let x = 50;
         let y = 100;
@@ -261,8 +263,7 @@ class StackApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in Stack App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         let x = (this.canvas.width/2);
         let y = (this.canvas.height-300);
@@ -317,8 +318,7 @@ class QueueApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in Queue App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         let x = 50;
         let y = 100;
@@ -566,8 +566,7 @@ class BinaryTreeApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in Binary Tree App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         if(this.root == null)
         {
@@ -591,8 +590,7 @@ class HashApp extends VisualizerApp
     drawArray()
     {
         console.log("Drawing in Hash App");
-        this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
-        this.context.font = '20px inter';
+        this.clearCanvas();
 
         let x = 50;
         let y = 100;

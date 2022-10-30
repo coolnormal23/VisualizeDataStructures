@@ -91,21 +91,13 @@ function showMenu(id, bold, sidebar)
     }
 }
 
-arraymenubutton = document.getElementById("arraymenu");
-vectormenubutton = document.getElementById("vectormenu");
-listmenubutton = document.getElementById("listmenu");
-stackmenubutton = document.getElementById("stackmenu");
-queuemenubutton = document.getElementById("queuemenu");
-binarytreemenubutton = document.getElementById("binarytreemenu");
-hashmenubutton = document.getElementById("hashmenu");
-
-arraymenubutton.onclick = function() {showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent")};
-vectormenubutton.onclick = function() {showMenu("VectorAppButtons", "vectormenu", "VectorSidebarContent")};
-listmenubutton.onclick = function() {showMenu("ListAppButtons", "listmenu", "ListSidebarContent")};
-stackmenubutton.onclick = function() {showMenu("StackAppButtons", "stackmenu", "StackSidebarContent")};
-queuemenubutton.onclick = function() {showMenu("QueueAppButtons", "queuemenu", "QueueSidebarContent")};
-binarytreemenubutton.onclick = function() {showMenu("BinaryTreeAppButtons", "binarytreemenu", "TreeSidebarContent")};
-hashmenubutton.onclick = function() {showMenu("HashAppButtons", "hashmenu", "HashSidebarContent")};
+document.getElementById("arraymenu").onclick = function() {showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent")};
+document.getElementById("vectormenu").onclick = function() {showMenu("VectorAppButtons", "vectormenu", "VectorSidebarContent")};
+document.getElementById("listmenu").onclick = function() {showMenu("ListAppButtons", "listmenu", "ListSidebarContent")};
+document.getElementById("stackmenu").onclick = function() {showMenu("StackAppButtons", "stackmenu", "StackSidebarContent")};
+document.getElementById("queuemenu").onclick = function() {showMenu("QueueAppButtons", "queuemenu", "QueueSidebarContent")};
+document.getElementById("binarytreemenu").onclick = function() {showMenu("BinaryTreeAppButtons", "binarytreemenu", "TreeSidebarContent")};
+document.getElementById("hashmenu").onclick = function() {showMenu("HashAppButtons", "hashmenu", "HashSidebarContent")};
 
 showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent");
 
