@@ -95,7 +95,7 @@ class ArrayApp extends VisualizerApp
         console.log("Setting array element");
 
         let index = document.getElementById("arrayindexset").value;
-        if(index < this.elements.length)
+        if(index < this.elements.length && index > -1)
         {
             let element = prompt("Enter element", 0);
 
@@ -265,8 +265,8 @@ class StackApp extends VisualizerApp
         console.log("Drawing in Stack App");
         this.clearCanvas();
 
-        let x = (this.canvas.width/2);
-        let y = (this.canvas.height-300);
+        let x_Axis = 625;
+        let y_Axis = (this.canvas.height-300);
         if(this.elements.length == 0)
         {
             console.log("stack empty");
@@ -278,18 +278,18 @@ class StackApp extends VisualizerApp
         {
             console.log("rendering element");
             this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
+            this.context.fillRect(x_Axis, y_Axis, 100, 100);
             this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x+40), (y+50));
+            this.context.fillText(this.elements[i], (x_Axis+40), (y_Axis+50));
             if(i == 0)
             {
-                this.context.fillText("bottom", (x+135), (y+50));
+                this.context.fillText("bottom", (x_Axis+135), (y_Axis+50));
             }
             else if(i == (this.elements.length-1))
             {
-                this.context.fillText("top", (x+135), (y+50));
+                this.context.fillText("top", (x_Axis+135), (y_Axis+50));
             }
-            y-=125;
+            y_Axis-=125;
         }  
     }
     push()
@@ -394,7 +394,7 @@ class BinaryTreeApp extends VisualizerApp
         this.depth = 0;
     }
     
-    clear()
+    clearTree()
     {
         this.root = null;
         this.drawArray();
