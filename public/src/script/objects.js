@@ -628,10 +628,14 @@ class HashApp extends VisualizerApp
         console.log("Setting array element");
 
         let element = parseInt(document.getElementById("hashadd").value);
-        
-        this.elements[element + 2] = element; //Element + 2 is just temporary, will come up with a little more complex algorithm later
+        let key = Math.floor(36 * (element * 0.618033 % 1));
+        let original = this.elements[key];
 
+        if(this.elements[key] !== undefined)
+           alert("Hash collision. Element at index " + key + " will change from " + original + " to " + element);
+        this.elements[key] = element; 
         this.drawArray();
+
     }
 }
 

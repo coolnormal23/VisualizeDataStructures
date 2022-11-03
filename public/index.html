@@ -233,12 +233,43 @@ Node insertNode(Node root, int value)
         <div id="HashSidebarContent" class="sidebarcontent">
             <h1>Hash</h1>
             <h3>Description</h3>
-            <p>information</p>
-            <p> more info</p>
+            <h3>Description</h3>
+            <p>A Hash is much like an array, however the element's index is determined by the value of the element</p>
+            <p> A formula is used to determine this. In our example we utilize the multiplication method.</p>
             <h3>Example Code</h3>
             <code>
-                stuff goes here
+                cin >> element;<br>
+                key = math::floor(36 * (element * 0.618033 % 1))<br>
+                array[key] = element;<br>
+                <br>
+                //Same exact key we use in this website!<br>
+                //Floor is a c++ math library function<br>
+                //It rounds a decimal number down to the nearest whole int<br>
             </code>
+            <p> We call the formula set to key, a hash algorithm. With this algorithm we can find each element much faster. 
+                If we are given the element we can perform the formula again to go there immediately 
+                to find whether the given the  </p>
+            <h3> Find Element Example Code </h3>
+            <code>
+                //(assume each element is initialized as -1) <br>
+                void findElement(element, key) <br>
+                {<br>
+                    &emsp; if(array[key] != -1) <br>
+                        &emsp; &emsp; cout << "This element exists!"; <br>
+                }<br>
+            </code>
+            <p> This is helpful because when we search based on the value at an index, we can access the element stored 
+                without checking every single element until it is found</p>
+            <h3>Hash Collisions</h3>
+            <p>You may have noticed that the formula includes the mod operator.</p>
+            <p> Because of this, the element, multiplied by a decimal less than 1, 
+                will eventually reset the index value. Therefore, certain values will end up at an index
+                that already contains an element. This is called a hash collision. </p>
+            <p> On our website, you will be notified that the value at that index has changed </p>
+            <p> Some techniques exist to counteract this, such as moving the elemeent 
+                to the next available index until the whole array is filled or filling the array with vectors and 
+                pushing elements to this vector. Effectively giving the index multiple elements</p>
+
         </div>
     </div>
 
