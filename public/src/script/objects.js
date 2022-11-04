@@ -597,10 +597,10 @@ class HashApp extends VisualizerApp
 
         if(this.elements.length == 0)
         {
-            console.log("array empty");
+            console.log("hash empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Array is not initialized", (x), (y));
+            this.context.fillText("Hash is not initialized", (x), (y));
         }
         else
         {
@@ -615,7 +615,10 @@ class HashApp extends VisualizerApp
                 this.context.fillStyle="#D9D9D9";
                 this.context.fillRect(x, y, 100, 100);
                 this.context.fillStyle="black";
-                this.context.fillText(this.elements[i], (x+40), (y+50));
+                if(this.elements[i] == undefined)
+                    this.context.fillText("NULL", (x+40), (y+50));
+                else
+                    this.context.fillText(this.elements[i], (x+40), (y+50));
                 
                 this.context.fillText(("i = " + i), (x+35), (y-20));
                 
