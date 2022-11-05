@@ -595,36 +595,28 @@ class HashApp extends VisualizerApp
         let x = 50;
         let y = 100;
 
-        if(this.elements.length == 0)
+        
+        for(let i = 0; i < 36; i++)
         {
-            console.log("hash empty");
-            this.context.font = '40px inter';
-            this.context.fillStyle="black";
-            this.context.fillText("Hash is not initialized", (x), (y));
-        }
-        else
-        {
-            for(let i = 0; i < this.elements.length; i++)
+            if(x >= (this.canvas.width-200))
             {
-                if(x >= (this.canvas.width-200))
-                {
-                    x = 50;
-                    y += 200;
-                }
-                console.log("rendering element");
-                this.context.fillStyle="#D9D9D9";
-                this.context.fillRect(x, y, 100, 100);
-                this.context.fillStyle="black";
-                if(this.elements[i] == undefined)
-                    this.context.fillText("NULL", (x+40), (y+50));
-                else
-                    this.context.fillText(this.elements[i], (x+40), (y+50));
-                
-                this.context.fillText(("i = " + i), (x+35), (y-20));
-                
-                x += 125;
+                x = 50;
+                y += 200;
             }
+            console.log("rendering element");
+            this.context.fillStyle="#D9D9D9";
+            this.context.fillRect(x, y, 100, 100);
+            this.context.fillStyle="black";
+            if(this.elements[i] == undefined)
+                this.context.fillText("NULL", (x+40), (y+50));
+            else
+                this.context.fillText(this.elements[i], (x+40), (y+50));
+                
+            this.context.fillText(("i = " + i), (x+35), (y-20));
+                
+            x += 125;
         }
+        
     }
     add()
     {
@@ -639,6 +631,26 @@ class HashApp extends VisualizerApp
         this.elements[key] = element; 
         this.drawArray();
 
+    }
+    findElement()
+    {
+        let element = document.getElementById("hashfind").value;
+        let index = Math.floor(36 * (element * 0.618033 % 1));
+        if(this.elements[index] == element)
+            alert("Element " + element + " found at index " + index);
+        else
+            alert("Element " + element + " not found");
+    }
+    delete()
+    {
+        let element = document.getElementById("hashdelete").value;
+        let index = Math.floor(36 * (element * 0.618033 % 1));
+        if(this.elements[index] == element)
+            this.elements.splice(index, 1);
+        else
+            alert("Element " + element + " does not exist in the hash")
+
+        this.drawArray();
     }
 }
 
