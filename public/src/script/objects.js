@@ -19,78 +19,7 @@ class VisualizerApp
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
         this.context.font = '20px inter';
     }
-    
-    async highlight(index, color)
-    {
-        this.clearCanvas();
-
-        let x = 50;
-        let y = 100;
-
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(x >= (this.canvas.width-200))
-            {
-                x = 50;
-                y += 200;
-            }
-            console.log("rendering element");
-
-            if(index == i)
-                this.context.fillStyle=color;
-            else
-                this.context.fillStyle="#D9D9D9";
-
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x+40), (y+50));
-            if(i == 0)
-            {
-                this.context.fillText("i = 0", (x+35), (y-20));
-            }
-            else if(i == (this.elements.length-1))
-            {
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
-            }
-            x += 125;
-        }
-        await sleep(700);
-
-    }
-    async findElement(structure)
-    {       
-        console.log("Findelement");
-        if(this.elements.length == 0)
-            alert(structure + " does not exist yet");
-        else
-        {    
-            let element = document.getElementById(structure + "find").value;
-            let found = false;
-            for( let i = 0; i < this.elements.length; i++)
-            {
-                    if(element == this.elements[i])
-                    {
-                        found = true;
-                        await this.highlight(i, "#3cb371");
-                        alert("Element " + element + " found at index " + i);
-                    }
-                    else
-                    {
-                        await this.highlight(i, "#ff0000");
-                    }
-            }
-            if(found == false)
-            {
-                alert("Element " + element + " not found.");
-            }
-            this.drawArray();
-        }
-    }  
-}
-
-class ArrayApp extends VisualizerApp
-{
-    drawArray()
+    async drawArray(index, color)
     {
         console.log("Drawing in Array App");
         this.clearCanvas();
@@ -115,34 +44,73 @@ class ArrayApp extends VisualizerApp
                     y += 200;
                 }
                 console.log("rendering element");
-                this.context.fillStyle="#D9D9D9";
+
+                if(index == i)
+                    this.context.fillStyle=color;
+                else
+                    this.context.fillStyle="#D9D9D9";
+
                 this.context.fillRect(x, y, 100, 100);
                 this.context.fillStyle="black";
-                this.context.fillText(this.elements[i], (x+40), (y+50));
-                if(i == 0)
-                {
-                    this.context.fillText("i = 0", (x+35), (y-20));
-                }
-                else if(i == (this.elements.length-1))
-                {
-                    this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
-                }
+                
+                if(this.elements[i] == undefined)
+                    this.context.fillText("NULL", (x+40), (y+50));
+                else
+                    this.context.fillText(this.elements[i], (x+40), (y+50));
+                
+                this.context.fillText(("i = " + i), (x+35), (y-20));
+            
                 x += 125;
             }
+            if(color != "#D9D9D9")
+                    await sleep(700);
         }
     }
-    setSize()
+    async findElement(structure)
+    {       
+        console.log("Findelement");
+        if(this.elements.length == 0)
+            alert(structure + " does not exist yet");
+        else
+        {    
+            let element = document.getElementById(structure + "find").value;
+            let found = false;
+            for( let i = 0; i < this.elements.length; i++)
+            {
+                    if(element == this.elements[i])
+                    {
+                        found = true;
+                        await this.drawArray(i, "#3cff3e");
+                        alert("Element " + element + " found at index " + i);
+                    }
+                    else
+                    {
+                        await this.drawArray(i, "#ff0000");
+                    }
+            }
+            if(found == false)
+            {
+                alert("Element " + element + " not found.");
+            }
+            this.drawArray(0, "#D9D9D9");
+        }
+    }  
+    setSize(structure)
     {
-        let newsize = document.getElementById("arraysize").value;
+        let newsize = document.getElementById(structure + "size").value;
         this.size = newsize;
-        this.elements = [];
+
         for(let i = 0; i < this.size; i++)
         {
-            console.log("adding 0 element");
-            this.elements[i] = 0;
+            console.log("adding undefined element");
+            this.elements[i] = undefined;
         }
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
+}
+
+class ArrayApp extends VisualizerApp
+{
     setElement()
     {
         console.log("Setting array element");
@@ -156,50 +124,13 @@ class ArrayApp extends VisualizerApp
         }
         else
             alert("This index does not exist");
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
         
     } 
 }
 
 class VectorApp extends VisualizerApp
 {
-    drawArray()
-    {
-        console.log("Drawing in Vector App");
-        this.clearCanvas();
-
-        let x = 50;
-        let y = 100;
-        if(this.elements.length == 0)
-        {
-            console.log("vector empty");
-            this.context.font = '40px inter';
-            this.context.fillStyle="black";
-            this.context.fillText("Vector contains no elements", (x), (y));
-        }
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(x >= (this.canvas.width-200))
-            {
-                x = 50;
-                y += 200;
-            }
-            console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x+40), (y+50));
-            if(i == 0)
-            {
-                this.context.fillText("i = 0", (x+35), (y-20));
-            }
-            else if(i == (this.elements.length-1))
-            {
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
-            }
-            x += 125;
-        }
-    }
     push_back()
     {
         console.log("pushing back element");
@@ -208,7 +139,7 @@ class VectorApp extends VisualizerApp
         this.elements[this.index] = element;
         (this.index)++;
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
     pop_back()
     {
@@ -217,7 +148,7 @@ class VectorApp extends VisualizerApp
         this.elements.pop();
         (this.index)--;
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
 }
 
@@ -245,7 +176,7 @@ class ListApp extends VisualizerApp
         this.context.stroke();
         return x;
     }
-    drawArray()
+    async drawArray(index, color)
     {
         console.log("Drawing in List App");
         this.clearCanvas();
@@ -260,7 +191,10 @@ class ListApp extends VisualizerApp
                 y += 200;
             }
             console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
+            if(i == index)
+                this.context.fillStyle=color;
+            else
+                this.context.fillStyle="#D9D9D9";
             this.context.fillRect(x, y, 100, 100);
             this.context.fillStyle="black";
             this.context.fillText(this.elements[i], (x+40), (y+50));
@@ -298,55 +232,8 @@ class ListApp extends VisualizerApp
             this.context.fillStyle="black";
             this.context.fillText("NULL", (x+25), (y+55));
         }   
-        
-    }
-    async highlight(index, color)
-    {
-        this.clearCanvas();
-
-        let x = 50;
-        let y = 100;
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            if(x >= (this.canvas.width-200))
-            {
-                x = 50;
-                y += 200;
-            }
-            console.log("rendering element");
-            if(i == index)
-                this.context.fillStyle=color;
-            else
-                this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x+40), (y+50));
-            if(i == 0)
-            {
-                this.context.fillText("head", (x+35), (y-20));
-            }
-            else if(i == (this.elements.length-1))
-            {
-                this.context.fillText("tail", (x+35), (y-20));
-            }
-          
-            x += 100; 
-
-            x = this.drawArrow(x, y);
-
-            if(x >= (this.canvas.width-200))
-            {
-                x = 50;
-                y += 200;
-            }
-            console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            this.context.fillText("NULL", (x+25), (y+55));
-            
-        }
-        await sleep(700);
+        if(color != "#D9D9D9")
+            await sleep(700);
     }
     add()
     {
@@ -355,51 +242,20 @@ class ListApp extends VisualizerApp
 
         this.elements.push(element);
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
     delete()
     {
         console.log("deleting element");
         this.elements.splice((document.getElementById("listdelete").value), 1);
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
 }
 
 class StackApp extends VisualizerApp
 {
-    async highlight(index, color)
-    {
-        this.clearCanvas();
-
-        let x_Axis = 625;
-        let y_Axis = (this.canvas.height-300);
-
-        for(let i = 0; i < this.elements.length; i++)
-        {
-            console.log("rendering element");
-            if(i == index)
-                this.context.fillStyle=color;
-            else
-                this.context.fillStyle="#D9D9D9";
-                
-            this.context.fillRect(x_Axis, y_Axis, 100, 100);
-            this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x_Axis+40), (y_Axis+50));
-            if(i == 0)
-            {
-                this.context.fillText("bottom", (x_Axis+135), (y_Axis+50));
-            }
-            else if(i == (this.elements.length-1))
-            {
-                this.context.fillText("top", (x_Axis+135), (y_Axis+50));
-            }
-            y_Axis-=125;
-            
-        }  
-        await sleep(700);
-    }
-    drawArray()
+    async drawArray(index, color)
     {
         console.log("Drawing in Stack App");
         this.clearCanvas();
@@ -416,7 +272,12 @@ class StackApp extends VisualizerApp
         for(let i = 0; i < this.elements.length; i++)
         {
             console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
+
+            if(i == index)
+                this.context.fillStyle=color;
+            else
+                this.context.fillStyle="#D9D9D9";
+
             this.context.fillRect(x_Axis, y_Axis, 100, 100);
             this.context.fillStyle="black";
             this.context.fillText(this.elements[i], (x_Axis+40), (y_Axis+50));
@@ -429,7 +290,9 @@ class StackApp extends VisualizerApp
                 this.context.fillText("top", (x_Axis+135), (y_Axis+50));
             }
             y_Axis-=125;
-        }  
+        } 
+        if(color != "#D9D9D9")
+            await sleep(700); 
     }
     push()
     {
@@ -439,7 +302,7 @@ class StackApp extends VisualizerApp
         this.elements[this.index] = element;
         (this.index)++;
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
     pop()
     {
@@ -448,47 +311,62 @@ class StackApp extends VisualizerApp
         this.elements.pop();
         (this.index)--;
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
 }
 
 class QueueApp extends VisualizerApp
 {
-    drawArray()
+    async drawArray(index, color)
     {
-        console.log("Drawing in Queue App");
+        console.log("Drawing in Array App");
         this.clearCanvas();
 
         let x = 50;
         let y = 100;
+
         if(this.elements.length == 0)
         {
-            console.log("queue empty");
+            console.log("array empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Queue contains no elements", (50), (100));
+            this.context.fillText("Array is not initialized", (x), (y));
         }
-        for(let i = 0; i < this.elements.length; i++)
+        else
         {
-            if(x >= (this.canvas.width-200))
+            for(let i = 0; i < this.elements.length; i++)
             {
-                x = 50;
-                y += 200;
+                if(x >= (this.canvas.width-200))
+                {
+                    x = 50;
+                    y += 200;
+                }
+                console.log("rendering element");
+
+                if(index == i)
+                    this.context.fillStyle=color;
+                else
+                    this.context.fillStyle="#D9D9D9";
+
+                this.context.fillRect(x, y, 100, 100);
+                this.context.fillStyle="black";
+                
+                if(this.elements[i] == undefined)
+                    this.context.fillText("NULL", (x+40), (y+50));
+                else
+                    this.context.fillText(this.elements[i], (x+40), (y+50));
+                if(i == 0)
+                {
+                    this.context.fillText("start", (x+35), (y-20));
+                }
+                else if(i == (this.elements.length-1))
+                {
+                    this.context.fillText(("end"), (x+35), (y-20));
+                }
+                x += 125;
             }
-            console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x+40), (y+50));
-            if(i == 0)
-            {
-                this.context.fillText("start", (x+35), (y-20));
-            }
-            else if(i == (this.elements.length-1))
-            {
-                this.context.fillText("end", (x+35), (y-20));
-            }
-            x += 125;
+            if(color != "#D9D9D9")
+                    await sleep(700);
         }
     }
     enqueue()
@@ -499,7 +377,7 @@ class QueueApp extends VisualizerApp
         this.elements.unshift(element);
         (this.index)++;
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
     dequeue()
     {
@@ -508,7 +386,7 @@ class QueueApp extends VisualizerApp
         this.elements.pop();
         (this.index)--;
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
 }
 
@@ -726,111 +604,47 @@ class BinaryTreeApp extends VisualizerApp
 
 class HashApp extends VisualizerApp
 {
-    drawArray()
-    {
-        console.log("Drawing in Hash App");
-        this.clearCanvas();
-
-        let x = 50;
-        let y = 100;
-
-        
-        for(let i = 0; i < 36; i++)
-        {
-            if(x >= (this.canvas.width-200))
-            {
-                x = 50;
-                y += 200;
-            }
-            console.log("rendering element");
-            this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            if(this.elements[i] == undefined)
-                this.context.fillText("NULL", (x+40), (y+50));
-            else
-                this.context.fillText(this.elements[i], (x+40), (y+50));
-                
-            this.context.fillText(("i = " + i), (x+35), (y-20));
-                
-            x += 125;
-        }
-        
-    }
-    async highlight(index, color)
-    {
-        this.clearCanvas();
-
-        let x = 50;
-        let y = 100;
-
-        
-        for(let i = 0; i < 36; i++)
-        {
-            if(x >= (this.canvas.width-200))
-            {
-                x = 50;
-                y += 200;
-            }
-            console.log("rendering element");
-            if(index == i)
-                this.context.fillStyle=color;
-            else
-                this.context.fillStyle="#D9D9D9";
-            this.context.fillRect(x, y, 100, 100);
-            this.context.fillStyle="black";
-            if(this.elements[i] == undefined)
-                this.context.fillText("NULL", (x+40), (y+50));
-            else
-                this.context.fillText(this.elements[i], (x+40), (y+50));
-                
-            this.context.fillText(("i = " + i), (x+35), (y-20));
-                
-            x += 125;
-        }
-        await sleep(700);
-    }
     add()
     {
         console.log("Setting array element");
 
         let element = parseInt(document.getElementById("hashadd").value);
-        let key = Math.floor(36 * (element * 0.618033 % 1));
+        let key = Math.floor(this.size * (element * 0.618033 % 1));
         let original = this.elements[key];
 
         if(this.elements[key] !== undefined)
            alert("Hash collision. Element at index " + key + " will change from " + original + " to " + element);
         this.elements[key] = element; 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
 
     }
     async findElement()
     {
         let element = document.getElementById("hashfind").value;
-        let index = Math.floor(36 * (element * 0.618033 % 1));
+        let index = Math.floor(this.size * (element * 0.618033 % 1));
         
         if(this.elements[index] == element)
         {
-            await this.highlight(index, "#3cb371");
+            await this.drawArray(index, "#3cff3e");
             alert("Element " + element + " found at index " + index);
         }
         else
         {
-            await this.highlight(index, "#ff0000");
+            await this.drawArray(index, "#ff0000");
             alert("Element " + element + " not found");
         }
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
     delete()
     {
         let element = document.getElementById("hashdelete").value;
-        let index = Math.floor(36 * (element * 0.618033 % 1));
+        let index = Math.floor(this.size * (element * 0.618033 % 1));
         if(this.elements[index] == element)
-            this.elements.splice(index, 1);
+            this.elements[index] = undefined;
         else
             alert("Element " + element + " does not exist in the hash")
 
-        this.drawArray();
+        this.drawArray(0, "#D9D9D9");
     }
 }
 
@@ -845,5 +659,5 @@ const hashcontroller = new HashApp();
 
 window.addEventListener('load', () =>
 {
-    arraycontroller.drawArray();
+    arraycontroller.drawArray(0, "#D9D9D9");
 })

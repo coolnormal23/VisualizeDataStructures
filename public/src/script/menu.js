@@ -50,31 +50,31 @@ function showMenu(id, bold, sidebar)
     if(bold == "arraymenu")
     {
         document.getElementById("arraymenu").innerHTML = "<b>Array</b>";
-        arraycontroller.drawArray();
+        arraycontroller.drawArray(0, "#D9D9D9");
         active = "ArrayApp";
     }
     else if(bold == "vectormenu")
     {
         document.getElementById("vectormenu").innerHTML = "<b>Vector</b>";
-        vectorcontroller.drawArray();
+        vectorcontroller.drawArray(0, "#D9D9D9");
         active = "VectorApp";
     }
     else if(bold == "listmenu")
     {
         document.getElementById("listmenu").innerHTML = "<b>Linked List</b>";
-        listcontroller.drawArray();
+        listcontroller.drawArray(0, "#D9D9D9");
         active = "ListApp";
     }
     else if(bold == "stackmenu")
     {
         document.getElementById("stackmenu").innerHTML = "<b>Stack</b>";
-        stackcontroller.drawArray();
+        stackcontroller.drawArray(0, "#D9D9D9");
         active = "StackApp";
     }
     else if(bold == "queuemenu")
     {
         document.getElementById("queuemenu").innerHTML = "<b>Queue</b>";
-        queuecontroller.drawArray();
+        queuecontroller.drawArray(0, "#D9D9D9");
         active = "QueueApp";
     }
     else if(bold == "binarytreemenu")
@@ -86,7 +86,7 @@ function showMenu(id, bold, sidebar)
     else if(bold == "hashmenu")
     {
         document.getElementById("hashmenu").innerHTML = "<b>Hash</b>";
-        hashcontroller.drawArray();
+        hashcontroller.drawArray(0, "#D9D9D9");
         active = "HashApp";
     }
 }
@@ -109,25 +109,25 @@ window.onresize = function()
     switch(active)
     {
         case "ArrayApp":
-            arraycontroller.drawArray();
+            arraycontroller.drawArray(0, "#D9D9D9");
         break;
         case "VectorApp":
-            vectorcontroller.drawArray();
+            vectorcontroller.drawArray(0, "#D9D9D9");
         break;
         case "ListApp":
-            listcontroller.drawArray();
+            listcontroller.drawArray(0, "#D9D9D9");
         break;
         case "StackApp":
-            stackcontroller.drawArray();
+            stackcontroller.drawArray(0, "#D9D9D9");
         break;
         case "QueueApp":
-            queuecontroller.drawArray();
+            queuecontroller.drawArray(0, "#D9D9D9");
         break;
         case "TreeApp":
             binarytreecontroller.drawArray();
         break;
         case "HashApp":
-            hashcontroller.drawArray();
+            hashcontroller.drawArray(0, "#D9D9D9");
     }
 }
 
