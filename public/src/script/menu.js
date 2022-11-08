@@ -80,7 +80,7 @@ function showMenu(id, bold, sidebar)
     else if(bold == "binarytreemenu")
     {
         document.getElementById("binarytreemenu").innerHTML = "<b>Binary Search Tree</b>";
-        binarytreecontroller.drawArray(0, "#D9D9D9");
+        binarytreecontroller.drawArray();
         active = "TreeApp";
     }
     else if(bold == "hashmenu")
@@ -124,7 +124,7 @@ window.onresize = function()
             queuecontroller.drawArray(0, "#D9D9D9");
         break;
         case "TreeApp":
-            binarytreecontroller.drawArray(0, "#D9D9D9");
+            binarytreecontroller.drawArray();
         break;
         case "HashApp":
             hashcontroller.drawArray(0, "#D9D9D9");

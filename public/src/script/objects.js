@@ -58,7 +58,7 @@ class VisualizerApp
                 else
                     this.context.fillText(this.elements[i], (x+40), (y+50));
                 
-                this.context.fillText(("i = " + (this.elements.length-1)), (x+35), (y-20));
+                this.context.fillText(("i = " + i), (x+35), (y-20));
             
                 x += 125;
             }
@@ -80,7 +80,7 @@ class VisualizerApp
                     if(element == this.elements[i])
                     {
                         found = true;
-                        await this.drawArray(i, "#3cb371");
+                        await this.drawArray(i, "#3cff3e");
                         alert("Element " + element + " found at index " + i);
                     }
                     else
@@ -625,7 +625,7 @@ class HashApp extends VisualizerApp
         
         if(this.elements[index] == element)
         {
-            await this.drawArray(index, "#3cb371");
+            await this.drawArray(index, "#3cff3e");
             alert("Element " + element + " found at index " + index);
         }
         else
