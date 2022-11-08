@@ -9,12 +9,45 @@
     <script src="https://js.ptengine.com/151c6ga1.js"></script>
     <!-- End Ptengine Tag -->
     <title>VisualizeDataStructures</title>
+    <!--firebase-->
+    <script type="module" src="./src/script/firebase.js"></script>
+    <!--Our scripts--> 
+    <script defer src="./src/script/objects.js"></script>
+    <script defer src="./src/script/menu.js"></script>
+    <script defer src="./src/script/sidebar.js"></script>
+    <script defer src="./src/script/auth.js"></script>
 </head>
 <body style="margin:0px">
+    <!--Login form modal-->
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        
+        <div class="modal-content animate">
+            <div class="container">
+                <p id="loginerror" style="color:red; display:none;">There was an error while signing in. Please check your input and retry.</p>
+                <b>Email</b>
+                <input type="text" placeholder="Enter Email" id="email">
+                
+                <b>Password</b>
+                <input type="password" placeholder="Enter Password" id="psw">
+                
+                <button id="loginbutton">Login</button>
+                <button id="registerbutton">Register</button>
+            </div>
+            
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Header-->
     <div id="header">
         <div id="logocontainer">
             <img id="logo" src="./misc/eye_icon.png"/>
             <h1>Visualize Data Structures</h1>
+            <p style="margin-left:auto; display:none;" id="signedinstatus">Not signed in</p>
+            <button id="loginformopenbutton" onclick="document.getElementById('id01').style.display='block'">Log In or Register</button>
         </div>
         <div id="buttons">
             <p id="arraymenu" onclick="arraycontroller.drawArray()">Array</p>
@@ -26,7 +59,7 @@
             <p id="hashmenu" onclick="hashcontroller.drawArray()">Hash</p>
         </div>
     </div>
-    
+    <!--Sidebar-->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -341,32 +374,5 @@ Node insertNode(Node root, int value)
         
         <canvas id="maincanvas"></canvas>
     </div>
-    <!--firebase-->
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js'
-    
-        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
-        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js'
-    
-        // Add Firebase products that you want to use
-        import { getAuth } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
-        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
-        const firebaseConfig = {
-            apiKey: "AIzaSyAVubYGtFuLci5rpbMH4VC0ST8Hz7ayV88",
-            authDomain: "visualizedatastructures.firebaseapp.com",
-            projectId: "visualizedatastructures",
-            storageBucket: "visualizedatastructures.appspot.com",
-            messagingSenderId: "309159364427",
-            appId: "1:309159364427:web:25297eedee8fe2fdde8ace",
-            measurementId: "G-3TKWZPJZ9D"
-        };
-        
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    </script>
-    <script src="./src/script/objects.js"></script>
-    <script src="./src/script/menu.js"></script>
-    <script src="./src/script/sidebar.js"></script>
 </body>
 </html>

@@ -130,3 +130,11 @@ window.onresize = function()
             hashcontroller.drawArray();
     }
 }
+
+//hide login form when clicking outside of it
+var modal = document.getElementById("modal");
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+}
