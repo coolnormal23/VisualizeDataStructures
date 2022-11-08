@@ -270,23 +270,23 @@ Node insertNode(Node root, int value)
             <h1>Hash</h1>
             <h3>Description</h3>
             <p>A Hash is much like an array, however the element's index is determined by the value of the element</p>
-            <p> A formula is used to determine this. In our example we utilize the multiplication method.</p>
+            <p> A formula is used to determine this key and in our example we utilize the multiplication method.</p>
             <h3>Example Code</h3>
             <code>
                 cin >> element;<br>
-                key = math::floor(36 * (element * 0.618033 % 1))<br>
+                int key = math::floor('size you entered' * (element * 0.618033 % 1))<br>
                 array[key] = element;<br>
                 <br>
                 //Same exact key we use in this website!<br>
                 //Floor is a c++ math library function<br>
                 //It rounds a decimal number down to the nearest whole int<br>
             </code>
-            <p> We call the formula set to key, a hash algorithm. With this algorithm we can find each element much faster. 
-                If we are given the element we can perform the formula again to go there immediately 
-                to find whether the given the  </p>
+            <p> We call the formula initialized to key, a hash algorithm. With this algorithm we can find each element much faster. 
+                If we are given the element, we can perform the formula 
+                on the element again and go to the index where the element would be if it exists.  </p>
             <h3> Find Element Example Code </h3>
             <code>
-                //(assume each element is initialized as -1) <br>
+                //(assume each element is initialized to -1) <br>
                 void findElement(element, key) <br>
                 {<br>
                     &emsp; if(array[key] != -1) <br>
@@ -311,7 +311,7 @@ Node insertNode(Node root, int value)
     <div id="main">
         <div id="ArrayAppButtons">
             <input type="number" id="arraysize" value="0" size="2">
-            <button type="button" onclick="arraycontroller.setSize()">Set Size</button>
+            <button type="button" onclick="arraycontroller.setSize('array')">Set Size</button>
             <input type="number" id="arrayindexset" value="0" size="2">
             <button type="button" onclick="arraycontroller.setElement()">Set Element</button>
             <input type="number" id="arrayfind" value="0" size="2">
@@ -363,12 +363,14 @@ Node insertNode(Node root, int value)
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         <div id="HashAppButtons">
+            <input type="number" id="hashsize" value="0" size="2">
+            <button type="button" onclick="hashcontroller.setSize('hash')">Set Size</button>
             <input type="number" id="hashadd" value="0" size="2">
             <button type="button" onclick="hashcontroller.add()">Add</button>
-            <input type="number" id="hashfind" value="0" size="2">
-            <button type="button" onclick="hashcontroller.findElement()">Find</button>
             <input type="number" id="hashdelete" value="0" size="2">
             <button type="button" onclick="hashcontroller.delete()">Delete</button>
+            <input type="number" id="hashfind" value="0" size="2">
+            <button type="button" onclick="hashcontroller.findElement()">Find</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         
