@@ -1,7 +1,7 @@
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-  
+
 class VisualizerApp
 {
     elements = [];
@@ -19,9 +19,9 @@ class VisualizerApp
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
         this.context.font = '20px inter';
     }
-    async drawArray(index, color)
+    async drawArray(index, color, structure)
     {
-        console.log("Drawing in Array App");
+        console.log("Drawing in " + structure + "App");
         this.clearCanvas();
 
         let x = 50;
@@ -32,11 +32,11 @@ class VisualizerApp
             console.log("array empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Array is not initialized", (x), (y));
+            this.context.fillText(structure + " is not initialized", (x), (y));
         }
         else
         {
-            for(let i = 0; i < this.elements.length; i++)
+            for(let i = 0; i < this.size; i++)
             {
                 if(x >= (this.canvas.width-200))
                 {
@@ -67,67 +67,96 @@ class VisualizerApp
         }
     }
     async findElement(structure)
-    {       
-        console.log("Findelement");
-        if(this.elements.length == 0)
-            alert(structure + " does not exist yet");
-        else
-        {    
-            let element = document.getElementById(structure + "find").value;
-            let found = false;
-            for( let i = 0; i < this.elements.length; i++)
-            {
-                    if(element == this.elements[i])
-                    {
-                        found = true;
-                        await this.drawArray(i, "#3cff3e");
-                        alert("Element " + element + " found at index " + i);
-                    }
-                    else
-                    {
-                        await this.drawArray(i, "#ff0000");
-                    }
+    {   
+        var pop = document.getElementById(structure + "findpop");
+        if (document.getElementById(structure + "find").checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+                
+            console.log("Findelement");
+            if(this.elements.length == 0)
+                alert(structure + " does not exist yet");
+            else
+            {    
+                let element = document.getElementById(structure + "find").value;
+                let found = false;
+                for( let i = 0; i < this.elements.length; i++)
+                {
+                        if(element == this.elements[i])
+                        {
+                            found = true;
+                            await this.drawArray(i, "#3cff3e");
+                            alert("Element " + element + " found at index " + i);
+                        }
+                        else
+                        {
+                            await this.drawArray(i, "#ff0000");
+                        }
+                }
+                if(found == false)
+                {
+                    alert("Element " + element + " not found.");
+                }
+                this.drawArray(0, "#D9D9D9");
             }
-            if(found == false)
-            {
-                alert("Element " + element + " not found.");
-            }
-            this.drawArray(0, "#D9D9D9");
         }
+        else
+            pop.classList.toggle("show");    
     }  
     setSize(structure)
-    {
-        let newsize = document.getElementById(structure + "size").value;
-        this.size = newsize;
+    {   
+        var pop = document.getElementById(structure + "sizepop");
+        if (document.getElementById(structure + "size").checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        for(let i = 0; i < this.size; i++)
-        {
-            console.log("adding undefined element");
-            this.elements[i] = undefined;
-        }
-        this.drawArray(0, "#D9D9D9");
+            let newsize = document.getElementById(structure + "size").value;
+            this.size = newsize;
+
+            for(let i = 0; i < this.size; i++)
+            {
+                console.log("adding undefined element");
+                this.elements[i] = undefined;
+            }
+            this.clearCanvas();
+            this.drawArray(0, "#D9D9D9", structure);}
+        else
+            pop.classList.toggle("show");    
+            
     }
 }
 
 class ArrayApp extends VisualizerApp
 {
+      
     setElement()
     {
-        console.log("Setting array element");
-
-        let index = document.getElementById("arrayindexset").value;
-        if(index < this.elements.length && index > -1)
+        var pop = document.getElementById("arraysetpop");
+        if(document.getElementById("arrayindexset").checkValidity())
         {
-            let element = prompt("Enter element", 0);
+            console.log("Setting array element");
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+            let index = document.getElementById("arrayindexset").value;
+            if(index < this.elements.length && index > -1)
+            {
+                let element = prompt("Enter element", 0);
 
-            this.elements[index] = element;
+                this.elements[index] = element;
+            }
+            else
+                alert("This index does not exist");
+
+            this.drawArray(0, "#D9D9D9", "Array");
         }
         else
-            alert("This index does not exist");
-        this.drawArray(0, "#D9D9D9");
-        
+            pop.classList.toggle("show"); 
+            
     } 
 }
+
 
 class VectorApp extends VisualizerApp
 {
@@ -217,7 +246,7 @@ class ListApp extends VisualizerApp
             console.log("linkedlist empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Linked list contains no elements", (x), (y));
+            this.context.fillText("Linked List contains no elements", (x), (y));
         }
         else
         {
@@ -247,7 +276,14 @@ class ListApp extends VisualizerApp
     delete()
     {
         console.log("deleting element");
-        this.elements.splice((document.getElementById("listdelete").value), 1);
+        let i = 0;
+        let element = document.getElementById("listdelete").value;
+
+        while(this.elements[i] != element && i <= this.elements.length)
+            i++;
+        
+        if(i < this.elements.length + 1)
+            this.elements.splice(i, 1);
 
         this.drawArray(0, "#D9D9D9");
     }
@@ -330,7 +366,7 @@ class QueueApp extends VisualizerApp
             console.log("array empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Array is not initialized", (x), (y));
+            this.context.fillText("Queue is not initialized", (x), (y));
         }
         else
         {
@@ -659,5 +695,5 @@ const hashcontroller = new HashApp();
 
 window.addEventListener('load', () =>
 {
-    arraycontroller.drawArray(0, "#D9D9D9");
+    arraycontroller.drawArray(0, "#D9D9D9", "Array");
 })
