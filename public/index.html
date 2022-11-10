@@ -309,20 +309,20 @@ Node insertNode(Node root, int value)
 
     <div id="main">
         <div id="ArrayAppButtons">
-            <input type="number" id="arraysize" value="1" size="2" min="1" required>
+            <input type="number" id="arraysize" value="1" size="2" min="1" max="40">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arraysizepop">Invalid Input</span></div>
-            <button type="submit" onclick="arraycontroller.setSize('array')">Set Size</button>
+            <button type="button" onclick="arraycontroller.setSize('array')">Set Size</button>
 
             <input type="number" id="arrayindexset" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arraysetpop">Invalid Input</span></div>
-            <button type="submit" onclick="arraycontroller.setElement()">Set Element</button>
+            <button type="button" onclick="arraycontroller.setElement()">Set Element</button>
 
             <input type="number" id="arrayfind" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arrayfindpop">Invalid Input</span></div>
-            <button type="submit" onclick="arraycontroller.findElement('array')">Find Element</button>
+            <button type="button" onclick="arraycontroller.findElement('array')">Find Element</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
@@ -371,14 +371,26 @@ Node insertNode(Node root, int value)
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         <div id="HashAppButtons">
-            <input type="number" id="hashsize" value="0" size="2" min="1">
+            <input type="number" id="hashsize" value="1" size="2" min="1" max="40">
+            <span class="validity"></span>
+            <div class = "popup"> <span class="popuptext" id="hashsizepop">Invalid Input</span></div>
             <button type="button" onclick="hashcontroller.setSize('hash')">Set Size</button>
+
             <input type="number" id="hashadd" value="0" size="2" min="-99999" max="99999">
+            <span class="validity"></span>
+            <div class = "popup"> <span class="popuptext" id="hashaddpop">Invalid Input</span></div>
             <button type="button" onclick="hashcontroller.add()">Add</button>
+
             <input type="number" id="hashdelete" value="0" size="2" min="-99999" max="99999">
+            <span class="validity"></span>
+            <div class = "popup"> <span class="popuptext" id="hashdeletepop">Invalid Input</span></div>
             <button type="button" onclick="hashcontroller.delete()">Delete</button>
+
             <input type="number" id="hashfind" value="0" size="2" min="-99999" max="99999">
+            <span class="validity"></span>
+            <div class = "popup"> <span class="popuptext" id="hashfindpop">Invalid Input</span></div>
             <button type="button" onclick="hashcontroller.findElement()">Find</button>
+
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         

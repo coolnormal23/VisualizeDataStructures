@@ -69,7 +69,8 @@ class VisualizerApp
     async findElement(structure)
     {   
         var pop = document.getElementById(structure + "findpop");
-        if (document.getElementById(structure + "find").checkValidity())
+        var find = document.getElementById(structure + "find");
+        if (find.checkValidity())
         {   
             if(window.getComputedStyle(pop).visibility == "visible")
                 pop.classList.toggle("show");
@@ -79,7 +80,7 @@ class VisualizerApp
                 alert(structure + " does not exist yet");
             else
             {    
-                let element = document.getElementById(structure + "find").value;
+                let element = find.value;
                 let found = false;
                 for( let i = 0; i < this.elements.length; i++)
                 {
@@ -107,13 +108,13 @@ class VisualizerApp
     setSize(structure)
     {   
         var pop = document.getElementById(structure + "sizepop");
-        if (document.getElementById(structure + "size").checkValidity())
+        var s = document.getElementById(structure + "size");
+        if (s.checkValidity())
         {   
             if(window.getComputedStyle(pop).visibility == "visible")
                 pop.classList.toggle("show");
 
-            let newsize = document.getElementById(structure + "size").value;
-            this.size = newsize;
+            this.size = s.value;
 
             for(let i = 0; i < this.size; i++)
             {
@@ -134,12 +135,14 @@ class ArrayApp extends VisualizerApp
     setElement()
     {
         var pop = document.getElementById("arraysetpop");
-        if(document.getElementById("arrayindexset").checkValidity())
+        var set = document.getElementById("arrayindexset")
+        if(set.checkValidity())
         {
             console.log("Setting array element");
             if(window.getComputedStyle(pop).visibility == "visible")
                 pop.classList.toggle("show");
-            let index = document.getElementById("arrayindexset").value;
+
+            let index = set.value;
             if(index < this.elements.length && index > -1)
             {
                 let element = prompt("Enter element", 0);
@@ -642,45 +645,75 @@ class HashApp extends VisualizerApp
 {
     add()
     {
-        console.log("Setting array element");
+        var pop = document.getElementById("hashaddpop");
+        var add = document.getElementById("hashadd");
+        if (add.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        let element = parseInt(document.getElementById("hashadd").value);
-        let key = Math.floor(this.size * (element * 0.618033 % 1));
-        let original = this.elements[key];
+            console.log("Setting array element");
 
-        if(this.elements[key] !== undefined)
-           alert("Hash collision. Element at index " + key + " will change from " + original + " to " + element);
-        this.elements[key] = element; 
-        this.drawArray(0, "#D9D9D9");
+            let element = parseInt(add.value);
+            let key = Math.floor(this.size * (element * 0.618033 % 1));
+            let original = this.elements[key];
+
+            if(this.elements[key] !== undefined && this.elements[key] != element)
+            alert("Hash collision. Element at index " + key + " will change from " + original + " to " + element);
+            this.elements[key] = element; 
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show");
 
     }
     async findElement()
     {
-        let element = document.getElementById("hashfind").value;
-        let index = Math.floor(this.size * (element * 0.618033 % 1));
-        
-        if(this.elements[index] == element)
-        {
-            await this.drawArray(index, "#3cff3e");
-            alert("Element " + element + " found at index " + index);
+        var pop = document.getElementById("hashfindpop");
+        var find = document.getElementById("hashfind");
+        if (find.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+
+            let element = find.value;
+            let index = Math.floor(this.size * (element * 0.618033 % 1));
+            
+            if(this.elements[index] == element)
+            {
+                await this.drawArray(index, "#3cff3e");
+                alert("Element " + element + " found at index " + index);
+            }
+            else
+            {
+                await this.drawArray(index, "#ff0000");
+                alert("Element " + element + " not found");
+            }
+            this.drawArray(0, "#D9D9D9", "Hash");
         }
         else
-        {
-            await this.drawArray(index, "#ff0000");
-            alert("Element " + element + " not found");
-        }
-        this.drawArray(0, "#D9D9D9");
+            pop.classList.toggle("show");   
     }
     delete()
     {
-        let element = document.getElementById("hashdelete").value;
-        let index = Math.floor(this.size * (element * 0.618033 % 1));
-        if(this.elements[index] == element)
-            this.elements[index] = undefined;
-        else
-            alert("Element " + element + " does not exist in the hash")
+        var pop = document.getElementById("hashdeletepop");
+        var del = document.getElementById("hashdelete");
+        if (del.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.drawArray(0, "#D9D9D9");
+            let element = del.value;
+            let index = Math.floor(this.size * (element * 0.618033 % 1));
+            if(this.elements[index] == element)
+                this.elements[index] = undefined;
+            else
+                alert("Element " + element + " does not exist in the hash")
+
+            this.drawArray(0, "#D9D9D9", "Hash");
+        }
+        else
+            pop.classList.toggle("show");
     }
 }
 
