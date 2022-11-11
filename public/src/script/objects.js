@@ -130,8 +130,7 @@ class VisualizerApp
 }
 
 class ArrayApp extends VisualizerApp
-{
-      
+{  
     setElement()
     {
         var pop = document.getElementById("arraysetpop");
@@ -165,13 +164,25 @@ class VectorApp extends VisualizerApp
 {
     push_back()
     {
-        console.log("pushing back element");
-        let element = document.getElementById("vectorpushback").value;
+        var pop = document.getElementById("vectorpushpop");
+        var push = document.getElementById("vectorpushback")
+        if(push.checkValidity())
+        {
+            console.log("Setting array element");
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.elements[this.index] = element;
-        (this.index)++;
+            console.log("pushing back element");
+            let element = push.value;
 
-        this.drawArray(0, "#D9D9D9");
+            this.elements[this.index] = element;
+            (this.index)++;
+            
+            this.size = this.elements.length;
+            this.drawArray(0, "#D9D9D9", "Vector");
+        }
+        else
+         pop.classList.toggle("show"); 
     }
     pop_back()
     {
@@ -180,7 +191,8 @@ class VectorApp extends VisualizerApp
         this.elements.pop();
         (this.index)--;
 
-        this.drawArray(0, "#D9D9D9");
+        this.size = this.elements.length;
+        this.drawArray(0, "#D9D9D9", "Vector");
     }
 }
 
@@ -269,37 +281,59 @@ class ListApp extends VisualizerApp
     }
     add()
     {
-        console.log("pushing back element");
-        let element = document.getElementById("add").value;
+        var pop = document.getElementById("listaddpop");
+        var add = document.getElementById("listadd");
+        if(add.checkValidity())
+        {
+            console.log("Setting array element");
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.elements.push(element);
+            let element = add.value;
 
-        this.drawArray(0, "#D9D9D9");
+            this.elements.push(element);
+
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show"); 
     }
     delete()
     {
-        console.log("deleting element");
-        let i = 0;
-        let element = document.getElementById("listdelete").value;
+        var pop = document.getElementById("listdeletepop");
+        var del = document.getElementById("listdelete");
+        if(del.checkValidity())
+        {
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        while(this.elements[i] != element && i <= this.elements.length)
-            i++;
-        
-        if(i < this.elements.length + 1)
-            this.elements.splice(i, 1);
+            console.log("deleting element");
+            let i = 0;
+            let element = del.value;
 
-        this.drawArray(0, "#D9D9D9");
+            while(this.elements[i] != element && i <= this.elements.length)
+                i++;
+            
+            if(i < this.elements.length + 1)
+                this.elements.splice(i, 1);
+
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show"); 
     }
 }
 
 class StackApp extends VisualizerApp
 {
+     maxSize = Math.floor(this.canvas.height / 125);
     async drawArray(index, color)
     {
+        
         console.log("Drawing in Stack App");
         this.clearCanvas();
 
-        let x_Axis = 625;
+        let x_Axis = 50;
         let y_Axis = (this.canvas.height-300);
         if(this.elements.length == 0)
         {
@@ -311,37 +345,47 @@ class StackApp extends VisualizerApp
         for(let i = 0; i < this.elements.length; i++)
         {
             console.log("rendering element");
-
             if(i == index)
                 this.context.fillStyle=color;
             else
                 this.context.fillStyle="#D9D9D9";
 
-            this.context.fillRect(x_Axis, y_Axis, 100, 100);
+            this.context.fillRect(x_Axis, y_Axis, 150, 50);
             this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x_Axis+40), (y_Axis+50));
+            this.context.fillText(this.elements[i], (x_Axis+64), (y_Axis+33));
             if(i == 0)
             {
-                this.context.fillText("bottom", (x_Axis+135), (y_Axis+50));
-            }
+                    this.context.fillText("bottom", (x_Axis+175), (y_Axis+40));
+             }
             else if(i == (this.elements.length-1))
             {
-                this.context.fillText("top", (x_Axis+135), (y_Axis+50));
+                this.context.fillText("top", (x_Axis+175), (y_Axis+40));
             }
-            y_Axis-=125;
+            y_Axis-=75;
+            
         } 
         if(color != "#D9D9D9")
             await sleep(700); 
     }
     push()
     {
-        console.log("pushing back element");
-        let element = document.getElementById("stackpush").value;
+        var pop = document.getElementById("stackpushpop");
+        var push = document.getElementById("stackpush");
+        if(push.checkValidity())
+        {
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+            if(this.index + 1 <= this.maxSize)
+            {console.log("pushing back element");
+            let element = push.value;
 
-        this.elements[this.index] = element;
-        (this.index)++;
+            this.elements[this.index] = element;
+            (this.index)++;
 
-        this.drawArray(0, "#D9D9D9");
+            this.drawArray(0, "#D9D9D9");}
+        }
+        else
+            pop.classList.toggle("show"); 
     }
     pop()
     {
@@ -410,13 +454,24 @@ class QueueApp extends VisualizerApp
     }
     enqueue()
     {
-        console.log("dequeueing element");
-        let element = document.getElementById("enqueue").value;
+        
+        var pop = document.getElementById("enqueuepop");
+        var nq = document.getElementById("enqueue");
+        if (nq.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.elements.unshift(element);
-        (this.index)++;
+            console.log("dequeueing element");
+            let element = nq.value;
 
-        this.drawArray(0, "#D9D9D9");
+            this.elements.unshift(element);
+            (this.index)++;
+
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show");
     }
     dequeue()
     {
