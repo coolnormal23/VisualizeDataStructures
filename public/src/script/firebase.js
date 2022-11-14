@@ -22,17 +22,6 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-try {
-    const docRef = await addDoc(collection(db, "users"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-}
-
 function signIn()
 {
     var email = document.getElementById("email").value;
@@ -49,7 +38,7 @@ function signIn()
         console.log(currentuser.providerData);
         
         //create user database document
-        /*console.log("Writing");
+        console.log("Writing");
         const userdoc = addDoc(collection(db,"userLogs"),{
             user:currentuser,
             //array
@@ -85,7 +74,7 @@ function signIn()
             hashDelete: false,
             hashFind: false
         });
-        console.log("Document written ID: ",userdoc.id);*/
+        console.log("Document written ID: ",userdoc.id);
         // ...
     })
     .catch((error) => {
