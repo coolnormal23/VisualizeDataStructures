@@ -326,15 +326,18 @@ class ListApp extends VisualizerApp
 
 class StackApp extends VisualizerApp
 {
-     maxSize = Math.floor(this.canvas.height / 125);
+    maxSize = Math.floor((this.canvas.height - 50) / 100);
     async drawArray(index, color)
     {
-        
+        this.maxSize = Math.floor((this.canvas.height - 50 ) / 100);
         console.log("Drawing in Stack App");
         this.clearCanvas();
 
+        while(this.elements.length > this.maxSize)
+            this.pop();
+        
         let x_Axis = 50;
-        let y_Axis = (this.canvas.height-300);
+        let y_Axis = (this.canvas.height-250);
         if(this.elements.length == 0)
         {
             console.log("stack empty");
@@ -349,18 +352,15 @@ class StackApp extends VisualizerApp
                 this.context.fillStyle=color;
             else
                 this.context.fillStyle="#D9D9D9";
-
+            
             this.context.fillRect(x_Axis, y_Axis, 150, 50);
             this.context.fillStyle="black";
             this.context.fillText(this.elements[i], (x_Axis+64), (y_Axis+33));
             if(i == 0)
-            {
-                    this.context.fillText("bottom", (x_Axis+175), (y_Axis+40));
-             }
+                this.context.fillText("bottom", (x_Axis+175), (y_Axis+40));
             else if(i == (this.elements.length-1))
-            {
                 this.context.fillText("top", (x_Axis+175), (y_Axis+40));
-            }
+
             y_Axis-=75;
             
         } 
@@ -375,14 +375,17 @@ class StackApp extends VisualizerApp
         {
             if(window.getComputedStyle(pop).visibility == "visible")
                 pop.classList.toggle("show");
+
             if(this.index + 1 <= this.maxSize)
-            {console.log("pushing back element");
-            let element = push.value;
+            {    
+                console.log("pushing back element");
+                let element = push.value;
 
-            this.elements[this.index] = element;
-            (this.index)++;
+                this.elements[this.index] = element;
+                (this.index)++;
 
-            this.drawArray(0, "#D9D9D9");}
+                this.drawArray(0, "#D9D9D9");
+            }
         }
         else
             pop.classList.toggle("show"); 
