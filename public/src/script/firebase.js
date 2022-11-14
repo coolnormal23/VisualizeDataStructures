@@ -40,7 +40,7 @@ function signIn()
         //create user database document
         console.log("Writing");
         const userdoc = addDoc(collection(db,"userLogs"),{
-            user:currentuser,
+            user:(currentuser.providerData[0].email),
             //array
             arraySetSize: false,
             arraySetElement: false,
@@ -105,6 +105,7 @@ function register()
         //create user database document
         console.log("Writing");
         const userdoc = addDoc(collection(db,"userLogs"),{
+            user:(currentuser.providerData[0].email),
             //array
             arraySetSize: false,
             arraySetElement: false,
