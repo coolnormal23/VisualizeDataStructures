@@ -1,7 +1,7 @@
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-  
+
 class VisualizerApp
 {
     elements = [];
@@ -19,9 +19,9 @@ class VisualizerApp
         this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
         this.context.font = '20px inter';
     }
-    async drawArray(index, color)
+    async drawArray(index, color, structure)
     {
-        console.log("Drawing in Array App");
+        console.log("Drawing in " + structure + "App");
         this.clearCanvas();
 
         let x = 50;
@@ -32,11 +32,11 @@ class VisualizerApp
             console.log("array empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Array is not initialized", (x), (y));
+            this.context.fillText(structure + " is not initialized", (x), (y));
         }
         else
         {
-            for(let i = 0; i < this.elements.length; i++)
+            for(let i = 0; i < this.size; i++)
             {
                 if(x >= (this.canvas.width-200))
                 {
@@ -67,79 +67,122 @@ class VisualizerApp
         }
     }
     async findElement(structure)
-    {       
-        console.log("Findelement");
-        if(this.elements.length == 0)
-            alert(structure + " does not exist yet");
-        else
-        {    
-            let element = document.getElementById(structure + "find").value;
-            let found = false;
-            for( let i = 0; i < this.elements.length; i++)
-            {
-                    if(element == this.elements[i])
-                    {
-                        found = true;
-                        await this.drawArray(i, "#3cff3e");
-                        alert("Element " + element + " found at index " + i);
-                    }
-                    else
-                    {
-                        await this.drawArray(i, "#ff0000");
-                    }
+    {   
+        var pop = document.getElementById(structure + "findpop");
+        var find = document.getElementById(structure + "find");
+        if (find.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+                
+            console.log("Findelement");
+            if(this.elements.length == 0)
+                alert(structure + " does not exist yet");
+            else
+            {    
+                let element = find.value;
+                let found = false;
+                for( let i = 0; i < this.elements.length; i++)
+                {
+                        if(element == this.elements[i])
+                        {
+                            found = true;
+                            await this.drawArray(i, "#3cff3e");
+                            alert("Element " + element + " found at index " + i);
+                        }
+                        else
+                        {
+                            await this.drawArray(i, "#ff0000");
+                        }
+                }
+                if(found == false)
+                {
+                    alert("Element " + element + " not found.");
+                }
+                this.drawArray(0, "#D9D9D9");
             }
-            if(found == false)
-            {
-                alert("Element " + element + " not found.");
-            }
-            this.drawArray(0, "#D9D9D9");
         }
+        else
+            pop.classList.toggle("show");    
     }  
     setSize(structure)
-    {
-        let newsize = document.getElementById(structure + "size").value;
-        this.size = newsize;
+    {   
+        var pop = document.getElementById(structure + "sizepop");
+        var s = document.getElementById(structure + "size");
+        if (s.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        for(let i = 0; i < this.size; i++)
-        {
-            console.log("adding undefined element");
-            this.elements[i] = undefined;
-        }
-        this.drawArray(0, "#D9D9D9");
+            this.size = s.value;
+
+            for(let i = 0; i < this.size; i++)
+            {
+                console.log("adding undefined element");
+                this.elements[i] = undefined;
+            }
+            this.clearCanvas();
+            this.drawArray(0, "#D9D9D9", structure);}
+        else
+            pop.classList.toggle("show");    
+            
     }
 }
 
 class ArrayApp extends VisualizerApp
-{
+{  
     setElement()
     {
-        console.log("Setting array element");
-
-        let index = document.getElementById("arrayindexset").value;
-        if(index < this.elements.length && index > -1)
+        var pop = document.getElementById("arraysetpop");
+        var set = document.getElementById("arrayindexset")
+        if(set.checkValidity())
         {
-            let element = prompt("Enter element", 0);
+            console.log("Setting array element");
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-            this.elements[index] = element;
+            let index = set.value;
+            if(index < this.elements.length && index > -1)
+            {
+                let element = prompt("Enter element", 0);
+
+                this.elements[index] = element;
+            }
+            else
+                alert("This index does not exist");
+
+            this.drawArray(0, "#D9D9D9", "Array");
         }
         else
-            alert("This index does not exist");
-        this.drawArray(0, "#D9D9D9");
-        
+            pop.classList.toggle("show"); 
+            
     } 
 }
+
 
 class VectorApp extends VisualizerApp
 {
     push_back()
     {
-        console.log("pushing back element");
-        let element = document.getElementById("vectorpushback").value;
+        var pop = document.getElementById("vectorpushpop");
+        var push = document.getElementById("vectorpushback")
+        if(push.checkValidity())
+        {
+            console.log("Setting array element");
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.elements[this.index] = element;
-        (this.index)++;
+            console.log("pushing back element");
+            let element = push.value;
 
-        this.drawArray(0, "#D9D9D9");
+            this.elements[this.index] = element;
+            (this.index)++;
+            
+            this.size = this.elements.length;
+            this.drawArray(0, "#D9D9D9", "Vector");
+        }
+        else
+         pop.classList.toggle("show"); 
     }
     pop_back()
     {
@@ -148,7 +191,8 @@ class VectorApp extends VisualizerApp
         this.elements.pop();
         (this.index)--;
 
-        this.drawArray(0, "#D9D9D9");
+        this.size = this.elements.length;
+        this.drawArray(0, "#D9D9D9", "Vector");
     }
 }
 
@@ -217,7 +261,7 @@ class ListApp extends VisualizerApp
             console.log("linkedlist empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Linked list contains no elements", (x), (y));
+            this.context.fillText("Linked List contains no elements", (x), (y));
         }
         else
         {
@@ -237,30 +281,59 @@ class ListApp extends VisualizerApp
     }
     add()
     {
-        console.log("pushing back element");
-        let element = document.getElementById("add").value;
+        var pop = document.getElementById("listaddpop");
+        var add = document.getElementById("listadd");
+        if(add.checkValidity())
+        {
+            console.log("Setting array element");
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.elements.push(element);
+            let element = add.value;
 
-        this.drawArray(0, "#D9D9D9");
+            this.elements.push(element);
+
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show"); 
     }
     delete()
     {
-        console.log("deleting element");
-        this.elements.splice((document.getElementById("listdelete").value), 1);
+        var pop = document.getElementById("listdeletepop");
+        var del = document.getElementById("listdelete");
+        if(del.checkValidity())
+        {
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.drawArray(0, "#D9D9D9");
+            console.log("deleting element");
+            let i = 0;
+            let element = del.value;
+
+            while(this.elements[i] != element && i <= this.elements.length)
+                i++;
+            
+            if(i < this.elements.length + 1)
+                this.elements.splice(i, 1);
+
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show"); 
     }
 }
 
 class StackApp extends VisualizerApp
 {
+     maxSize = Math.floor(this.canvas.height / 125);
     async drawArray(index, color)
     {
+        
         console.log("Drawing in Stack App");
         this.clearCanvas();
 
-        let x_Axis = 625;
+        let x_Axis = 50;
         let y_Axis = (this.canvas.height-300);
         if(this.elements.length == 0)
         {
@@ -272,37 +345,47 @@ class StackApp extends VisualizerApp
         for(let i = 0; i < this.elements.length; i++)
         {
             console.log("rendering element");
-
             if(i == index)
                 this.context.fillStyle=color;
             else
                 this.context.fillStyle="#D9D9D9";
 
-            this.context.fillRect(x_Axis, y_Axis, 100, 100);
+            this.context.fillRect(x_Axis, y_Axis, 150, 50);
             this.context.fillStyle="black";
-            this.context.fillText(this.elements[i], (x_Axis+40), (y_Axis+50));
+            this.context.fillText(this.elements[i], (x_Axis+64), (y_Axis+33));
             if(i == 0)
             {
-                this.context.fillText("bottom", (x_Axis+135), (y_Axis+50));
-            }
+                    this.context.fillText("bottom", (x_Axis+175), (y_Axis+40));
+             }
             else if(i == (this.elements.length-1))
             {
-                this.context.fillText("top", (x_Axis+135), (y_Axis+50));
+                this.context.fillText("top", (x_Axis+175), (y_Axis+40));
             }
-            y_Axis-=125;
+            y_Axis-=75;
+            
         } 
         if(color != "#D9D9D9")
             await sleep(700); 
     }
     push()
     {
-        console.log("pushing back element");
-        let element = document.getElementById("stackpush").value;
+        var pop = document.getElementById("stackpushpop");
+        var push = document.getElementById("stackpush");
+        if(push.checkValidity())
+        {
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+            if(this.index + 1 <= this.maxSize)
+            {console.log("pushing back element");
+            let element = push.value;
 
-        this.elements[this.index] = element;
-        (this.index)++;
+            this.elements[this.index] = element;
+            (this.index)++;
 
-        this.drawArray(0, "#D9D9D9");
+            this.drawArray(0, "#D9D9D9");}
+        }
+        else
+            pop.classList.toggle("show"); 
     }
     pop()
     {
@@ -330,7 +413,7 @@ class QueueApp extends VisualizerApp
             console.log("array empty");
             this.context.font = '40px inter';
             this.context.fillStyle="black";
-            this.context.fillText("Array is not initialized", (x), (y));
+            this.context.fillText("Queue is not initialized", (x), (y));
         }
         else
         {
@@ -371,13 +454,24 @@ class QueueApp extends VisualizerApp
     }
     enqueue()
     {
-        console.log("dequeueing element");
-        let element = document.getElementById("enqueue").value;
+        
+        var pop = document.getElementById("enqueuepop");
+        var nq = document.getElementById("enqueue");
+        if (nq.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.elements.unshift(element);
-        (this.index)++;
+            console.log("dequeueing element");
+            let element = nq.value;
 
-        this.drawArray(0, "#D9D9D9");
+            this.elements.unshift(element);
+            (this.index)++;
+
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show");
     }
     dequeue()
     {
@@ -606,45 +700,75 @@ class HashApp extends VisualizerApp
 {
     add()
     {
-        console.log("Setting array element");
+        var pop = document.getElementById("hashaddpop");
+        var add = document.getElementById("hashadd");
+        if (add.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        let element = parseInt(document.getElementById("hashadd").value);
-        let key = Math.floor(this.size * (element * 0.618033 % 1));
-        let original = this.elements[key];
+            console.log("Setting array element");
 
-        if(this.elements[key] !== undefined)
-           alert("Hash collision. Element at index " + key + " will change from " + original + " to " + element);
-        this.elements[key] = element; 
-        this.drawArray(0, "#D9D9D9");
+            let element = parseInt(add.value);
+            let key = Math.floor(this.size * (element * 0.618033 % 1));
+            let original = this.elements[key];
+
+            if(this.elements[key] !== undefined && this.elements[key] != element)
+            alert("Hash collision. Element at index " + key + " will change from " + original + " to " + element);
+            this.elements[key] = element; 
+            this.drawArray(0, "#D9D9D9");
+        }
+        else
+            pop.classList.toggle("show");
 
     }
     async findElement()
     {
-        let element = document.getElementById("hashfind").value;
-        let index = Math.floor(this.size * (element * 0.618033 % 1));
-        
-        if(this.elements[index] == element)
-        {
-            await this.drawArray(index, "#3cff3e");
-            alert("Element " + element + " found at index " + index);
+        var pop = document.getElementById("hashfindpop");
+        var find = document.getElementById("hashfind");
+        if (find.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
+
+            let element = find.value;
+            let index = Math.floor(this.size * (element * 0.618033 % 1));
+            
+            if(this.elements[index] == element)
+            {
+                await this.drawArray(index, "#3cff3e");
+                alert("Element " + element + " found at index " + index);
+            }
+            else
+            {
+                await this.drawArray(index, "#ff0000");
+                alert("Element " + element + " not found");
+            }
+            this.drawArray(0, "#D9D9D9", "Hash");
         }
         else
-        {
-            await this.drawArray(index, "#ff0000");
-            alert("Element " + element + " not found");
-        }
-        this.drawArray(0, "#D9D9D9");
+            pop.classList.toggle("show");   
     }
     delete()
     {
-        let element = document.getElementById("hashdelete").value;
-        let index = Math.floor(this.size * (element * 0.618033 % 1));
-        if(this.elements[index] == element)
-            this.elements[index] = undefined;
-        else
-            alert("Element " + element + " does not exist in the hash")
+        var pop = document.getElementById("hashdeletepop");
+        var del = document.getElementById("hashdelete");
+        if (del.checkValidity())
+        {   
+            if(window.getComputedStyle(pop).visibility == "visible")
+                pop.classList.toggle("show");
 
-        this.drawArray(0, "#D9D9D9");
+            let element = del.value;
+            let index = Math.floor(this.size * (element * 0.618033 % 1));
+            if(this.elements[index] == element)
+                this.elements[index] = undefined;
+            else
+                alert("Element " + element + " does not exist in the hash")
+
+            this.drawArray(0, "#D9D9D9", "Hash");
+        }
+        else
+            pop.classList.toggle("show");
     }
 }
 
@@ -659,5 +783,5 @@ const hashcontroller = new HashApp();
 
 window.addEventListener('load', () =>
 {
-    arraycontroller.drawArray(0, "#D9D9D9");
+    arraycontroller.drawArray(0, "#D9D9D9", "Array");
 })
