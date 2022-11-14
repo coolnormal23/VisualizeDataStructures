@@ -1,11 +1,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js'
-    
+
 // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js'
 
 // Add Firebase products that you want to use
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
 const firebaseConfig = {
     apiKey: "AIzaSyAVubYGtFuLci5rpbMH4VC0ST8Hz7ayV88",
     authDomain: "visualizedatastructures.firebaseapp.com",
@@ -20,6 +20,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+try {
+    const docRef = await addDoc(collection(db, "users"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+}
 
 function signIn()
 {
@@ -28,11 +40,52 @@ function signIn()
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         console.log("Signed in");
-        var user = userCredential.user;
+        var currentuser = userCredential.user;
         document.getElementById('id01').style.display='none'
         document.getElementById('loginformopenbutton').style.display="none";
         document.getElementById('signedinstatus').style.display="block";
-        document.getElementById('signedinstatus').innerHTML=("Signed in as "+user.providerData.email);
+        document.getElementById('signedinstatus').innerHTML=("Signed in as " + currentuser.providerData[0].email);
+        console.log(currentuser);
+        console.log(currentuser.providerData);
+        
+        //create user database document
+        /*console.log("Writing");
+        const userdoc = addDoc(collection(db,"userLogs"),{
+            user:currentuser,
+            //array
+            arraySetSize: false,
+            arraySetElement: false,
+            arrayFindElement: false,
+            
+            //vector
+            vectorPushBack: false,
+            vectorPopBack: false,
+            vectorFindElement: false,
+            
+            //linkedlist
+            listAdd: false,
+            listDelete: false,
+            listFindElement: false,
+            
+            //bst
+            treeInsert: false,
+            
+            //queue
+            queueEnqueue: false,
+            queueDequeue: false,
+            queueFindElement: false,
+            
+            //stack
+            stackPush: false,
+            stackPop: false,
+            
+            //hash
+            hashSetSize: false,
+            hashAdd: false,
+            hashDelete: false,
+            hashFind: false
+        });
+        console.log("Document written ID: ",userdoc.id);*/
         // ...
     })
     .catch((error) => {
@@ -42,7 +95,7 @@ function signIn()
         console.log(errorCode);
         console.log(errorMessage);
         document.getElementById('loginerror').style.display="block";
-    })
+    });
 }
 
 function register()
@@ -52,11 +105,51 @@ function register()
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         console.log("Signed in");
-        var user = userCredential.user;
+        var currentuser = userCredential.user;
         document.getElementById('id01').style.display='none'
         document.getElementById('loginformopenbutton').style.display="none";
         document.getElementById('signedinstatus').style.display="block";
-        document.getElementById('signedinstatus').innerHTML="Signed in";
+        document.getElementById('signedinstatus').innerHTML=("Signed in as " + currentuser.providerData[0].email);
+        console.log(currentuser);
+        console.log(currentuser.providerData);
+        
+        //create user database document
+        console.log("Writing");
+        const userdoc = addDoc(collection(db,"userLogs"),{
+            //array
+            arraySetSize: false,
+            arraySetElement: false,
+            arrayFindElement: false,
+            
+            //vector
+            vectorPushBack: false,
+            vectorPopBack: false,
+            vectorFindElement: false,
+            
+            //linkedlist
+            listAdd: false,
+            listDelete: false,
+            listFindElement: false,
+            
+            //bst
+            treeInsert: false,
+            
+            //queue
+            queueEnqueue: false,
+            queueDequeue: false,
+            queueFindElement: false,
+            
+            //stack
+            stackPush: false,
+            stackPop: false,
+            
+            //hash
+            hashSetSize: false,
+            hashAdd: false,
+            hashDelete: false,
+            hashFind: false
+        });
+        console.log("Document written ID: ",userdoc.id);
     })
     .catch((error) => {
         var errorCode = error.code;
