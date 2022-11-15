@@ -45,7 +45,7 @@ function signIn()
             querySnapshot.forEach((doc) => {
                 if(doc.data().user == currentuser.providerData[0].email)
                 {
-                    userFound == true;
+                    userFound = true;
                     currentuserdocument = doc;
                     console.log("Document found");
                 }
@@ -181,5 +181,7 @@ onAuthStateChanged(auth, (user)=>{
         document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{
             arraySetSize: true
         }));
+        document.getElementById("arraySetSizeButton").addEventListener("click", console.log
+        ("updateDoc, arraysetsize"));
     }
 });
