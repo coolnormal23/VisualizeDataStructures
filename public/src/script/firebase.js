@@ -182,6 +182,6 @@ function changeDb(field)
 onAuthStateChanged(auth, (user)=>{
     if(user)
     {
-        document.getElementById("arraySetSizeButton").addEventListener("click", changeDb(arraySetSize));
+        document.getElementById("arraySetSizeButton").addEventListener("click", changeDb("arraySetSize"));
     }
 });
