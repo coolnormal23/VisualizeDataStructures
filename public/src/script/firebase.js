@@ -89,6 +89,7 @@ function signIn()
                 hashFind: false
             });
             console.log("Document written ID: ",userdoc.id);
+            currentuserdocument = userdoc;
         }
         // ...
     })
@@ -156,6 +157,7 @@ function register()
             hashFind: false
         });
         console.log("Document written ID: ",userdoc.id);
+        currentuserdocument = userdoc;
     })
     .catch((error) => {
         var errorCode = error.code;
@@ -175,7 +177,7 @@ window.onload = function(){
 onAuthStateChanged(auth, (user)=>{
     if(user)
     {
-        document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc({
+        document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{
             arraySetSize:true
         }));
     }
