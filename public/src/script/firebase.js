@@ -51,7 +51,7 @@ function signIn()
                 }
             });
             return null;
-        }).then((NULL) => {
+        }).then(function(){
             if(!userFound)
             {
                 const userdoc = addDoc(collection(db,"userLogs"),{
@@ -92,6 +92,7 @@ function signIn()
                 console.log("Document written ID: ",userdoc.id);
                 currentuserdocument = userdoc;
             }
+            return null;
         });
         // ...
     })
@@ -187,3 +188,9 @@ onAuthStateChanged(auth, (user)=>{
         ("updateDoc, arraysetsize"));
     }
 });
+
+document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{
+    arraySetSize: true
+}));
+document.getElementById("arraySetSizeButton").addEventListener("click", console.log
+("updateDoc, arraysetsize"));
