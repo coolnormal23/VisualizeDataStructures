@@ -172,16 +172,14 @@ window.onload = function(){
     document.getElementById("registerbutton").addEventListener("click", register);
 }
 
-function changeDb(field)
+function changeDb(obj)
 {
-    var obj = {};
-    obj[field] = true;
     updateDoc(currentuserdocument, obj);
 }
 
 onAuthStateChanged(auth, (user)=>{
     if(user)
     {
-        document.getElementById("arraySetSizeButton").addEventListener("click", changeDb("arraySetSize"));
+        document.getElementById("arraySetSizeButton").addEventListener("click", changeDb({arraySetSize:true}));
     }
 });
