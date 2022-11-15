@@ -48,78 +48,78 @@ function signIn()
                     console.log("Document found");
                     const docref = doc(db,"userLogs",foundDocument.id);
                     //arrays
-                    document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("arraySetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetSize:true
-                    }));
-                    document.getElementById("arraySetElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("arraySetElementButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetElement:true
-                    }));
-                    document.getElementById("arrayFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("arrayFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         arrayFindElement:true
-                    }));
+                    })});
                     
                     //vectors
-                    document.getElementById("vectorPushBackButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("vectorPushBackButton").addEventListener("click", function(){updateDoc(docref,{
                         vectorPushBack:true
-                    }));
-                    document.getElementById("vectorPopBackButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("vectorPopBackButton").addEventListener("click", function(){updateDoc(docref,{
                         vectorPopBack:true
-                    }));
-                    document.getElementById("vectorFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("vectorFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         vectorFindElement:true
-                    }));
+                    })});
                     
                     //lists
-                    document.getElementById("listAddButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("listAddButton").addEventListener("click", function(){updateDoc(docref,{
                         listAdd:true
-                    }));
-                    document.getElementById("listDeleteButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("listDeleteButton").addEventListener("click", function(){updateDoc(docref,{
                         listDelete:true
-                    }));
-                    document.getElementById("listFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("listFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         listFindElement:true
-                    }));
+                    })});
                     
                     //stacks
-                    document.getElementById("stackPushButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("stackPushButton").addEventListener("click", function(){updateDoc(docref,{
                         stackPush:true
-                    }));
-                    document.getElementById("stackPopButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("stackPopButton").addEventListener("click", function(){updateDoc(docref,{
                         stackPop:true
-                    }));
-                    document.getElementById("stackFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("stackFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         stackFindElement:true
-                    }));
+                    })});
                     
                     //queues
-                    document.getElementById("queueEnqueueButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("queueEnqueueButton").addEventListener("click", function(){updateDoc(docref,{
                         queueEnqueue:true
-                    }));
-                    document.getElementById("queueDequeueButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("queueDequeueButton").addEventListener("click", function(){updateDoc(docref,{
                         queueDequeue:true
-                    }));
-                    document.getElementById("queueFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("queueFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         queueFindElement:true
-                    }));
+                    })});
                     
                     //bst
-                    document.getElementById("bstinsertButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("bstinsertButton").addEventListener("click", function(){updateDoc(docref,{
                         treeInsert:true
-                    }));
+                    })});
                     
                     //hashes
-                    document.getElementById("hashAddButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("hashAddButton").addEventListener("click", function(){updateDoc(docref,{
                         hashAdd:true
-                    }));
-                    document.getElementById("hashDeleteButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("hashDeleteButton").addEventListener("click", function(){updateDoc(docref,{
                         hashDelete:true
-                    }));
-                    document.getElementById("hashFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("hashFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         hashFind:true
-                    }));
-                    document.getElementById("hashSetSizeButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("hashSetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         hashSetSize:true
-                    }));
+                    })});
                     console.log("Document found");
                 }
             });
@@ -241,78 +241,78 @@ function register()
                     userFound = true;
                     const docref = doc(db,"userLogs",foundDocument.id);
                     //arrays
-                    document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("arraySetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetSize:true
-                    }));
-                    document.getElementById("arraySetElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("arraySetElementButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetElement:true
-                    }));
-                    document.getElementById("arrayFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("arrayFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         arrayFindElement:true
-                    }));
+                    })});
                     
                     //vectors
-                    document.getElementById("vectorPushBackButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("vectorPushBackButton").addEventListener("click", function(){updateDoc(docref,{
                         vectorPushBack:true
-                    }));
-                    document.getElementById("vectorPopBackButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("vectorPopBackButton").addEventListener("click", function(){updateDoc(docref,{
                         vectorPopBack:true
-                    }));
-                    document.getElementById("vectorFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("vectorFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         vectorFindElement:true
-                    }));
+                    })});
                     
                     //lists
-                    document.getElementById("listAddButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("listAddButton").addEventListener("click", function(){updateDoc(docref,{
                         listAdd:true
-                    }));
-                    document.getElementById("listDeleteButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("listDeleteButton").addEventListener("click", function(){updateDoc(docref,{
                         listDelete:true
-                    }));
-                    document.getElementById("listFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("listFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         listFindElement:true
-                    }));
+                    })});
                     
                     //stacks
-                    document.getElementById("stackPushButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("stackPushButton").addEventListener("click", function(){updateDoc(docref,{
                         stackPush:true
-                    }));
-                    document.getElementById("stackPopButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("stackPopButton").addEventListener("click", function(){updateDoc(docref,{
                         stackPop:true
-                    }));
-                    document.getElementById("stackFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("stackFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         stackFindElement:true
-                    }));
+                    })});
                     
                     //queues
-                    document.getElementById("queueEnqueueButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("queueEnqueueButton").addEventListener("click", function(){updateDoc(docref,{
                         queueEnqueue:true
-                    }));
-                    document.getElementById("queueDequeueButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("queueDequeueButton").addEventListener("click", function(){updateDoc(docref,{
                         queueDequeue:true
-                    }));
-                    document.getElementById("queueFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("queueFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         queueFindElement:true
-                    }));
+                    })});
                     
                     //bst
-                    document.getElementById("bstinsertButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("bstinsertButton").addEventListener("click", function(){updateDoc(docref,{
                         treeInsert:true
-                    }));
+                    })});
                     
                     //hashes
-                    document.getElementById("hashAddButton").addEventListener("click", updateDoc(docref,{
+                    document.getElementById("hashAddButton").addEventListener("click", function(){updateDoc(docref,{
                         hashAdd:true
-                    }));
-                    document.getElementById("hashDeleteButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("hashDeleteButton").addEventListener("click", function(){updateDoc(docref,{
                         hashDelete:true
-                    }));
-                    document.getElementById("hashFindElementButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("hashFindElementButton").addEventListener("click", function(){updateDoc(docref,{
                         hashFind:true
-                    }));
-                    document.getElementById("hashSetSizeButton").addEventListener("click", updateDoc(docref,{
+                    })});
+                    document.getElementById("hashSetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         hashSetSize:true
-                    }));
+                    })});
                     console.log("Document found");
                 }
             });
