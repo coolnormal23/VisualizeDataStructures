@@ -51,48 +51,48 @@ function signIn()
                 }
             });
             return null;
+        }).then((NULL) => {
+            if(!userFound)
+            {
+                const userdoc = addDoc(collection(db,"userLogs"),{
+                    user:(currentuser.providerData[0].email),
+                    //array
+                    arraySetSize: false,
+                    arraySetElement: false,
+                    arrayFindElement: false,
+                    
+                    //vector
+                    vectorPushBack: false,
+                    vectorPopBack: false,
+                    vectorFindElement: false,
+                    
+                    //linkedlist
+                    listAdd: false,
+                    listDelete: false,
+                    listFindElement: false,
+                    
+                    //bst
+                    treeInsert: false,
+                    
+                    //queue
+                    queueEnqueue: false,
+                    queueDequeue: false,
+                    queueFindElement: false,
+                    
+                    //stack
+                    stackPush: false,
+                    stackPop: false,
+                    
+                    //hash
+                    hashSetSize: false,
+                    hashAdd: false,
+                    hashDelete: false,
+                    hashFind: false
+                });
+                console.log("Document written ID: ",userdoc.id);
+                currentuserdocument = userdoc;
+            }
         });
-
-        if(!userFound)
-        {
-            const userdoc = addDoc(collection(db,"userLogs"),{
-                user:(currentuser.providerData[0].email),
-                //array
-                arraySetSize: false,
-                arraySetElement: false,
-                arrayFindElement: false,
-                
-                //vector
-                vectorPushBack: false,
-                vectorPopBack: false,
-                vectorFindElement: false,
-                
-                //linkedlist
-                listAdd: false,
-                listDelete: false,
-                listFindElement: false,
-                
-                //bst
-                treeInsert: false,
-                
-                //queue
-                queueEnqueue: false,
-                queueDequeue: false,
-                queueFindElement: false,
-                
-                //stack
-                stackPush: false,
-                stackPop: false,
-                
-                //hash
-                hashSetSize: false,
-                hashAdd: false,
-                hashDelete: false,
-                hashFind: false
-            });
-            console.log("Document written ID: ",userdoc.id);
-            currentuserdocument = userdoc;
-        }
         // ...
     })
     .catch((error) => {
