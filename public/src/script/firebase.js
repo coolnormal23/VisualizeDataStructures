@@ -42,12 +42,12 @@ function signIn()
         console.log("Writing in signin");
         var userFound = false;
         getDocs(collection(db, "userLogs")).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                if((doc.data().user) == (currentuser.providerData[0].email))
+            querySnapshot.forEach((foundDocument) => {
+                if((foundDocument.data().user) == (currentuser.providerData[0].email))
                 {
                     userFound = true;
-                    currentuserdocument = doc;
-                    const docref = doc(db,"userLogs",doc.data().id);
+                    currentuserdocument = foundDocument;
+                    const docref = doc(db,"userLogs",foundDocument.data().id);
                     document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
                         arraySetSize:true
                     }));
