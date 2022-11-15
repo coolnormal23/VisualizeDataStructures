@@ -5,7 +5,7 @@ import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase
 
 // Add Firebase products that you want to use
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
-import { getFirestore, collection, addDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
+import { getFirestore, collection, addDoc, updateDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
 const firebaseConfig = {
     apiKey: "AIzaSyAVubYGtFuLci5rpbMH4VC0ST8Hz7ayV88",
     authDomain: "visualizedatastructures.firebaseapp.com",
@@ -178,7 +178,7 @@ onAuthStateChanged(auth, (user)=>{
     if(user)
     {
         document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{
-            arraySetSize:true
+            arraySetSize: true
         }));
     }
 });
