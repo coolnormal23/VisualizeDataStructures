@@ -39,11 +39,11 @@ function signIn()
         console.log(currentuser.providerData);
         
         //database document
-        console.log("Writing");
+        console.log("Writing in signin");
         var userFound = false;
         getDocs(collection(db, "userLogs")).then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                if(doc.data().user == currentuser.providerData[0].email)
+                if((doc.data().user) == (currentuser.providerData[0].email))
                 {
                     userFound = true;
                     currentuserdocument = doc;
@@ -52,7 +52,8 @@ function signIn()
             });
             return null;
         });
-        if(userFound == false)
+
+        if(!userFound)
         {
             const userdoc = addDoc(collection(db,"userLogs"),{
                 user:(currentuser.providerData[0].email),
@@ -121,7 +122,7 @@ function register()
         console.log(currentuser.providerData);
         
         //create user database document
-        console.log("Writing");
+        console.log("Writing register");
         const userdoc = addDoc(collection(db,"userLogs"),{
             user:(currentuser.providerData[0].email),
             //array
@@ -178,6 +179,7 @@ window.onload = function(){
 onAuthStateChanged(auth, (user)=>{
     if(user)
     {
+        console.log("onAuthStateFired");
         document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{
             arraySetSize: true
         }));
