@@ -4,7 +4,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebas
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js'
 
 // Add Firebase products that you want to use
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
 const firebaseConfig = {
     apiKey: "AIzaSyAVubYGtFuLci5rpbMH4VC0ST8Hz7ayV88",
@@ -21,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+var currentuserdocument;
 
 function signIn()
 {
@@ -37,44 +38,58 @@ function signIn()
         console.log(currentuser);
         console.log(currentuser.providerData);
         
-        //create user database document
+        //database document
         console.log("Writing");
-        const userdoc = addDoc(collection(db,"userLogs"),{
-            user:(currentuser.providerData[0].email),
-            //array
-            arraySetSize: false,
-            arraySetElement: false,
-            arrayFindElement: false,
-            
-            //vector
-            vectorPushBack: false,
-            vectorPopBack: false,
-            vectorFindElement: false,
-            
-            //linkedlist
-            listAdd: false,
-            listDelete: false,
-            listFindElement: false,
-            
-            //bst
-            treeInsert: false,
-            
-            //queue
-            queueEnqueue: false,
-            queueDequeue: false,
-            queueFindElement: false,
-            
-            //stack
-            stackPush: false,
-            stackPop: false,
-            
-            //hash
-            hashSetSize: false,
-            hashAdd: false,
-            hashDelete: false,
-            hashFind: false
+        var userFound = false;
+        const querySnapshot = getDocs(collection(db, "userLogs"));
+        querySnapshot.forEach((doc) => {
+            // if document found with user email
+            if(doc.data().user == currentuser.providerData[0].email)
+            {
+                userFound == true;
+                currentuserdocument = doc;
+                console.log("Document found");
+            }
         });
-        console.log("Document written ID: ",userdoc.id);
+        if(userFound == false)
+        {
+            const userdoc = addDoc(collection(db,"userLogs"),{
+                user:(currentuser.providerData[0].email),
+                //array
+                arraySetSize: false,
+                arraySetElement: false,
+                arrayFindElement: false,
+                
+                //vector
+                vectorPushBack: false,
+                vectorPopBack: false,
+                vectorFindElement: false,
+                
+                //linkedlist
+                listAdd: false,
+                listDelete: false,
+                listFindElement: false,
+                
+                //bst
+                treeInsert: false,
+                
+                //queue
+                queueEnqueue: false,
+                queueDequeue: false,
+                queueFindElement: false,
+                
+                //stack
+                stackPush: false,
+                stackPop: false,
+                
+                //hash
+                hashSetSize: false,
+                hashAdd: false,
+                hashDelete: false,
+                hashFind: false
+            });
+            console.log("Document written ID: ",userdoc.id);
+        }
         // ...
     })
     .catch((error) => {
@@ -93,6 +108,7 @@ function register()
     var password = document.getElementById("psw").value;
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+        //signing in
         console.log("Signed in");
         var currentuser = userCredential.user;
         document.getElementById('id01').style.display='none'
@@ -155,3 +171,17 @@ window.onload = function(){
     document.getElementById("loginbutton").addEventListener("click", signIn);
     document.getElementById("registerbutton").addEventListener("click", register);
 }
+
+function changeDb(field)
+{
+    var obj = {};
+    obj[field] = true;
+    updateDoc(currentuserdocument, obj);
+}
+
+onAuthStateChanged(auth, (user)=>{
+    if(user)
+    {
+        document.getElementById("arraySetSizeButton").addEventListener("click", changeDb(arraySetSize));
+    }
+});
