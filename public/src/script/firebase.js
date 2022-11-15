@@ -47,7 +47,7 @@ function signIn()
                 {
                     userFound = true;
                     currentuserdocument = foundDocument;
-                    const docref = doc(db,"userLogs",foundDocument.data().id);
+                    const docref = doc(db,"userLogs",foundDocument.id);
                     document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
                         arraySetSize:true
                     }));
