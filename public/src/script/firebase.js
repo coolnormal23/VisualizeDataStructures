@@ -48,73 +48,71 @@ function signIn()
                     userFound = true;
                     console.log("Document found");
                     const docref = doc(db,"userLogs",foundDocument.id);
-                    //progress page
-                    const docSnap = getDoc(docref);
                     function updateProgress()
                     {
-                        if(docSnap.data().arraySetSize == true) {
+                        if(foundDocument.data().arraySetSize == true) {
                             document.getElementById("arraySetSizeReport").innerHTML = "Set Size: ✔";
                         } 
-                        if(docSnap.data().arraySetElement == true) {
+                        if(foundDocument.data().arraySetElement == true) {
                             document.getElementById("arraySetElementReport").innerHTML = "Set Element: ✔";
                         } 
-                        if(docSnap.data().arrayFindElement == true) {
+                        if(foundDocument.data().arrayFindElement == true) {
                             document.getElementById("arrayFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().vectorPushBack == true) {
+                        if(foundDocument.data().vectorPushBack == true) {
                             document.getElementById("vectorPushBackReport").innerHTML = "push_back: ✔";
                         }
-                        if(docSnap.data().vectorPopBack == true) {
+                        if(foundDocument.data().vectorPopBack == true) {
                             document.getElementById("vectorPopBackReport").innerHTML = "pop_back: ✔";
                         }
-                        if(docSnap.data().vectorFindElement == true) {
+                        if(foundDocument.data().vectorFindElement == true) {
                             document.getElementById("vectorFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().listAdd == true) {
+                        if(foundDocument.data().listAdd == true) {
                             document.getElementById("listAddReport").innerHTML = "Add Element: ✔";
                         }
-                        if(docSnap.data().listDelete == true) {
+                        if(foundDocument.data().listDelete == true) {
                             document.getElementById("listDeleteReport").innerHTML = "Delete Element: ✔";
                         }
-                        if(docSnap.data().listFindElement == true) {
+                        if(foundDocument.data().listFindElement == true) {
                             document.getElementById("listFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().treeInsert == true) {
+                        if(foundDocument.data().treeInsert == true) {
                             document.getElementById("treeInsertReport").innerHTML = "Add Element: ✔";
                         }
-                        if(docSnap.data().queueEnqueue == true) {
+                        if(foundDocument.data().queueEnqueue == true) {
                             document.getElementById("queueEnqueueReport").innerHTML = "Enqueue Element: ✔";
                         }
-                        if(docSnap.data().queueDequeue == true) {
+                        if(foundDocument.data().queueDequeue == true) {
                             document.getElementById("queueDequeueReport").innerHTML = "Dequeue Element: ✔";
                         }
-                        if(docSnap.data().queueFindElement == true) {
+                        if(foundDocument.data().queueFindElement == true) {
                             document.getElementById("queueFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().stackPush == true) {
+                        if(foundDocument.data().stackPush == true) {
                             document.getElementById("stackPushReport").innerHTML = "Push Element: ✔";
                         }
-                        if(docSnap.data().stackPop == true) {
+                        if(foundDocument.data().stackPop == true) {
                             document.getElementById("stackPopReport").innerHTML = "Pop Element: ✔";
                         }
-                        if(docSnap.data().stackFindElement == true) {
+                        if(foundDocument.data().stackFindElement == true) {
                             document.getElementById("stackFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().hashSetSize == true) {
+                        if(foundDocument.data().hashSetSize == true) {
                             document.getElementById("hashSetSizeReport").innerHTML = "Set Size: ✔";
                         }
-                        if(docSnap.data().hashAdd == true) {
+                        if(foundDocument.data().hashAdd == true) {
                             document.getElementById("hashAddReport").innerHTML = "Add Element: ✔";
                         }
-                        if(docSnap.data().hashDelete == true) {
+                        if(foundDocument.data().hashDelete == true) {
                             document.getElementById("hashDeleteReport").innerHTML = "Delete Element: ✔";
                         }
-                        if(docSnap.data().hashFind == true) {
+                        if(foundDocument.data().hashFind == true) {
                             document.getElementById("hashFindReport").innerHTML = "Find Element: ✔";
                         }
                     }
-                    updateProgress();
                     //click listeners
+                    document.getElementById("progress").addEventListener("click",function(){updateProgress()});
                     //arrays
                     document.getElementById("arraySetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetSize:true
@@ -310,71 +308,70 @@ function register()
                     userFound = true;
                     //progress page
                     const docref = doc(db,"userLogs",foundDocument.id);
-                    const docSnap = getDoc(docref);
                     function updateProgress()
                     {
-                        if(docSnap.data().arraySetSize == true) {
+                        if(foundDocument.data().arraySetSize == true) {
                             document.getElementById("arraySetSizeReport").innerHTML = "Set Size: ✔";
                         } 
-                        if(docSnap.data().arraySetElement == true) {
+                        if(foundDocument.data().arraySetElement == true) {
                             document.getElementById("arraySetElementReport").innerHTML = "Set Element: ✔";
                         } 
-                        if(docSnap.data().arrayFindElement == true) {
+                        if(foundDocument.data().arrayFindElement == true) {
                             document.getElementById("arrayFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().vectorPushBack == true) {
+                        if(foundDocument.data().vectorPushBack == true) {
                             document.getElementById("vectorPushBackReport").innerHTML = "push_back: ✔";
                         }
-                        if(docSnap.data().vectorPopBack == true) {
+                        if(foundDocument.data().vectorPopBack == true) {
                             document.getElementById("vectorPopBackReport").innerHTML = "pop_back: ✔";
                         }
-                        if(docSnap.data().vectorFindElement == true) {
+                        if(foundDocument.data().vectorFindElement == true) {
                             document.getElementById("vectorFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().listAdd == true) {
+                        if(foundDocument.data().listAdd == true) {
                             document.getElementById("listAddReport").innerHTML = "Add Element: ✔";
                         }
-                        if(docSnap.data().listDelete == true) {
+                        if(foundDocument.data().listDelete == true) {
                             document.getElementById("listDeleteReport").innerHTML = "Delete Element: ✔";
                         }
-                        if(docSnap.data().listFindElement == true) {
+                        if(foundDocument.data().listFindElement == true) {
                             document.getElementById("listFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().treeInsert == true) {
+                        if(foundDocument.data().treeInsert == true) {
                             document.getElementById("treeInsertReport").innerHTML = "Add Element: ✔";
                         }
-                        if(docSnap.data().queueEnqueue == true) {
+                        if(foundDocument.data().queueEnqueue == true) {
                             document.getElementById("queueEnqueueReport").innerHTML = "Enqueue Element: ✔";
                         }
-                        if(docSnap.data().queueDequeue == true) {
+                        if(foundDocument.data().queueDequeue == true) {
                             document.getElementById("queueDequeueReport").innerHTML = "Dequeue Element: ✔";
                         }
-                        if(docSnap.data().queueFindElement == true) {
+                        if(foundDocument.data().queueFindElement == true) {
                             document.getElementById("queueFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().stackPush == true) {
+                        if(foundDocument.data().stackPush == true) {
                             document.getElementById("stackPushReport").innerHTML = "Push Element: ✔";
                         }
-                        if(docSnap.data().stackPop == true) {
+                        if(foundDocument.data().stackPop == true) {
                             document.getElementById("stackPopReport").innerHTML = "Pop Element: ✔";
                         }
-                        if(docSnap.data().stackFindElement == true) {
+                        if(foundDocument.data().stackFindElement == true) {
                             document.getElementById("stackFindElementReport").innerHTML = "Find Element: ✔";
                         }
-                        if(docSnap.data().hashSetSize == true) {
+                        if(foundDocument.data().hashSetSize == true) {
                             document.getElementById("hashSetSizeReport").innerHTML = "Set Size: ✔";
                         }
-                        if(docSnap.data().hashAdd == true) {
+                        if(foundDocument.data().hashAdd == true) {
                             document.getElementById("hashAddReport").innerHTML = "Add Element: ✔";
                         }
-                        if(docSnap.data().hashDelete == true) {
+                        if(foundDocument.data().hashDelete == true) {
                             document.getElementById("hashDeleteReport").innerHTML = "Delete Element: ✔";
                         }
-                        if(docSnap.data().hashFind == true) {
+                        if(foundDocument.data().hashFind == true) {
                             document.getElementById("hashFindReport").innerHTML = "Find Element: ✔";
                         }
                     }
-                    updateProgress();
+                    document.getElementById("progress").addEventListener("click",function(){updateProgress()});
                     //arrays
                     document.getElementById("arraySetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetSize:true
