@@ -91,98 +91,9 @@ function signIn()
                     hashFind: false
                 });
                 console.log("Document written ID: ",userdoc.id);
-                currentuserdocument = userdoc;
             }
             return null;
         });
-        // ...
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("There was an error while signing in.");
-        console.log(errorCode);
-        console.log(errorMessage);
-        document.getElementById('loginerror').style.display="block";
-    });
-}
-
-function register()
-{
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("psw").value;
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        //signing in
-        console.log("Signed in");
-        var currentuser = userCredential.user;
-        document.getElementById('id01').style.display='none'
-        document.getElementById('loginformopenbutton').style.display="none";
-        document.getElementById('signedinstatus').style.display="block";
-        document.getElementById('signedinstatus').innerHTML=("Signed in as " + currentuser.providerData[0].email);
-        console.log(currentuser);
-        console.log(currentuser.providerData);
-        
-        //create user database document
-        console.log("Writing register");
-        const userdoc = addDoc(collection(db,"userLogs"),{
-            user:(currentuser.providerData[0].email),
-            //array
-            arraySetSize: false,
-            arraySetElement: false,
-            arrayFindElement: false,
-            
-            //vector
-            vectorPushBack: false,
-            vectorPopBack: false,
-            vectorFindElement: false,
-            
-            //linkedlist
-            listAdd: false,
-            listDelete: false,
-            listFindElement: false,
-            
-            //bst
-            treeInsert: false,
-            
-            //queue
-            queueEnqueue: false,
-            queueDequeue: false,
-            queueFindElement: false,
-            
-            //stack
-            stackPush: false,
-            stackPop: false,
-            stackFindElement: false,
-
-            //hash
-            hashSetSize: false,
-            hashAdd: false,
-            hashDelete: false,
-            hashFind: false
-        });
-        console.log("Document written ID: ",userdoc.id);
-        currentuserdocument = userdoc;
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("There was an error while signing in.");
-        console.log(errorCode);
-        console.log(errorMessage);
-        document.getElementById('loginerror').style.display="block";
-    })
-}
-
-window.onload = function(){
-    document.getElementById("loginbutton").addEventListener("click", signIn);
-    document.getElementById("registerbutton").addEventListener("click", register);
-}
-
-onAuthStateChanged(auth, (user)=>{
-    if(user)
-    {
-        console.log("onAuthStateFired");
         const docref = doc(db,"userLogs",currentuserdocument.id);
         //arrays
         document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
@@ -257,5 +168,177 @@ onAuthStateChanged(auth, (user)=>{
         document.getElementById("hashSetSizeButton").addEventListener("click", updateDoc(docref,{
             hashSetSize:true
         }));
+        // ...
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log("There was an error while signing in.");
+        console.log(errorCode);
+        console.log(errorMessage);
+        document.getElementById('loginerror').style.display="block";
+    });
+}
+
+function register()
+{
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("psw").value;
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        //signing in
+        console.log("Signed in");
+        var currentuser = userCredential.user;
+        document.getElementById('id01').style.display='none'
+        document.getElementById('loginformopenbutton').style.display="none";
+        document.getElementById('signedinstatus').style.display="block";
+        document.getElementById('signedinstatus').innerHTML=("Signed in as " + currentuser.providerData[0].email);
+        console.log(currentuser);
+        console.log(currentuser.providerData);
+        
+        //create user database document
+        console.log("Writing register");
+        const userdoc = addDoc(collection(db,"userLogs"),{
+            user:(currentuser.providerData[0].email),
+            //array
+            arraySetSize: false,
+            arraySetElement: false,
+            arrayFindElement: false,
+            
+            //vector
+            vectorPushBack: false,
+            vectorPopBack: false,
+            vectorFindElement: false,
+            
+            //linkedlist
+            listAdd: false,
+            listDelete: false,
+            listFindElement: false,
+            
+            //bst
+            treeInsert: false,
+            
+            //queue
+            queueEnqueue: false,
+            queueDequeue: false,
+            queueFindElement: false,
+            
+            //stack
+            stackPush: false,
+            stackPop: false,
+            stackFindElement: false,
+
+            //hash
+            hashSetSize: false,
+            hashAdd: false,
+            hashDelete: false,
+            hashFind: false
+        });
+        console.log("Document written ID: ",userdoc.id);
+        getDocs(collection(db, "userLogs")).then((querySnapshot) => {
+            querySnapshot.forEach((foundDocument) => {
+                if((foundDocument.data().user) == (currentuser.providerData[0].email))
+                {
+                    userFound = true;
+                    currentuserdocument = foundDocument;
+                    console.log("Document found");
+                }
+            });
+            return null;
+        });
+        const docref = doc(db,"userLogs",currentuserdocument.id);
+        //arrays
+        document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
+            arraySetSize:true
+        }));
+        document.getElementById("arraySetElementButton").addEventListener("click", updateDoc(docref,{
+            arraySetElement:true
+        }));
+        document.getElementById("arrayFindElementButton").addEventListener("click", updateDoc(docref,{
+            arrayFindElement:true
+        }));
+
+        //vectors
+        document.getElementById("vectorPushBackButton").addEventListener("click", updateDoc(docref,{
+            vectorPushBack:true
+        }));
+        document.getElementById("vectorPopBackButton").addEventListener("click", updateDoc(docref,{
+            vectorPopBack:true
+        }));
+        document.getElementById("vectorFindElementButton").addEventListener("click", updateDoc(docref,{
+            vectorFindElement:true
+        }));
+        
+        //lists
+        document.getElementById("listAddButton").addEventListener("click", updateDoc(docref,{
+            listAdd:true
+        }));
+        document.getElementById("listDeleteButton").addEventListener("click", updateDoc(docref,{
+            listDelete:true
+        }));
+        document.getElementById("listFindElementButton").addEventListener("click", updateDoc(docref,{
+            listFindElement:true
+        }));
+
+        //stacks
+        document.getElementById("stackPushButton").addEventListener("click", updateDoc(docref,{
+            stackPush:true
+        }));
+        document.getElementById("stackPopButton").addEventListener("click", updateDoc(docref,{
+            stackPop:true
+        }));
+        document.getElementById("stackFindElementButton").addEventListener("click", updateDoc(docref,{
+            stackFindElement:true
+        }));
+
+        //queues
+        document.getElementById("queueEnqueueButton").addEventListener("click", updateDoc(docref,{
+            queueEnqueue:true
+        }));
+        document.getElementById("queueDequeueButton").addEventListener("click", updateDoc(docref,{
+            queueDequeue:true
+        }));
+        document.getElementById("queueFindElementButton").addEventListener("click", updateDoc(docref,{
+            queueFindElement:true
+        }));
+
+        //bst
+        document.getElementById("bstinsertButton").addEventListener("click", updateDoc(docref,{
+            treeInsert:true
+        }));
+
+        //hashes
+        document.getElementById("hashAddButton").addEventListener("click", updateDoc(docref,{
+            hashAdd:true
+        }));
+        document.getElementById("hashDeleteButton").addEventListener("click", updateDoc(docref,{
+            hashDelete:true
+        }));
+        document.getElementById("hashFindElementButton").addEventListener("click", updateDoc(docref,{
+           hashFind:true
+        }));
+        document.getElementById("hashSetSizeButton").addEventListener("click", updateDoc(docref,{
+            hashSetSize:true
+        }));
+    })
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log("There was an error while signing in.");
+        console.log(errorCode);
+        console.log(errorMessage);
+        document.getElementById('loginerror').style.display="block";
+    })
+}
+
+window.onload = function(){
+    document.getElementById("loginbutton").addEventListener("click", signIn);
+    document.getElementById("registerbutton").addEventListener("click", register);
+}
+
+onAuthStateChanged(auth, (user)=>{
+    if(user)
+    {
+        console.log("onAuthStateFired");
     }
 });
