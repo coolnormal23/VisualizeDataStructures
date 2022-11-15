@@ -41,15 +41,16 @@ function signIn()
         //database document
         console.log("Writing");
         var userFound = false;
-        const querySnapshot = getDocs(collection(db, "userLogs"));
-        querySnapshot.forEach((doc) => {
-            // if document found with user email
-            if(doc.data().user == currentuser.providerData[0].email)
-            {
-                userFound == true;
-                currentuserdocument = doc;
-                console.log("Document found");
-            }
+        getDocs(collection(db, "userLogs")).then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                if(doc.data().user == currentuser.providerData[0].email)
+                {
+                    userFound == true;
+                    currentuserdocument = doc;
+                    console.log("Document found");
+                }
+            });
+            return null;
         });
         if(userFound == false)
         {
