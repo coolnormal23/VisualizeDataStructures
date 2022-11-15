@@ -43,7 +43,17 @@ function showMenu(id, bold, sidebar)
         document.getElementById("HashSidebarContent").style.display = "none";
         document.getElementById("hashmenu").innerHTML = "Hash";
     }
+    if(id != "ProgressMenu")
+    {
+        document.getElementById("ProgressMenu").style.display = "none";
+        document.getElementById("progress").innerHTML = "Progress";
+        document.getElementById("maincanvas").style.display = "block";
+    }
 
+    if(id == "ProgressMenu")
+    {
+        document.getElementById("maincanvas").style.display = "none";
+    }
     document.getElementById(id).style.display = "block";
     document.getElementById(sidebar).style.display = "block"; 
     
@@ -89,6 +99,10 @@ function showMenu(id, bold, sidebar)
         hashcontroller.drawArray(0, "#D9D9D9", "Hash");
         active = "HashApp";
     }
+    else if(bold == "progress")
+    {
+        document.getElementById("progress").innerHTML = "<b>Progress</b>";
+    }
 }
 
 document.getElementById("arraymenu").onclick = function() {showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent")};
@@ -98,6 +112,7 @@ document.getElementById("stackmenu").onclick = function() {showMenu("StackAppBut
 document.getElementById("queuemenu").onclick = function() {showMenu("QueueAppButtons", "queuemenu", "QueueSidebarContent")};
 document.getElementById("binarytreemenu").onclick = function() {showMenu("BinaryTreeAppButtons", "binarytreemenu", "TreeSidebarContent")};
 document.getElementById("hashmenu").onclick = function() {showMenu("HashAppButtons", "hashmenu", "HashSidebarContent")};
+document.getElementById("progress").onclick = function() {showMenu("ProgressMenu", "progress", "ArraySidebarContent")};
 
 showMenu("ArrayAppButtons", "arraymenu", "ArraySidebarContent");
 

@@ -38,6 +38,15 @@ p {
     align-items:center;
 }
 
+#ProgressMenu {
+    padding-top: 10px;
+    padding-left: 40px;
+}
+
+#progress {
+    display:none;
+}
+
 #logo {
     float:left;
     width: 50px;
@@ -52,6 +61,14 @@ p {
     padding-left: 10px;
     display:flex;
     flex-direction:row;
+}
+
+#reportItems
+{
+    padding-top:10px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
 }
 
 button {

@@ -5,7 +5,7 @@ import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase
 
 // Add Firebase products that you want to use
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
-import { getFirestore, collection, doc, addDoc, updateDoc, getDocs } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
+import { getFirestore, collection, doc, addDoc, updateDoc, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
 const firebaseConfig = {
     apiKey: "AIzaSyAVubYGtFuLci5rpbMH4VC0ST8Hz7ayV88",
     authDomain: "visualizedatastructures.firebaseapp.com",
@@ -33,6 +33,7 @@ function signIn()
         document.getElementById('id01').style.display='none'
         document.getElementById('loginformopenbutton').style.display="none";
         document.getElementById('signedinstatus').style.display="block";
+        document.getElementById('progress').style.display="block";
         document.getElementById('signedinstatus').innerHTML=("Signed in as " + currentuser.providerData[0].email);
         console.log(currentuser);
         console.log(currentuser.providerData);
@@ -47,6 +48,73 @@ function signIn()
                     userFound = true;
                     console.log("Document found");
                     const docref = doc(db,"userLogs",foundDocument.id);
+                    //progress page
+                    const docSnap = getDoc(docref);
+                    function updateProgress()
+                    {
+                        if(docSnap.data().arraySetSize == true) {
+                            document.getElementById("arraySetSizeReport").innerHTML = "Set Size: ✔";
+                        } 
+                        if(docSnap.data().arraySetElement == true) {
+                            document.getElementById("arraySetElementReport").innerHTML = "Set Element: ✔";
+                        } 
+                        if(docSnap.data().arrayFindElement == true) {
+                            document.getElementById("arrayFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().vectorPushBack == true) {
+                            document.getElementById("vectorPushBackReport").innerHTML = "push_back: ✔";
+                        }
+                        if(docSnap.data().vectorPopBack == true) {
+                            document.getElementById("vectorPopBackReport").innerHTML = "pop_back: ✔";
+                        }
+                        if(docSnap.data().vectorFindElement == true) {
+                            document.getElementById("vectorFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().listAdd == true) {
+                            document.getElementById("listAddReport").innerHTML = "Add Element: ✔";
+                        }
+                        if(docSnap.data().listDelete == true) {
+                            document.getElementById("listDeleteReport").innerHTML = "Delete Element: ✔";
+                        }
+                        if(docSnap.data().listFindElement == true) {
+                            document.getElementById("listFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().treeInsert == true) {
+                            document.getElementById("treeInsertReport").innerHTML = "Add Element: ✔";
+                        }
+                        if(docSnap.data().queueEnqueue == true) {
+                            document.getElementById("queueEnqueueReport").innerHTML = "Enqueue Element: ✔";
+                        }
+                        if(docSnap.data().queueDequeue == true) {
+                            document.getElementById("queueDequeueReport").innerHTML = "Dequeue Element: ✔";
+                        }
+                        if(docSnap.data().queueFindElement == true) {
+                            document.getElementById("queueFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().stackPush == true) {
+                            document.getElementById("stackPushReport").innerHTML = "Push Element: ✔";
+                        }
+                        if(docSnap.data().stackPop == true) {
+                            document.getElementById("stackPopReport").innerHTML = "Pop Element: ✔";
+                        }
+                        if(docSnap.data().stackFindElement == true) {
+                            document.getElementById("stackFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().hashSetSize == true) {
+                            document.getElementById("hashSetSizeReport").innerHTML = "Set Size: ✔";
+                        }
+                        if(docSnap.data().hashAdd == true) {
+                            document.getElementById("hashAddReport").innerHTML = "Add Element: ✔";
+                        }
+                        if(docSnap.data().hashDelete == true) {
+                            document.getElementById("hashDeleteReport").innerHTML = "Delete Element: ✔";
+                        }
+                        if(docSnap.data().hashFind == true) {
+                            document.getElementById("hashFindReport").innerHTML = "Find Element: ✔";
+                        }
+                    }
+                    updateProgress();
+                    //click listeners
                     //arrays
                     document.getElementById("arraySetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetSize:true
@@ -191,6 +259,7 @@ function register()
         document.getElementById('id01').style.display='none'
         document.getElementById('loginformopenbutton').style.display="none";
         document.getElementById('signedinstatus').style.display="block";
+        document.getElementById('progress').style.display="block";
         document.getElementById('signedinstatus').innerHTML=("Signed in as " + currentuser.providerData[0].email);
         console.log(currentuser);
         console.log(currentuser.providerData);
@@ -239,7 +308,73 @@ function register()
                 if((foundDocument.data().user) == (currentuser.providerData[0].email))
                 {
                     userFound = true;
+                    //progress page
                     const docref = doc(db,"userLogs",foundDocument.id);
+                    const docSnap = getDoc(docref);
+                    function updateProgress()
+                    {
+                        if(docSnap.data().arraySetSize == true) {
+                            document.getElementById("arraySetSizeReport").innerHTML = "Set Size: ✔";
+                        } 
+                        if(docSnap.data().arraySetElement == true) {
+                            document.getElementById("arraySetElementReport").innerHTML = "Set Element: ✔";
+                        } 
+                        if(docSnap.data().arrayFindElement == true) {
+                            document.getElementById("arrayFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().vectorPushBack == true) {
+                            document.getElementById("vectorPushBackReport").innerHTML = "push_back: ✔";
+                        }
+                        if(docSnap.data().vectorPopBack == true) {
+                            document.getElementById("vectorPopBackReport").innerHTML = "pop_back: ✔";
+                        }
+                        if(docSnap.data().vectorFindElement == true) {
+                            document.getElementById("vectorFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().listAdd == true) {
+                            document.getElementById("listAddReport").innerHTML = "Add Element: ✔";
+                        }
+                        if(docSnap.data().listDelete == true) {
+                            document.getElementById("listDeleteReport").innerHTML = "Delete Element: ✔";
+                        }
+                        if(docSnap.data().listFindElement == true) {
+                            document.getElementById("listFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().treeInsert == true) {
+                            document.getElementById("treeInsertReport").innerHTML = "Add Element: ✔";
+                        }
+                        if(docSnap.data().queueEnqueue == true) {
+                            document.getElementById("queueEnqueueReport").innerHTML = "Enqueue Element: ✔";
+                        }
+                        if(docSnap.data().queueDequeue == true) {
+                            document.getElementById("queueDequeueReport").innerHTML = "Dequeue Element: ✔";
+                        }
+                        if(docSnap.data().queueFindElement == true) {
+                            document.getElementById("queueFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().stackPush == true) {
+                            document.getElementById("stackPushReport").innerHTML = "Push Element: ✔";
+                        }
+                        if(docSnap.data().stackPop == true) {
+                            document.getElementById("stackPopReport").innerHTML = "Pop Element: ✔";
+                        }
+                        if(docSnap.data().stackFindElement == true) {
+                            document.getElementById("stackFindElementReport").innerHTML = "Find Element: ✔";
+                        }
+                        if(docSnap.data().hashSetSize == true) {
+                            document.getElementById("hashSetSizeReport").innerHTML = "Set Size: ✔";
+                        }
+                        if(docSnap.data().hashAdd == true) {
+                            document.getElementById("hashAddReport").innerHTML = "Add Element: ✔";
+                        }
+                        if(docSnap.data().hashDelete == true) {
+                            document.getElementById("hashDeleteReport").innerHTML = "Delete Element: ✔";
+                        }
+                        if(docSnap.data().hashFind == true) {
+                            document.getElementById("hashFindReport").innerHTML = "Find Element: ✔";
+                        }
+                    }
+                    updateProgress();
                     //arrays
                     document.getElementById("arraySetSizeButton").addEventListener("click", function(){updateDoc(docref,{
                         arraySetSize:true
@@ -333,10 +468,3 @@ window.onload = function(){
     document.getElementById("loginbutton").addEventListener("click", signIn);
     document.getElementById("registerbutton").addEventListener("click", register);
 }
-
-onAuthStateChanged(auth, (user)=>{
-    if(user)
-    {
-        console.log("onAuthStateFired");
-    }
-});

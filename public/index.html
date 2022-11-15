@@ -56,6 +56,7 @@
             <p id="queuemenu" onclick="queuecontroller.drawArray()">Queue</p>
             <p id="stackmenu" onclick="stackcontroller.drawArray()">Stack</p>
             <p id="hashmenu" onclick="hashcontroller.drawArray()">Hash</p>
+            <p id="progress">Progress</p>
         </div>
     </div>
     <!--Sidebar-->
@@ -400,6 +401,7 @@ Node insertNode(Node root, int value)
             <button type="button" onclick="binarytreecontroller.clearTree()">Clear</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
+
         <div id="HashAppButtons">
             <input type="number" id="hashsize" value="1" size="2" min="1" max="40">
             <span class="validity"></span>
@@ -422,6 +424,53 @@ Node insertNode(Node root, int value)
             <button type="button" id="hashFindElementButton" onclick="hashcontroller.findElement()">Find</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
+        </div>
+
+        <div id="ProgressMenu">
+            <h1>Progress Report</h1>
+            <div id="reportItems">
+                <div>
+                    <h2>Array</h2>
+                    <p id="arraySetSizeReport">Set Size: ❌</p>
+                    <p id="arraySetElementReport">Set Element: ❌</p>
+                    <p id="arrayFindElementReport">Find Element: ❌</p>
+                </div>
+                <div>
+                    <h2>Vector</h2>
+                    <p id="vectorPushBackReport">push_back: ❌</p>
+                    <p id="vectorPopBackReport">pop_back: ❌</p>
+                    <p id="vectorFindElementReport">Find Element: ❌</p>
+                </div>
+                <div>
+                    <h2>Linked List</h2>
+                    <p id="listAddReport">Add Element: ❌</p>
+                    <p id="listDeleteReport">Delete Element: ❌</p>
+                    <p id="listFindElementReport">Find Element: ❌</p>
+                </div>
+                <div>
+                    <h2>BST</h2>
+                    <p id="treeInsertReport">Add Element: ❌</p>
+                </div>
+                <div>
+                    <h2>Queue</h2>
+                    <p id="queueEnqueueReport">Enqueue Element: ❌</p>
+                    <p id="queueDequeueReport">Dequeue Element: ❌</p>
+                    <p id="queueFindElementReport">Find Element: ❌</p>
+                </div>
+                <div>
+                    <h2>Stack</h2>
+                    <p id="stackPushReport">Push Element: ❌</p>
+                    <p id="stackPopReport">Pop Element: ❌</p>
+                    <p id="stackFindElementReport">Find Element: ❌</p>
+                </div>
+                <div>
+                    <h2>Hash</h2>
+                    <p id="hashSetSizeReport">Set Size: ❌</p>
+                    <p id="hashAddElementReport">Add Element: ❌</p>
+                    <p id="hashDeleteElementReport">Delete Element: ❌</p>
+                    <p id="hashFindReport">Find Element: ❌</p>
+                </div>
+            </div>
         </div>
         
         <canvas id="maincanvas"></canvas>
