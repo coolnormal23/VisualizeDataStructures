@@ -47,6 +47,9 @@ function signIn()
                 {
                     userFound = true;
                     currentuserdocument = doc;
+                    document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(doc,{
+                        arraySetSize:true
+                    }));
                     console.log("Document found");
                 }
             });
@@ -181,12 +184,7 @@ onAuthStateChanged(auth, (user)=>{
     if(user)
     {
         console.log("onAuthStateFired");
-        document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{"arraySetSize":true}));
-        document.getElementById("arraySetSizeButton").addEventListener("click", console.log("updateDoc, arraysetsize"));
+        //document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{"arraySetSize":true}));
+        //document.getElementById("arraySetSizeButton").addEventListener("click", console.log("updateDoc, arraysetsize"));
     }
 });
-
-document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{
-    "arraySetSize":true
-}));
-document.getElementById("arraySetSizeButton").addEventListener("click", console.log("updateDoc, arraysetsize"));
