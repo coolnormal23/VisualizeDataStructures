@@ -47,10 +47,6 @@ function signIn()
                 {
                     userFound = true;
                     currentuserdocument = foundDocument;
-                    const docref = doc(db,"userLogs",foundDocument.id);
-                    document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
-                        arraySetSize:true
-                    }));
                     console.log("Document found");
                 }
             });
@@ -86,6 +82,7 @@ function signIn()
                     //stack
                     stackPush: false,
                     stackPop: false,
+                    stackFindElement: false,
                     
                     //hash
                     hashSetSize: false,
@@ -156,7 +153,8 @@ function register()
             //stack
             stackPush: false,
             stackPop: false,
-            
+            stackFindElement: false,
+
             //hash
             hashSetSize: false,
             hashAdd: false,
@@ -185,7 +183,79 @@ onAuthStateChanged(auth, (user)=>{
     if(user)
     {
         console.log("onAuthStateFired");
-        //document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(currentuserdocument,{"arraySetSize":true}));
-        //document.getElementById("arraySetSizeButton").addEventListener("click", console.log("updateDoc, arraysetsize"));
+        const docref = doc(db,"userLogs",currentuserdocument.id);
+        //arrays
+        document.getElementById("arraySetSizeButton").addEventListener("click", updateDoc(docref,{
+            arraySetSize:true
+        }));
+        document.getElementById("arraySetElementButton").addEventListener("click", updateDoc(docref,{
+            arraySetElement:true
+        }));
+        document.getElementById("arrayFindElementButton").addEventListener("click", updateDoc(docref,{
+            arrayFindElement:true
+        }));
+
+        //vectors
+        document.getElementById("vectorPushBackButton").addEventListener("click", updateDoc(docref,{
+            vectorPushBack:true
+        }));
+        document.getElementById("vectorPopBackButton").addEventListener("click", updateDoc(docref,{
+            vectorPopBack:true
+        }));
+        document.getElementById("vectorFindElementButton").addEventListener("click", updateDoc(docref,{
+            vectorFindElement:true
+        }));
+        
+        //lists
+        document.getElementById("listAddButton").addEventListener("click", updateDoc(docref,{
+            listAdd:true
+        }));
+        document.getElementById("listDeleteButton").addEventListener("click", updateDoc(docref,{
+            listDelete:true
+        }));
+        document.getElementById("listFindElementButton").addEventListener("click", updateDoc(docref,{
+            listFindElement:true
+        }));
+
+        //stacks
+        document.getElementById("stackPushButton").addEventListener("click", updateDoc(docref,{
+            stackPush:true
+        }));
+        document.getElementById("stackPopButton").addEventListener("click", updateDoc(docref,{
+            stackPop:true
+        }));
+        document.getElementById("stackFindElementButton").addEventListener("click", updateDoc(docref,{
+            stackFindElement:true
+        }));
+
+        //queues
+        document.getElementById("queueEnqueueButton").addEventListener("click", updateDoc(docref,{
+            queueEnqueue:true
+        }));
+        document.getElementById("queueDequeueButton").addEventListener("click", updateDoc(docref,{
+            queueDequeue:true
+        }));
+        document.getElementById("queueFindElementButton").addEventListener("click", updateDoc(docref,{
+            queueFindElement:true
+        }));
+
+        //bst
+        document.getElementById("bstinsertButton").addEventListener("click", updateDoc(docref,{
+            treeInsert:true
+        }));
+
+        //hashes
+        document.getElementById("hashAddButton").addEventListener("click", updateDoc(docref,{
+            hashAdd:true
+        }));
+        document.getElementById("hashDeleteButton").addEventListener("click", updateDoc(docref,{
+            hashDelete:true
+        }));
+        document.getElementById("hashFindElementButton").addEventListener("click", updateDoc(docref,{
+           hashFind:true
+        }));
+        document.getElementById("hashSetSizeButton").addEventListener("click", updateDoc(docref,{
+            hashSetSize:true
+        }));
     }
 });

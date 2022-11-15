@@ -317,12 +317,12 @@ Node insertNode(Node root, int value)
             <input type="number" id="arrayindexset" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arraysetpop">Invalid Input</span></div>
-            <button type="button" onclick="arraycontroller.setElement()">Set Element</button>
+            <button type="button" id="arraySetElementButton" onclick="arraycontroller.setElement()">Set Element</button>
 
             <input type="number" id="arrayfind" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arrayfindpop">Invalid Input</span></div>
-            <button type="button" onclick="arraycontroller.findElement('array')">Find Element</button>
+            <button type="button" id="arrayFindElementButton" onclick="arraycontroller.findElement('array')">Find Element</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
@@ -331,14 +331,14 @@ Node insertNode(Node root, int value)
             <input type="number" id="vectorpushback" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="vectorpushpop">Invalid Input</span></div>
-            <button type="button" onclick="vectorcontroller.push_back()">push_back()</button>
+            <button type="button" id="vectorPushBackButton" onclick="vectorcontroller.push_back()">push_back()</button>
 
-            <button type="button" onclick="vectorcontroller.pop_back()">pop_back()</button>
+            <button type="button" id="vectorPopBackButton" onclick="vectorcontroller.pop_back()">pop_back()</button>
 
             <input type="number" id="vectorfind" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="vectorfindpop">Invalid Input</span></div>
-            <button type="button" onclick="vectorcontroller.findElement('vector')">Find Element</button>
+            <button type="button" id="vectorFindElementButton" onclick="vectorcontroller.findElement('vector')">Find Element</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
@@ -347,17 +347,17 @@ Node insertNode(Node root, int value)
             <input type="number" id="listadd" value="0"size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listaddpop">Invalid Input</span></div>
-            <button type="button" onclick="listcontroller.add()">add</button>
+            <button type="button" id="listAddButton" onclick="listcontroller.add()">add</button>
 
             <input type="number" id="listdelete" value="0"size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listdeletepop">Invalid Input</span></div>
-            <button type="button" onclick="listcontroller.delete()">delete</button>
+            <button type="button" id="listDeleteButton" onclick="listcontroller.delete()">delete</button>
 
             <input type="number" id="listfind" value="0"size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listfindpop">Invalid Input</span></div>
-            <button type="button" onclick="listcontroller.findElement('list')">Find Element</button>
+            <button type="button" id="listFindElementButton" onclick="listcontroller.findElement('list')">Find Element</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
@@ -366,14 +366,14 @@ Node insertNode(Node root, int value)
             <input type="number" id="stackpush" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="stackpushpop">Invalid Input</span></div>
-            <button type="button" onclick="stackcontroller.push()">push()</button>
+            <button type="button" id="stackPushButton" onclick="stackcontroller.push()">push()</button>
 
-            <button type="button" onclick="stackcontroller.pop()">pop()</button>
+            <button type="button" id="stackPopButton" onclick="stackcontroller.pop()">pop()</button>
             
             <input type="number" id="stackfind" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="stackfindpop">Invalid Input</span></div>
-            <button type="button" onclick="stackcontroller.findElement('stack')">Find Element</button>
+            <button type="button" id="stackFindElementButton" onclick="stackcontroller.findElement('stack')">Find Element</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
@@ -382,21 +382,21 @@ Node insertNode(Node root, int value)
             <input type="number" id="enqueue" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="enqueuepop">Invalid Input</span></div>
-            <button type="button" onclick="queuecontroller.enqueue()">Enqueue Element</button>
+            <button type="button" id="queueEnqueue" onclick="queuecontroller.enqueue()">Enqueue Element</button>
             
-            <button type="button" onclick="queuecontroller.dequeue()">Dequeue Element</button>
+            <button type="button" id="queueDequeue" onclick="queuecontroller.dequeue()">Dequeue Element</button>
 
             <input type="number" id="queuefind" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="queuefindpop">Invalid Input</span></div>
-            <button type="button" onclick="queuecontroller.findElement('queue')">Find Element</button>
+            <button type="button" id="queueFindElement" onclick="queuecontroller.findElement('queue')">Find Element</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
         
         <div id="BinaryTreeAppButtons">
             <input type="number" id="binarytreeinsert" value="0" size="2">
-            <button type="button" onclick="binarytreecontroller.insert()">Insert Element</button>
+            <button type="button" id="bstinsertButton" onclick="binarytreecontroller.insert()">Insert Element</button>
             <button type="button" onclick="binarytreecontroller.clearTree()">Clear</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
@@ -404,22 +404,22 @@ Node insertNode(Node root, int value)
             <input type="number" id="hashsize" value="1" size="2" min="1" max="40">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashsizepop">Invalid Input</span></div>
-            <button type="button" onclick="hashcontroller.setSize('hash')">Set Size</button>
+            <button type="button" id="hashSetSizeButton" onclick="hashcontroller.setSize('hash')">Set Size</button>
 
             <input type="number" id="hashadd" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashaddpop">Invalid Input</span></div>
-            <button type="button" onclick="hashcontroller.add()">Add</button>
+            <button type="button" id="hashAddButton" onclick="hashcontroller.add()">Add</button>
 
             <input type="number" id="hashdelete" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashdeletepop">Invalid Input</span></div>
-            <button type="button" onclick="hashcontroller.delete()">Delete</button>
+            <button type="button" id="hashDeleteButton" onclick="hashcontroller.delete()">Delete</button>
 
             <input type="number" id="hashfind" value="0" size="2" min="-99999" max="99999">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashfindpop">Invalid Input</span></div>
-            <button type="button" onclick="hashcontroller.findElement()">Find</button>
+            <button type="button" id="hashFindElementButton" onclick="hashcontroller.findElement()">Find</button>
 
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
