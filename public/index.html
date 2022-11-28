@@ -316,11 +316,13 @@ Node insertNode(Node root, int value)
             <div class = "popup"> <span class="popuptext" id="arraysizepop">Invalid Input</span></div>
             <button type="button" id="arraySetSizeButton" onclick="arraycontroller.setSize('array')">Set Size</button>
 
+            <label hidden="hidden" for="arrayindexset">Index to change</label>
             <input type="number" id="arrayindexset" value="0" size="2" min="-99999" max="99999" aria-label="index to set element">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arraysetpop">Invalid Input</span></div>
             <button type="button" id="arraySetElementButton" onclick="arraycontroller.setElement()">Set Element</button>
 
+            <label hidden="hidden" for="arrayfind">Element to find</label>
             <input type="number" id="arrayfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arrayfindpop">Invalid Input</span></div>
@@ -330,6 +332,7 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="VectorAppButtons">
+            <label hidden="hidden" for="vectorpushback">Element to add</label>
             <input type="number" id="vectorpushback" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="vectorpushpop">Invalid Input</span></div>
@@ -337,6 +340,7 @@ Node insertNode(Node root, int value)
 
             <button type="button" id="vectorPopBackButton" onclick="vectorcontroller.pop_back()">pop_back()</button>
 
+            <label hidden="hidden" for="vectorfind">Element to find</label>
             <input type="number" id="vectorfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="vectorfindpop">Invalid Input</span></div>
@@ -346,16 +350,19 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="ListAppButtons">
+            <label hidden="hidden" for="listadd">Element to add</label>
             <input type="number" id="listadd" value="0"size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listaddpop">Invalid Input</span></div>
             <button type="button" id="listAddButton" onclick="listcontroller.add()">add</button>
 
+            <label hidden="hidden" for="listdelete">Element to delete</label>
             <input type="number" id="listdelete" value="0"size="2" min="-99999" max="99999" aria-label="element to delete">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listdeletepop">Invalid Input</span></div>
             <button type="button" id="listDeleteButton" onclick="listcontroller.delete()">delete</button>
 
+            <label hidden="hidden" for="listfind">Element to find</label>
             <input type="number" id="listfind" value="0"size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listfindpop">Invalid Input</span></div>
@@ -365,6 +372,7 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="StackAppButtons">
+            <label hidden="hidden" for="stackpush">Element to add</label>
             <input type="number" id="stackpush" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="stackpushpop">Invalid Input</span></div>
@@ -372,6 +380,7 @@ Node insertNode(Node root, int value)
 
             <button type="button" id="stackPopButton" onclick="stackcontroller.pop()">pop()</button>
             
+            <label hidden="hidden" for="stackfind">Element to find</label>
             <input type="number" id="stackfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="stackfindpop">Invalid Input</span></div>
@@ -381,6 +390,7 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="QueueAppButtons">
+            <label hidden="hidden" for="enqueue">Element to add</label>
             <input type="number" id="enqueue" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="enqueuepop">Invalid Input</span></div>
@@ -388,6 +398,7 @@ Node insertNode(Node root, int value)
             
             <button type="button" id="queueDequeueButton" onclick="queuecontroller.dequeue()">Dequeue Element</button>
 
+            <label hidden="hidden" for="queuefind">Element to find</label>
             <input type="number" id="queuefind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="queuefindpop">Invalid Input</span></div>
@@ -397,6 +408,7 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="BinaryTreeAppButtons">
+            <label hidden="hidden" for="binarytreeinsert">Element to add</label>
             <input type="number" id="binarytreeinsert" value="0" size="2" aria-label="element to add">
             <button type="button" id="bstinsertButton" onclick="binarytreecontroller.insert()">Insert Element</button>
             <button type="button" onclick="binarytreecontroller.clearTree()">Clear</button>
@@ -404,21 +416,25 @@ Node insertNode(Node root, int value)
         </div>
 
         <div id="HashAppButtons">
+            <label hidden="hidden" for="hashsize">Hash size</label>
             <input type="number" id="hashsize" value="1" size="2" min="1" max="40" aria-label="hash size">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashsizepop">Invalid Input</span></div>
             <button type="button" id="hashSetSizeButton" onclick="hashcontroller.setSize('hash')">Set Size</button>
 
+            <label hidden="hidden" for="hashadd">Element to add</label>
             <input type="number" id="hashadd" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashaddpop">Invalid Input</span></div>
             <button type="button" id="hashAddButton" onclick="hashcontroller.add()">Add</button>
 
+            <label hidden="hidden" for="hashdelete">Element to delete</label>
             <input type="number" id="hashdelete" value="0" size="2" min="-99999" max="99999" aria-label="element to delete">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashdeletepop">Invalid Input</span></div>
             <button type="button" id="hashDeleteButton" onclick="hashcontroller.delete()">Delete</button>
 
+            <label hidden="hidden" for="hashfind">Element to find</label>
             <input type="number" id="hashfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashfindpop">Invalid Input</span></div>
