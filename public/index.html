@@ -24,10 +24,10 @@
         <div class="modal-content animate">
             <div class="container">
                 <p id="loginerror" style="color:red; display:none;">There was an error while signing in. Please check your input and retry.</p>
-                <b>Email</b>
+                <label for="email"><strong>Email</strong></label>
                 <input type="text" placeholder="Enter Email" id="email">
                 
-                <b>Password</b>
+                <label for="psw"><strong>Password</strong></label>
                 <input type="password" placeholder="Enter Password" id="psw">
                 
                 <button id="loginbutton">Login</button>
@@ -43,7 +43,7 @@
     <!--Header-->
     <div id="header">
         <div id="logocontainer">
-            <img id="logo" src="./misc/eye_icon.png"/>
+            <img id="logo" alt="VisualizeDataStructures Logo" src="./misc/eye_icon.png"/>
             <h1>Visualize Data Structures</h1>
             <p style="margin-left:auto; display:none;" id="signedinstatus">Not signed in</p>
             <button id="loginformopenbutton" onclick="document.getElementById('id01').style.display='block'">Log In or Register</button>
@@ -65,10 +65,10 @@
 
         <div id="ArraySidebarContent" class="sidebarcontent">
             <h1>Array</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>An array is a group of elements stored sequentially, and the most common data structure. Typically an array will have a set size, and all elements share the same data type (integer, string, etc.)</p>
             <p>Elements in an array are refered to by index. In most languages, this starts with the first element being at index 0, the next at index 1, and so on.</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <code>
                 //creates an array of integers of size 5 <br>
                 int elements[5]; <br>
@@ -79,9 +79,9 @@
 
         <div id="VectorSidebarContent" class="sidebarcontent">
             <h1>Vector</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>A C++ data structure similar to an array, with dynamic sizing. Vectors offer more freedom, letting you add or remove elements anywhere, and access elements with the same syntax as a traditional array.</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <code>
                 //needed to create vectors<br>
                 #include &ltvector&gt<br><br>
@@ -100,21 +100,21 @@
                 example.pop_back();<br>
                 //1, 2, 100
             </code>
-            <h3>Common Methods</h3>
+            <h2>Common Methods</h2>
             <p style="padding-bottom:70px">
-                <b>push_back:</b> adds element at the end of vector<br>
-                <b>pop_back:</b> removes element at the end of vector<br>
-                <b>insert:</b> insert elements before an index<br>
-                <b>erase:</b> delete an element entirely<br>
-                <b>swap:</b> swap 2 elements
+                <strong>push_back:</strong> adds element at the end of vector<br>
+                <strong>pop_back:</strong> removes element at the end of vector<br>
+                <strong>insert:</strong> insert elements before an index<br>
+                <strong>erase:</strong> delete an element entirely<br>
+                <strong>swap:</strong> swap 2 elements
             </p>
         </div>
 
         <div id="ListSidebarContent" class="sidebarcontent">
             <h1>Linked List</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>A common linear data structure used to store elements in order regardless of their placement in memory. Linked lists consist of nodes that store data and a reference/pointer to the next node, culminating in the final node having a null pointer. This allows easy removal or insertion of elements in the middle, as the entire list need not be rearranged.</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <p>Nodes are typically defined as a class or other abstract data type (e.g. struct) depending on language.</p>
             <!--yes it is supposed to be unindented to display properly, yes html is dumb-->
 <pre><code>class Node
@@ -146,24 +146,24 @@ void addNode(Node head, int value)
         temp->next = newnode;
     }
 }</code></pre>
-        <h3>Common Methods</h3>
+        <h2>Common Methods</h2>
         <p style="padding-bottom:70px">
-            <b>insert:</b> insert element at the end or within the linked list<br>
-            <b>remove:</b> removes element from list<br>
-            <b>search:</b> finds an element within the list<br>
-            <b>swap:</b> swap 2 elements within the list
+            <strong>insert:</strong> insert element at the end or within the linked list<br>
+            <strong>remove:</strong> removes element from list<br>
+            <strong>search:</strong> finds an element within the list<br>
+            <strong>swap:</strong> swap 2 elements within the list
         </p>
         </div>
 
         <div id="TreeSidebarContent" class="sidebarcontent">
             <h1>Binary Search Tree</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>A tree data structure consisting of nodes with children. It follows 3 core principles:<br><br>
             1. The left child of a node is an element smaller than the parent element<br>
             2. The right child of a node is an element larger than the parent element<br>
             3. The left subtree and right subtree are also binary search trees.</p>
             <p>Binary search trees follow these rules to enable binary searches, which allows fast operations inside the tree. Even in the worst case scenario, a binary search tree is only as slow as a singly linked list.</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <p>Like linked list nodes, binary tree nodes are typically defined as a class or other abstract data type (e.g. struct) depending on language.</p>
 <pre><code>class Node
 {
@@ -196,19 +196,19 @@ Node insertNode(Node root, int value)
     }
     return root;
 }</code></pre>
-        <h3>Common Methods</h3>
+        <h2>Common Methods</h2>
         <p style="padding-bottom:70px">
-            <b>insert:</b> inserts node into tree<br>
-            <b>search:</b> searches for node in tree<br>
-            <b>remove:</b> removes node from tree and rearranges if needed
+            <strong>insert:</strong> inserts node into tree<br>
+            <strong>search:</strong> searches for node in tree<br>
+            <strong>remove:</strong> removes node from tree and rearranges if needed
         </p>
         </div>
 
         <div id="QueueSidebarContent" class="sidebarcontent">
             <h1>Queue</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>A data structure designed to mimic a real life queue, where the first element in will be the first element out of the queue (often called FIFO). Useful to store and retrieve elements in a definite order.</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <code>
                 //using C++'s standard queue template<br>
                 #include &ltqueue&gt<br><br>
@@ -224,20 +224,20 @@ Node insertNode(Node root, int value)
                 example.pop();<br>
                 //2, 3, 4
             </code>
-            <h3>Common Methods</h3>
+            <h2>Common Methods</h2>
             <p style="padding-bottom:70px">
-                <b>push:</b> sometimes called enqueue or push_back. inserts element into queue<br>
-                <b>pop:</b> sometimes dequeue or pop_back. removes oldest added element from queue<br>
-                <b>empty:</b> checks if queue is empty<br>
-                <b>size:</b> gets size of queue
+                <strong>push:</strong> sometimes called enqueue or push_back. inserts element into queue<br>
+                <strong>pop:</strong> sometimes dequeue or pop_back. removes oldest added element from queue<br>
+                <strong>empty:</strong> checks if queue is empty<br>
+                <strong>size:</strong> gets size of queue
             </p>
         </div>
 
         <div id="StackSidebarContent" class="sidebarcontent">
             <h1>Stack</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>A sister data structure to the Queue, the stack mimics a real life stack of items where the last element inserted will be the first one removed (LIFO).</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <code>
                 //using C++'s standard stack template<br>
                 #include &ltstack&gt<br><br>
@@ -258,20 +258,20 @@ Node insertNode(Node root, int value)
                 //2<br>
                 //1
             </code>
-            <h3>Common Methods</h3>
+            <h2>Common Methods</h2>
             <p style="padding-bottom:70px">
-                <b>push:</b> sometimes called push_back. inserts element on the top of the stack<br>
-                <b>pop:</b> sometimes pop_back. removes top element from stack<br>
-                <b>empty:</b> checks if stack is empty<br>
-                <b>size:</b> gets number of elements in the stack
+                <strong>push:</strong> sometimes called push_back. inserts element on the top of the stack<br>
+                <strong>pop:</strong> sometimes pop_back. removes top element from stack<br>
+                <strong>empty:</strong> checks if stack is empty<br>
+                <strong>size:</strong> gets number of elements in the stack
             </p>
         </div>
         <div id="HashSidebarContent" class="sidebarcontent">
             <h1>Hash</h1>
-            <h3>Description</h3>
+            <h2>Description</h2>
             <p>A Hash is much like an array, however the element's index is determined by the value of the element</p>
             <p> A formula is used to determine this key and in our example we utilize the multiplication method.</p>
-            <h3>Example Code</h3>
+            <h2>Example Code</h2>
             <code>
                 cin >> element;<br>
                 int key = math::floor('size you entered' * (element * 0.618033 % 1))<br>
@@ -284,7 +284,7 @@ Node insertNode(Node root, int value)
             <p> We call the formula initialized to key, a hash algorithm. With this algorithm we can find each element much faster. 
                 If we are given the element, we can perform the formula 
                 on the element again and go to the index where the element would be if it exists.  </p>
-            <h3> Find Element Example Code </h3>
+            <h2> Find Element Example Code </h2>
             <code>
                 //(assume each element is initialized to -1) <br>
                 void findElement(element, key) <br>
@@ -295,7 +295,7 @@ Node insertNode(Node root, int value)
             </code>
             <p> This is helpful because when we search based on the value at an index, we can access the element stored 
                 without checking every single element until it is found</p>
-            <h3>Hash Collisions</h3>
+            <h2>Hash Collisions</h2>
             <p>You may have noticed that the formula includes the mod operator.</p>
             <p> Because of this, the element, multiplied by a decimal less than 1, 
                 will eventually reset the index value. Therefore, certain values will end up at an index
@@ -310,17 +310,17 @@ Node insertNode(Node root, int value)
 
     <div id="main">
         <div id="ArrayAppButtons">
-            <input type="number" id="arraysize" value="1" size="2" min="1" max="40">
+            <input type="number" id="arraysize" value="1" size="2" min="1" max="40" aria-label="array size">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arraysizepop">Invalid Input</span></div>
             <button type="button" id="arraySetSizeButton" onclick="arraycontroller.setSize('array')">Set Size</button>
 
-            <input type="number" id="arrayindexset" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="arrayindexset" value="0" size="2" min="-99999" max="99999" aria-label="index to set element">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arraysetpop">Invalid Input</span></div>
             <button type="button" id="arraySetElementButton" onclick="arraycontroller.setElement()">Set Element</button>
 
-            <input type="number" id="arrayfind" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="arrayfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="arrayfindpop">Invalid Input</span></div>
             <button type="button" id="arrayFindElementButton" onclick="arraycontroller.findElement('array')">Find Element</button>
@@ -329,14 +329,14 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="VectorAppButtons">
-            <input type="number" id="vectorpushback" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="vectorpushback" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="vectorpushpop">Invalid Input</span></div>
             <button type="button" id="vectorPushBackButton" onclick="vectorcontroller.push_back()">push_back()</button>
 
             <button type="button" id="vectorPopBackButton" onclick="vectorcontroller.pop_back()">pop_back()</button>
 
-            <input type="number" id="vectorfind" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="vectorfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="vectorfindpop">Invalid Input</span></div>
             <button type="button" id="vectorFindElementButton" onclick="vectorcontroller.findElement('vector')">Find Element</button>
@@ -345,17 +345,17 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="ListAppButtons">
-            <input type="number" id="listadd" value="0"size="2" min="-99999" max="99999">
+            <input type="number" id="listadd" value="0"size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listaddpop">Invalid Input</span></div>
             <button type="button" id="listAddButton" onclick="listcontroller.add()">add</button>
 
-            <input type="number" id="listdelete" value="0"size="2" min="-99999" max="99999">
+            <input type="number" id="listdelete" value="0"size="2" min="-99999" max="99999" aria-label="element to delete">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listdeletepop">Invalid Input</span></div>
             <button type="button" id="listDeleteButton" onclick="listcontroller.delete()">delete</button>
 
-            <input type="number" id="listfind" value="0"size="2" min="-99999" max="99999">
+            <input type="number" id="listfind" value="0"size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="listfindpop">Invalid Input</span></div>
             <button type="button" id="listFindElementButton" onclick="listcontroller.findElement('list')">Find Element</button>
@@ -364,14 +364,14 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="StackAppButtons">
-            <input type="number" id="stackpush" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="stackpush" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="stackpushpop">Invalid Input</span></div>
             <button type="button" id="stackPushButton" onclick="stackcontroller.push()">push()</button>
 
             <button type="button" id="stackPopButton" onclick="stackcontroller.pop()">pop()</button>
             
-            <input type="number" id="stackfind" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="stackfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="stackfindpop">Invalid Input</span></div>
             <button type="button" id="stackFindElementButton" onclick="stackcontroller.findElement('stack')">Find Element</button>
@@ -380,14 +380,14 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="QueueAppButtons">
-            <input type="number" id="enqueue" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="enqueue" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="enqueuepop">Invalid Input</span></div>
             <button type="button" id="queueEnqueueButton" onclick="queuecontroller.enqueue()">Enqueue Element</button>
             
             <button type="button" id="queueDequeueButton" onclick="queuecontroller.dequeue()">Dequeue Element</button>
 
-            <input type="number" id="queuefind" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="queuefind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="queuefindpop">Invalid Input</span></div>
             <button type="button" id="queueFindElementButton" onclick="queuecontroller.findElement('queue')">Find Element</button>
@@ -396,29 +396,29 @@ Node insertNode(Node root, int value)
         </div>
         
         <div id="BinaryTreeAppButtons">
-            <input type="number" id="binarytreeinsert" value="0" size="2">
+            <input type="number" id="binarytreeinsert" value="0" size="2" aria-label="element to add">
             <button type="button" id="bstinsertButton" onclick="binarytreecontroller.insert()">Insert Element</button>
             <button type="button" onclick="binarytreecontroller.clearTree()">Clear</button>
             <button class="openbtn" onclick="openNav()">More Info ☰</button>
         </div>
 
         <div id="HashAppButtons">
-            <input type="number" id="hashsize" value="1" size="2" min="1" max="40">
+            <input type="number" id="hashsize" value="1" size="2" min="1" max="40" aria-label="hash size">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashsizepop">Invalid Input</span></div>
             <button type="button" id="hashSetSizeButton" onclick="hashcontroller.setSize('hash')">Set Size</button>
 
-            <input type="number" id="hashadd" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="hashadd" value="0" size="2" min="-99999" max="99999" aria-label="element to add">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashaddpop">Invalid Input</span></div>
             <button type="button" id="hashAddButton" onclick="hashcontroller.add()">Add</button>
 
-            <input type="number" id="hashdelete" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="hashdelete" value="0" size="2" min="-99999" max="99999" aria-label="element to delete">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashdeletepop">Invalid Input</span></div>
             <button type="button" id="hashDeleteButton" onclick="hashcontroller.delete()">Delete</button>
 
-            <input type="number" id="hashfind" value="0" size="2" min="-99999" max="99999">
+            <input type="number" id="hashfind" value="0" size="2" min="-99999" max="99999" aria-label="element to find">
             <span class="validity"></span>
             <div class = "popup"> <span class="popuptext" id="hashfindpop">Invalid Input</span></div>
             <button type="button" id="hashFindElementButton" onclick="hashcontroller.findElement()">Find</button>
